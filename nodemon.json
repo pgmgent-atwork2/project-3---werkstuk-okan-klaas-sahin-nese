@@ -1,0 +1,4 @@
+{
+    "watch": ["src", "css"],
+    "ext": "js, css, html, json,"
+  }
