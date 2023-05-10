@@ -3,14 +3,21 @@ import { create } from 'express-handlebars';
 import path from 'path';
 import { SOURCE_PATH } from './constants.js';
 import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
+import bodyParser from "body-parser";
+import DataSource from "./lib/DataSource.js";
+import * as dotenv from 'dotenv';
 
 import {home} from './controllers/home.js'
+
+dotenv.config();
 
 // create express app
 const app = express();
 
 // serve static file
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // ------------ HANDLEBARS -----------//
 
@@ -29,9 +36,17 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 
 app.get('/', home);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server started on port http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test')
+  DataSource.initialize()
+    .then(() => {
+      app.listen(process.env.PORT, () => {
+        console.log(
+          `Application is running on http://localhost:${process.env.PORT}/.`
+        );
+      });
+    })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
 
 export default app;
