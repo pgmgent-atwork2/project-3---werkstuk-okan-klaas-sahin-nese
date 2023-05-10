@@ -1,0 +1,19 @@
+<section class="auth-container register">
+  <h4>Registeer</h4>
+  <p><a href="/login">Login</a></p>
+  {{>form-errors this}}
+  <form method="post" name:"role" action="/register">
+    {{#each inputs}}
+      {{>form-input this}}
+    {{/each}}
+    <select name="role" id="roles" class="roles">
+  {{#each roles}}
+  <option value="{{id}}">{{label}}</option>
+  {{/each}}
+</select>
+    <div class="footer-container">
+      <input type="reset" class="btn btn-tertiary" value="Clear">
+      <input type="submit" class="btn btn-primary" value="Register">
+    </div>
+  </form>
+</section>

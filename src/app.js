@@ -6,8 +6,14 @@ import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
 import bodyParser from "body-parser";
 import DataSource from "./lib/DataSource.js";
 import * as dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import { jwtAuth } from './middleware/jwtAuth.js';
+import authentication from './middleware/validation/Authentication.js';
+import swaggerDefinition from './docs/swagger.js';
+import swaggerUi from 'swagger-ui-express';
 
 import {home} from './controllers/home.js'
+import { postRegister, postLogin, logout, login, register } from './controllers/authentication.js';
 
 dotenv.config();
 
@@ -18,6 +24,12 @@ const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// adding swagger docs
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDefinition));
+
+// Tell express to use the cookie parser
+app.use(cookieParser());
 
 // ------------ HANDLEBARS -----------//
 
@@ -35,6 +47,13 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 // ---------- ROUTES ---------- //
 
 app.get('/', home);
+
+app.get('/login', login);
+app.get('/register', register);
+app.post('/register', postRegister);
+app.post('/login', authentication, postLogin);
+app.post('/logout', authentication, logout);
+
 
 if (process.env.NODE_ENV !== 'test')
   DataSource.initialize()
