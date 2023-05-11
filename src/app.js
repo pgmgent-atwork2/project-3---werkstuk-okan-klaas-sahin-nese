@@ -70,7 +70,7 @@ app.get('/', home);
 
 app.get('/login', login);
 app.get('/register', register);
-app.post('/register', postRegister);
+app.post('/register', postRegister, jwtAuth);
 app.post('/login', authentication, postLogin);
 app.post('/logout', authentication, logout);
 
