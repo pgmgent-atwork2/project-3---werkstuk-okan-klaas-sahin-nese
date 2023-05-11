@@ -16,6 +16,26 @@ import {home} from './controllers/home.js'
 import { postRegister, postLogin, logout, login, register } from './controllers/authentication.js';
 
 dotenv.config();
+import { 
+  getAllCommands,
+  getCommand,
+  deleteCommand,
+  postCommand
+ } from "./controllers/api/commands.js";
+ import { 
+  getAllOef,
+  getOef,
+  deleteOef,
+  postOef,
+  updateOef
+ } from "./controllers/api/oefeningen.js";
+ import { 
+  getAllUsers,
+  deleteUser,
+  postUser,
+  updateUser,
+  getUser
+ } from "./controllers/api/user.js";
 
 // create express app
 const app = express();
@@ -55,6 +75,30 @@ app.post('/login', authentication, postLogin);
 app.post('/logout', authentication, logout);
 
 
+//users
+app.get("/api/user", getAllUsers);
+app.get("/api/user/:id", getUser)
+app.delete("/api/user", deleteUser);
+app.post("/api/user", postUser);
+app.put("/api/user", updateUser);
+
+//commands
+
+app.get("/api/commands", getAllCommands);
+app.get("/api/commands/:id", getCommand)
+app.delete("/api/commands", deleteCommand);
+app.post("/api/commands", postCommand);
+
+
+//oefeningen
+
+app.get("/api/oefeningen", getAllOef);
+app.get("/api/oefeningen/:id", getOef)
+app.delete("/api/oefeningen", deleteOef);
+app.post("/api/oefeningen", postOef);
+app.put("/api/oefeningen", updateOef);
+
+
 if (process.env.NODE_ENV !== 'test')
   DataSource.initialize()
     .then(() => {
@@ -67,5 +111,4 @@ if (process.env.NODE_ENV !== 'test')
     .catch((error) => {
       console.log('Error: ', error);
     });
-
 export default app;
