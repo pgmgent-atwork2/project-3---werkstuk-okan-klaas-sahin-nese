@@ -5,6 +5,27 @@ import { SOURCE_PATH } from './constants.js';
 import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
 
 import {home} from './controllers/home.js'
+import { 
+  getAllCommands,
+  getCommand,
+  deleteCommand,
+  postCommand
+ } from "./controllers/api/commands.js";
+ import { 
+  getAllOef,
+  getOef,
+  deleteOef,
+  postOef,
+  updateOef
+ } from "./controllers/api/oefeningen.js";
+ import { 
+  getAllUsers,
+  getU,
+  deleteUser,
+  postUser,
+  updateUser,
+  getUser
+ } from "./controllers/api/user.js";
 
 // create express app
 const app = express();
@@ -28,6 +49,29 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 // ---------- ROUTES ---------- //
 
 app.get('/', home);
+
+//users
+app.get("/api/user", getAllUsers);
+app.get("/api/user/:id", getUser)
+app.delete("/api/user", deleteUser);
+app.post("/api/user", postUser);
+app.put("/api/user", updateUser);
+
+//commands
+
+app.get("/api/commands", getAllCommands);
+app.get("/api/commands/:id", getCommand)
+app.delete("/api/commands", deleteCommand);
+app.post("/api/commands", postCommand);
+
+
+//oefeningen
+
+app.get("/api/oefeningen", getAllOef);
+app.get("/api/oefeningen/:id", getAllOef)
+app.delete("/api/oefeningen", deleteOef);
+app.post("/api/oefeningen", postOef);
+app.put("/api/oefeningen", updateOef);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -12,7 +12,7 @@ export const getAllUsers = async (req, res, next) => {
     }  
 };
 
-export const getOef = async (req, res, next) => {
+export const getUser = async (req, res, next) => {
     try {
         const { id } = req.params;
         const userRepo = DataSource.getRepository("User");
@@ -25,7 +25,7 @@ export const getOef = async (req, res, next) => {
     }  
 };
 
-export const deleteOef = async (req, res, next) => {
+export const deleteUser = async (req, res, next) => {
     try {
         const  id  = req.body.id;
         const userRepo = DataSource.getRepository("User");
@@ -41,7 +41,7 @@ export const deleteOef = async (req, res, next) => {
     } 
 };
 
-export const postOef = async (req, res, next) => {
+export const postUser = async (req, res, next) => {
     try {
         const userRepo = DataSource.getRepository("User");
         await userRepo.save(req.body);
@@ -55,7 +55,7 @@ export const postOef = async (req, res, next) => {
     }  
 };
 
-export const updateOef = async (req, res, next) => {
+export const updateUser = async (req, res, next) => {
     try {
         const userRepo = DataSource.getRepository("User"); 
         const  id  = req.body.id;
