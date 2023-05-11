@@ -68,7 +68,7 @@ app.post("/api/commands", postCommand);
 //oefeningen
 
 app.get("/api/oefeningen", getAllOef);
-app.get("/api/oefeningen/:id", getAllOef)
+app.get("/api/oefeningen/:id", getOef)
 app.delete("/api/oefeningen", deleteOef);
 app.post("/api/oefeningen", postOef);
 app.put("/api/oefeningen", updateOef);
