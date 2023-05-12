@@ -14,7 +14,7 @@ import swaggerUi from 'swagger-ui-express';
 
 //database initalize
 import fs from "fs";
-const sql = fs.readFileSync('database.sql').toString();
+//const sql = fs.readFileSync('database.sql').toString();
 
 
 import {home} from './controllers/home.js'

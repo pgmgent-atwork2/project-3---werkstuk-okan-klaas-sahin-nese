@@ -1,27 +1,27 @@
 import typeorm from "typeorm";
-const { EntitySchema } = typeorm;
 
+const { EntitySchema } = typeorm;
 export default new EntitySchema({
-  name: "Role",
-  tableName: "Roles",
+  name: 'role',
+  tableName: 'role',
   columns: {
-    id: {
+    id_role: {
+      type: Number,
       primary: true,
-      type: "int",
-      generated: true,
     },
-    lable: {
-      type: "varchar",
+    label: {
+      type: String,
+      nullable: true,
     },
   },
   relations: {
-    users: {
-      target: "User",
+    staf: {
+      target: "staf",
       type: "one-to-many",
       joinColumn: {
         name: "role_id",
       },
       onDelete: "CASCADE",
     },
-  },
+  },  
 });
