@@ -4,13 +4,18 @@ import path from 'path';
 import { SOURCE_PATH } from './constants.js';
 import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
 import bodyParser from "body-parser";
-import DataSource from "./lib/DataSource.js";
 import * as dotenv from 'dotenv';
+import DataSource from "./lib/DataSource.js";
 import cookieParser from 'cookie-parser';
 import { jwtAuth } from './middleware/jwtAuth.js';
 import authentication from './middleware/validation/Authentication.js';
 import swaggerDefinition from './docs/swagger.js';
 import swaggerUi from 'swagger-ui-express';
+
+//database initalize
+import fs from "fs";
+const sql = fs.readFileSync('database.sql').toString();
+
 
 import {home} from './controllers/home.js'
 import { postRegister, postLogin, logout, login, register } from './controllers/authentication.js';
@@ -99,8 +104,13 @@ app.put("/api/oefeningen", updateOef);
 
 
 if (process.env.NODE_ENV !== 'test')
-  DataSource.initialize()
-    .then(() => {
+     DataSource.initialize()
+    .then(() => { 
+      // dit was om de database te genereren 
+      //DataSource.query(sql, (error, results, fields) => {
+       // if (error) throw error;
+       // console.log(results);
+     // });
       app.listen(process.env.PORT, () => {
         console.log(
           `Application is running on http://localhost:${process.env.PORT}/.`
