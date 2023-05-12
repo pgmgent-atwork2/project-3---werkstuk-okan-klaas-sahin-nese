@@ -36,12 +36,19 @@ import {
   updateOef
  } from "./controllers/api/oefeningen.js";
  import { 
-  getAllUsers,
-  deleteUser,
-  postUser,
-  updateUser,
-  getUser
- } from "./controllers/api/user.js";
+  getAllStaf,
+  deleteStaf,
+  postStaf,
+  updateStaf,
+  getStaf
+ } from "./controllers/api/staf.js";
+ import { 
+  getAllStudents,
+  deleteStudents,
+  postStudents,
+  updateStudents,
+  getStudents
+ } from "./controllers/api/student.js";
 
 // create express app
 const app = express();
@@ -81,11 +88,16 @@ app.post('/login', authentication, postLogin, login);
 app.post('/logout', authentication, logout);
 
 //users
-app.get("/api/user", getAllUsers);
-app.get("/api/user/:id", getUser)
-app.delete("/api/user", deleteUser);
-app.post("/api/user", postUser);
-app.put("/api/user", updateUser);
+app.get("/api/student", getAllStudents);
+app.get("/api/student/:id", getStudents)
+app.delete("/api/student", deleteStudents);
+app.post("/api/student", postStudents);
+app.put("/api/student", updateStudents);
+app.get("/api/staf", getAllStaf);
+app.get("/api/staf/:id", getAllStaf)
+app.delete("/api/staf", deleteStaf);
+app.post("/api/staf", postStaf);
+app.put("/api/staf", updateStaf);
 
 //commands
 
