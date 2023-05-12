@@ -66,7 +66,7 @@ app.set('views', path.join(SOURCE_PATH, 'views'));
 
 // ---------- ROUTES ---------- //
 
-app.get('/', home);
+app.get('/', jwtAuth, home);
 
 app.get('/login', login);
 app.get('/register', register);
