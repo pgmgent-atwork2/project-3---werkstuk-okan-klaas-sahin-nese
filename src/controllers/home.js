@@ -1,3 +1,7 @@
+import DataSource from "../lib/DataSource.js";
+
 export const home = async (req, res) => {
-     res.render('home');
+   res.render("home", {
+      user: req.user,
+    });
   };

@@ -1,3 +1,7 @@
+/**
+ * An authentication Controller
+ */
+
 import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import DataSource from "../lib/DataSource.js";
@@ -14,24 +18,29 @@ export const register = async (req, res) => {
       label: "E-mail",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorsFields?.email ? req.formErrorsFields.email : null,
+      error: req.formErrorFields?.email ? req.formErrorFields.email : null,
     },
     {
       name: "password",
       label: "Password",
       type: "password",
-      value: req.body?.password ? req.body.password : "",
-      error: req.formErrorsFields?.password
-        ? req.formErrorsFields.password
+      password: req.body?.password ? req.body.password : "",
+      error: req.formErrorFields?.password
+        ? req.formErrorFields.password
         : null,
     },
   ];
+
+  // get the roles
+  const roleRepository = await DataSource.getRepository("Role");
+  const roles = await roleRepository.find();
 
   // render the register page
   res.render("register", {
     layout: "authentication",
     inputs,
     formErrors,
+    roles,
   });
 };
 
@@ -46,15 +55,15 @@ export const login = async (req, res) => {
       label: "E-mail",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorsFields?.email ? req.formErrorsFields.email : null,
+      error: req.formErrorFields?.email ? req.formErrorFields.email : null,
     },
     {
       name: "password",
       label: "Password",
       type: "password",
-      value: req.body?.password ? req.body.password : "",
-      error: req.formErrorsFields?.password
-        ? req.formErrorsFields.password
+      password: req.body?.password ? req.body.password : "",
+      error: req.formErrorFields?.password
+        ? req.formErrorFields.password
         : null,
     },
   ];
@@ -62,6 +71,7 @@ export const login = async (req, res) => {
   // render the login page
   res.render("login", {
     layout: "authentication",
+    // toevoegen van data aan de view
     inputs,
     formErrors,
   });
@@ -70,6 +80,7 @@ export const login = async (req, res) => {
 export const postRegister = async (req, res, next) => {
   try {
     const errors = validationResult(req);
+
     // if we have validation errors
     if (!errors.isEmpty()) {
       // create an object with the error fields
@@ -78,29 +89,44 @@ export const postRegister = async (req, res, next) => {
       errors.array().forEach((error) => {
         errorFields[error.param] = error.msg;
       });
-      //put the errorfields in the current request
-      req.formErrorsFields = errorFields;
+      // put the errorfields in the current request
+      req.formErrorFields = errorFields;
 
       return next();
     } else {
-      // save the user to the database
+      // make user repository instance
       const userRepository = await DataSource.getRepository("User");
+      const roleRepository = await DataSource.getRepository("Role");
 
-      // make with one email max one account
       const userExists = await userRepository.findOne({
-        where: { email: req.body.email },
+        where: {
+          email: req.body.email,
+        },
       });
 
-      if (userExists) {
-        req.formErrors = [{ message: "Gebruiker bestaat al" }];
+      const role = await roleRepository.findOne({
+        where: {
+          label: req.body.role,
+        },
+      });
+
+      if(!role) {
+        req.formErrors = [{ message: "Rol bestaat niet." }];
         return next();
       }
+
+      if (userExists) {
+        req.formErrors = [{ message: "Gebruiker bestaat al." }];
+        return next();
+      }
+
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
 
-      //create a new user
+      // create a new user
       const user = await userRepository.create({
         email: req.body.email,
         password: hashedPassword,
+        role
       });
 
       // save the user
@@ -116,6 +142,7 @@ export const postRegister = async (req, res, next) => {
 export const postLogin = async (req, res, next) => {
   try {
     const errors = validationResult(req);
+
     // if we have validation errors
     if (!errors.isEmpty()) {
       // create an object with the error fields
@@ -124,14 +151,13 @@ export const postLogin = async (req, res, next) => {
       errors.array().forEach((error) => {
         errorFields[error.param] = error.msg;
       });
-      //put the errorfields in the current request
-      req.formErrorsFields = errorFields;
+      // put the errorfields in the current request
+      req.formErrorFields = errorFields;
 
       return next();
     } else {
-      //get the user
+      // get the user
       const userRepository = await DataSource.getRepository("User");
-
       // change email to lowercase letters
       const lwEmail = req.body.email.toLowerCase();
 
@@ -141,31 +167,32 @@ export const postLogin = async (req, res, next) => {
           email: lwEmail,
         },
       });
+
       // authentication validation
       if (!user) {
-        req.formErrors = [{ message: "gebruiker bestaat niet" }];
+        req.formErrors = [{ message: "Gebruiker bestaat niet." }];
         return next();
       }
 
       // compare hashed password with saved hashed password
-      const givenPassword = req.body.password;
-      const dbPassword = user.password;
-      const isAMatch = bcrypt.compareSync(givenPassword, dbPassword);
+      const givenPassword = req.body.password; // supersecret
+      const dbPassword = user.password; //$2b$10$9sWBzAraG2EQHZs62uyVdeH2dJxDAM4aWwlcNKWHAX.m2ZUjneEQa
+      const isAMatch = bcrypt.compareSync(givenPassword, dbPassword); // true or false
 
-      //password check
+      // password check
       if (!isAMatch) {
-        req.formErrors = [{ message: "wachtoord is niet correct" }];
+        req.formErrors = [{ message: "Wachtwoord is niet correct." }];
         return next();
       }
-
+      console.log(user)
       // create the JWT web token, aka our identity card
       const token = jwt.sign(
-        { id: user.id, email: req.body.email },
+        { id: user.id, email: req.body.email},
         process.env.TOKEN_SALT,
         { expiresIn: "1h" }
       );
 
-      //create a cookie and add this to the response
+      // create a cookie and add this to the response
       res.cookie("token", token, { httpOnly: true });
 
       // redirect to our root
@@ -178,5 +205,5 @@ export const postLogin = async (req, res, next) => {
 
 export const logout = async (req, res) => {
   res.clearCookie("token");
-  return res.redirect("/login");
+  res.redirect("/login");
 };
