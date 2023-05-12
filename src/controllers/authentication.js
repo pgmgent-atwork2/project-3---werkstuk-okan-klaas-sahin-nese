@@ -32,7 +32,7 @@ export const register = async (req, res) => {
   ];
 
   // get the roles
-  const roleRepository = await DataSource.getRepository("Role");
+  const roleRepository = await DataSource.getRepository("role");
   const roles = await roleRepository.find();
 
   // render the register page
@@ -95,42 +95,60 @@ export const postRegister = async (req, res, next) => {
       return next();
     } else {
       // make user repository instance
-      const userRepository = await DataSource.getRepository("User");
-      const roleRepository = await DataSource.getRepository("Role");
+      const studentRepo = await DataSource.getRepository("student");
+      const stafRepo = await DataSource.getRepository("staf");
 
-      const userExists = await userRepository.findOne({
+      let userExists = await studentRepo.findOne({
         where: {
           email: req.body.email,
         },
       });
 
-      const role = await roleRepository.findOne({
+      userExists = await stafRepo.findOne({
         where: {
-          label: req.body.role,
+          email: req.body.email,
         },
       });
 
-      if(!role) {
-        req.formErrors = [{ message: "Rol bestaat niet." }];
-        return next();
-      }
+    //  const role = await roleRepository.findOne({
+    //    where: {
+    //      label: req.body.role,
+    //    },
+    //  });
 
+    //  if(!role) {
+    //    req.formErrors = [{ message: "Rol bestaat niet." }];
+    //    return next();
+    //  }
       if (userExists) {
         req.formErrors = [{ message: "Gebruiker bestaat al." }];
         return next();
       }
 
+      const role = 'admin';
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+      let user;
+      if(role == 'leerkracht' || role == 'admin'){
+        user = await stafRepo.create({
+          email: req.body.email,
+          password: hashedPassword,
+          role: {
+            label: role,
+          }
+        });
+        // save the user
+        await stafRepo.save(user);
+      }else{
+        user = await studentRepo.create({
+          email: req.body.email,
+          password: hashedPassword,
+        });
+        // save the user
+        await studentRepo.save(user);
+      }
 
-      // create a new user
-      const user = await userRepository.create({
-        email: req.body.email,
-        password: hashedPassword,
-        role
-      });
-
-      // save the user
-      await userRepository.save(user);
+      
+      
 
       res.redirect("/login");
     }
@@ -157,16 +175,34 @@ export const postLogin = async (req, res, next) => {
       return next();
     } else {
       // get the user
-      const userRepository = await DataSource.getRepository("User");
+      const stafRepo = await DataSource.getRepository("staf");
+      const studentRepo = await DataSource.getRepository('student');
       // change email to lowercase letters
       const lwEmail = req.body.email.toLowerCase();
-
+      let user;
+      console.log('kaakakkaak')
       // get a user with a specific email adress
-      const user = await userRepository.findOne({
+      //we moeten nog knop maken voor of het leerkracht is of student
+      let stafboolean = true;
+      user = await studentRepo.findOne({
         where: {
           email: lwEmail,
         },
       });
+      if(stafboolean){
+        user = await stafRepo.findOne({
+          where: {
+            email: lwEmail,
+          },
+        });
+      }else{
+        user = await studentRepo.findOne({
+          where: {
+            email: lwEmail,
+          },
+        });
+      }
+
 
       // authentication validation
       if (!user) {

@@ -6,12 +6,11 @@ export default new EntitySchema({
   tableName: 'commands',
   columns: {
     id_commands: {
-      type: Number,
+      type: 'int',
       primary: true,
     },
     inhoud: {
-      type: String,
-      nullable: true,
+      type: 'varchar',
     },
   },
   relations: {

@@ -6,12 +6,11 @@ export default new EntitySchema({
   tableName: 'role',
   columns: {
     id_role: {
-      type: Number,
+      type: 'int',
       primary: true,
     },
     label: {
-      type: String,
-      nullable: true,
+      type: "varchar",
     },
   },
   relations: {

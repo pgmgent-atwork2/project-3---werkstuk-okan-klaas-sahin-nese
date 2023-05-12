@@ -12,11 +12,9 @@ export default new EntitySchema({
         },
         email: {
           type: 'varchar',
-          nullable: true,
         },
-        pasword: {
+        password: {
           type: 'varchar',
-          nullable: true,
         },
         avatar: {
           type: 'varchar',

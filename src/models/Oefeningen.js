@@ -6,20 +6,17 @@ export default new EntitySchema({
   tableName: 'oefeningen',
   columns: {
     id_oefeningen: {
-      type: Number,
+      type: 'int',
       primary: true,
     },
     naam: {
       type: 'varchar',
-      nullable: true,
     },
     link: {
       type: 'varchar',
-      nullable: true,
     },
     niveau: {
       type: 'varchar',
-      nullable: true,
     },
   },
   relations: {

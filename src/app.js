@@ -5,6 +5,7 @@ import { SOURCE_PATH } from './constants.js';
 import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
 import bodyParser from "body-parser";
 import * as dotenv from 'dotenv';
+dotenv.config();
 import DataSource from "./lib/DataSource.js";
 import cookieParser from 'cookie-parser';
 import { jwtAuth } from './middleware/jwtAuth.js';
@@ -18,9 +19,9 @@ import fs from "fs";
 
 
 import {home} from './controllers/home.js'
-import { postRegister, postLogin, logout, login, register } from './controllers/authentication.js';
+import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
 
-dotenv.config();
+
 import { 
   getAllCommands,
   getCommand,
@@ -75,8 +76,8 @@ app.get('/', jwtAuth, home);
 
 app.get('/login', login);
 app.get('/register', register);
-app.post('/register', postRegister);
-app.post('/login', authentication, postLogin, jwtAuth);
+app.post('/register', postRegister, register);
+app.post('/login', authentication, postLogin, login);
 app.post('/logout', authentication, logout);
 
 //users
