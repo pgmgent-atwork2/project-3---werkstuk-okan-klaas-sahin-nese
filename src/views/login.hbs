@@ -1,13 +1,36 @@
+<div class="input-img">
+<div class="background-img">
+  <div class="background"></div>
+  <img src="/assets/img/person.png" alt="">
+</div>
 <section class="auth-container login">
-  <h4>Login</h4>
+  <img class="logo-login" src="/assets/img/logo-atwork2-removebg1.png" alt="logo">
+  <div class="login__text">  
+  <h1>Welkom</h1>
+  <p>Meld u aan om verder te gaan</p>
+  </div>
   {{>form-errors this}}
   <form method="post" action="login">
     {{#each inputs}}
       {{>form-input this}}
     {{/each}}
+    <div class="remember-forgot">
+      <label>
+          <input type="checkbox" id="rememberMe">
+          Onthoud mij
+      </label>
+      <a href="">wachtwoord vergeten?</a>
+    </div>
     <div class="footer-container">
-      <input type="reset" class="btn btn-tertiary" value="Clear">
-      <input type="submit" class="btn btn-primary" value="Login">
+      <button  type="submit" class="btn-primary" value="Login"> Login</button>
+      <p>Of login met</p>
+      <div class="microsoft-login">
+<button type="submit" class="microsoft-btn" value="Login">
+  <img src="/assets/img/windowslogo.png" alt="">
+  Login met Microsoft</button>
+      </div>
+      
     </div>
   </form>
 </section>
+</div>
