@@ -97,7 +97,7 @@ export const postRegister = async (req, res, next) => {
       // make user repository instance
       const studentRepo = await DataSource.getRepository("student");
       const stafRepo = await DataSource.getRepository("staf");
-
+      const roleReop = await DataSource.getRepository('role');
       let userExists = await studentRepo.findOne({
         where: {
           email: req.body.email,
@@ -129,11 +129,17 @@ export const postRegister = async (req, res, next) => {
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       let user;
       if(role == 'leerkracht' || role == 'admin'){
+        const roleId = await roleReop.findOne({
+          where: {
+            label: role,
+          },
+        });
+
         user = await stafRepo.create({
           email: req.body.email,
           password: hashedPassword,
           role: {
-            id: role,
+            id: roleId,
           }
         });
         // save the user
