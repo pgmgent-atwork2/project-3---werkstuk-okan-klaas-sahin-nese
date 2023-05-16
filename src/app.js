@@ -79,7 +79,7 @@ app.get('/', jwtAuth, home);
 app.get('/login', login);
 app.get('/register', register);
 app.post('/register', postRegister, register);
-app.post('/login', authentication, postLogin, login);
+app.post('/login', authentication, postLogin, jwtAuth, login);
 app.post('/logout', authentication, logout);
 
 //users

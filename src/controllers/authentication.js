@@ -6,6 +6,7 @@ import { validationResult } from "express-validator";
 import jwt from "jsonwebtoken";
 import DataSource from "../lib/DataSource.js";
 import bcrypt from "bcrypt";
+let role;
 
 export const register = async (req, res) => {
   // errors
@@ -19,6 +20,7 @@ export const register = async (req, res) => {
       type: "text",
       value: req.body?.email ? req.body.email : "",
       error: req.formErrorFields?.email ? req.formErrorFields.email : null,
+      sort: "input",
     },
     {
       name: "password",
@@ -28,19 +30,28 @@ export const register = async (req, res) => {
       error: req.formErrorFields?.password
         ? req.formErrorFields.password
         : null,
+        sort: "input",
+    },
+    {
+      name: "role",
+      label: "role",
+      type: "select",
+      options: [
+        { value: "admin", label: "admin" },
+        { value: "teacher", label: "teacher" },  
+        { value: "student", label: "student" },
+      ],
+      value: req.body?.role || "",
+      error: req.formErrorFields?.role ? req.formErrorFields.role : null,
+      sort: "select",
     },
   ];
-
-  // get the roles
-  const roleRepository = await DataSource.getRepository("role");
-  const roles = await roleRepository.find();
 
   // render the register page
   res.render("register", {
     layout: "authentication",
     inputs,
     formErrors,
-    roles,
   });
 };
 
@@ -110,25 +121,16 @@ export const postRegister = async (req, res, next) => {
         },
       });
 
-    //  const role = await roleRepository.findOne({
-    //    where: {
-    //      label: req.body.role,
-    //    },
-    //  });
+      const role = req.body.role;
 
-    //  if(!role) {
-    //    req.formErrors = [{ message: "Rol bestaat niet." }];
-    //    return next();
-    //  }
       if (userExists) {
         req.formErrors = [{ message: "Gebruiker bestaat al." }];
         return next();
       }
 
-      const role = 'leerkracht';
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       let user;
-      if(role == 'leerkracht' || role == 'admin'){
+      if(role == 'teacher' || role == 'admin'){
         const roleId = await roleReop.findOne({
           where: {
             label: role,
@@ -151,9 +153,6 @@ export const postRegister = async (req, res, next) => {
         // save the user
         await studentRepo.save(user);
       }
-
-      
-      
 
       res.redirect("/login");
     }
@@ -185,29 +184,25 @@ export const postLogin = async (req, res, next) => {
       // change email to lowercase letters
       const lwEmail = req.body.email.toLowerCase();
       let user;
+      let role;
       // get a user with a specific email adress
       //we moeten nog knop maken voor of het leerkracht is of student
-      let stafboolean = true;
       user = await studentRepo.findOne({
         where: {
           email: lwEmail,
         },
       });
-      if(stafboolean){
+      if(user){
+        role = 'student';
+      }
+      if(!user) {
         user = await stafRepo.findOne({
           where: {
             email: lwEmail,
           },
         });
-      }else{
-        user = await studentRepo.findOne({
-          where: {
-            email: lwEmail,
-          },
-        });
+        role = 'staf'
       }
-
-
       // authentication validation
       if (!user) {
         req.formErrors = [{ message: "Gebruiker bestaat niet." }];
@@ -224,10 +219,9 @@ export const postLogin = async (req, res, next) => {
         req.formErrors = [{ message: "Wachtwoord is niet correct." }];
         return next();
       }
-      console.log(user)
       // create the JWT web token, aka our identity card
       const token = jwt.sign(
-        { id: user.id, email: req.body.email},
+        { id: user.id, email: req.body.email, role: role},
         process.env.TOKEN_SALT,
         { expiresIn: "1h" }
       );
