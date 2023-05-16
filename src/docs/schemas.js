@@ -37,14 +37,15 @@ export default {
     Commands: {
         properties: {
             id_commands: {type: 'number'},
-            inhoud: {type: 'string'}
+            inhoud: {type: 'string'},
+            vakken: {
+                $ref: '#/components/schemas/Vakken',
+            },
+            student: {
+                $ref: '#/components/schemas/Student',
+            },
         },
-        vakken: {
-            $ref: '#/components/schemas/Vakken',
-        },
-        student: {
-            $ref: '#/components/schemas/Student',
-        },
+        
     },
     Klassen: {
         properties: {
@@ -121,7 +122,7 @@ export default {
                 $ref: '#/components/schemas/Staf',
             }
         }
-        }
+        },
 
   };
   
