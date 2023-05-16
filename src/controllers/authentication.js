@@ -134,7 +134,6 @@ export const postRegister = async (req, res, next) => {
             label: role,
           },
         });
-        console.log(roleId)
         user = await stafRepo.create({
           email: req.body.email,
           password: hashedPassword,

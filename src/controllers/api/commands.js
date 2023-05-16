@@ -2,7 +2,7 @@ import DataSource  from '../../lib/DataSource.js';
 
 export const getAllCommands = async (req, res, next) => {
     try {
-        const commandsRepo = DataSource.getRepository("Commands");
+        const commandsRepo = DataSource.getRepository("commands");
         const allCommands = await commandsRepo.find();
         res.status(201).json(allCommands);
     } catch(e) {
@@ -15,7 +15,7 @@ export const getAllCommands = async (req, res, next) => {
 export const getCommand = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const commandsRepo = DataSource.getRepository("Commands");
+        const commandsRepo = DataSource.getRepository("commands");
         const command = await commandsRepo.findBy({id: id});
         res.status(201).json(command);
     } catch(e) {
@@ -28,7 +28,7 @@ export const getCommand = async (req, res, next) => {
 export const deleteCommand = async (req, res, next) => {
     try {    
         const  id  = req.body.id;
-        const commandsRepo = DataSource.getRepository("Commands");
+        const commandsRepo = DataSource.getRepository("commands");
         const commandToDelete = await commandsRepo.findOneBy({ id :id });
         await commandsRepo.delete(commandToDelete);
         res.status(204).json({
@@ -43,7 +43,7 @@ export const deleteCommand = async (req, res, next) => {
 
 export const postCommand = async (req, res, next) => {
     try {
-        const commandsRepo = DataSource.getRepository("Commands");
+        const commandsRepo = DataSource.getRepository("commands");
         await commandsRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.'
