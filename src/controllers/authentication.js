@@ -59,7 +59,7 @@ export const login = async (req, res) => {
     },
     {
       name: "password",
-      label: "Wachtwoord",
+      label: "Password",
       type: "password",
       password: req.body?.password ? req.body.password : "",
       error: req.formErrorFields?.password
@@ -165,9 +165,9 @@ export const postRegister = async (req, res, next) => {
 export const postLogin = async (req, res, next) => {
   try {
     const errors = validationResult(req);
-
     // if we have validation errors
     if (!errors.isEmpty()) {
+      console.log('er is iets mis')
       // create an object with the error fields
       const errorFields = {};
       // iterate over the errors
@@ -185,7 +185,6 @@ export const postLogin = async (req, res, next) => {
       // change email to lowercase letters
       const lwEmail = req.body.email.toLowerCase();
       let user;
-      console.log('kaakakkaak')
       // get a user with a specific email adress
       //we moeten nog knop maken voor of het leerkracht is of student
       let stafboolean = true;

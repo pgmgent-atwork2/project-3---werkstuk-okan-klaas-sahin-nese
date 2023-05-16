@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import DataSource from '../lib/DataSource.js';
-
+import * as dotenv from 'dotenv';
+dotenv.config()
 // eslint-disable-next-line consistent-return
 export const jwtAuth = async (req, res, next) => {
   const { token } = req.cookies;
@@ -11,10 +12,9 @@ export const jwtAuth = async (req, res, next) => {
     console.log(id);
 
     // get the user out of the database
-    const userRepository = DataSource.getRepository('User');
+    const userRepository = DataSource.getRepository('staf');
     const user = await userRepository.findOne({
-      where: { id },
-      relations: ['role'],
+      where: { id }
     });
 
     // remove the password from the user object
