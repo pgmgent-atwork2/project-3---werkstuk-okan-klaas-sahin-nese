@@ -133,7 +133,7 @@ export const postRegister = async (req, res, next) => {
           email: req.body.email,
           password: hashedPassword,
           role: {
-            label: role,
+            id: role,
           }
         });
         // save the user
