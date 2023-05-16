@@ -88,6 +88,7 @@ app.get("/api/student/:id", getStudents)
 app.delete("/api/student", deleteStudents);
 app.post("/api/student", postStudents);
 app.put("/api/student", updateStudents);
+
 app.get("/api/staf", getAllStaf);
 app.get("/api/staf/:id", getStaf)
 app.delete("/api/staf", deleteStaf);
