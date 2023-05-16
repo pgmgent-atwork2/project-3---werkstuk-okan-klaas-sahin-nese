@@ -6,7 +6,7 @@ export default {
             password: { type: 'string' },
             avatar: {type: 'string'},
             meta: {
-            $ref: '#/components/schemas/UserMeta',
+            $ref: '#/components/schemas/Usermeta',
             },
             klassen: {
             $ref: '#/components/schemas/Klassen',
@@ -14,7 +14,7 @@ export default {
             oefeningen: {
             $ref: '#/components/schemas/Oefeningen',
             },
-        commands: {
+            commands: {
             $ref: '#/components/schemas/Commands',
             },
         },
@@ -104,7 +104,24 @@ export default {
             },
         }
     },
-
+        Vakken: {
+        properties: {
+            id_vakken: {type: 'number'},
+            naam: {type: 'string'},
+            commands: {
+                $ref: '#/components/schemas/Commands',
+            },
+            oefeningen: {
+                $ref: '#/components/schemas/Oefeningen',
+            },
+            klassen: {
+                $ref: '#/components/schemas/Klassen',
+            },
+            staf: {
+                $ref: '#/components/schemas/Staf',
+            }
+        }
+        }
 
   };
   
