@@ -79,7 +79,7 @@ app.get('/', jwtAuth, home);
 app.get('/login', login);
 app.get('/register', register);
 app.post('/register', postRegister, register);
-app.post('/login', authentication, postLogin, login);
+app.post('/login', authentication, postLogin, jwtAuth, login);
 app.post('/logout', authentication, logout);
 
 //users
@@ -89,7 +89,7 @@ app.delete("/api/student", deleteStudents);
 app.post("/api/student", postStudents);
 app.put("/api/student", updateStudents);
 app.get("/api/staf", getAllStaf);
-app.get("/api/staf/:id", getAllStaf)
+app.get("/api/staf/:id", getStaf)
 app.delete("/api/staf", deleteStaf);
 app.post("/api/staf", postStaf);
 app.put("/api/staf", updateStaf);

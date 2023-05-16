@@ -32,5 +32,13 @@ export default new EntitySchema({
         inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
       },
     },
+    staf: {
+      target: "staf",
+      type: "one-to-one",
+      joinColumn: {
+        name: "staf_id",
+      },
+      onDelete: "CASCADE",
+    },
   },  
 });

@@ -34,5 +34,20 @@ export default new EntitySchema({
       cascade: true,
       inverseSide: "staf",
     },
+    klassen: {
+      target: "klassen",
+      type: "one-to-one",
+      cascade: true,
+      inverseSide: "staf",
+    },
+    vakken: {
+      type: "many-to-many",
+      target: "vakken",
+      joinTable: {
+        name: "staf_has_vakken",
+        joinColumns: [{ name: "id_staf", referencedColumnName: "id_staf" }],
+        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
+      },
+    },
   },
 });

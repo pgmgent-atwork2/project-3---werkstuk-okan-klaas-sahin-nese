@@ -125,7 +125,7 @@ export const postRegister = async (req, res, next) => {
         return next();
       }
 
-      const role = 'admin';
+      const role = 'leerkracht';
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       let user;
       if(role == 'leerkracht' || role == 'admin'){
@@ -134,12 +134,12 @@ export const postRegister = async (req, res, next) => {
             label: role,
           },
         });
-
+        console.log(roleId)
         user = await stafRepo.create({
           email: req.body.email,
           password: hashedPassword,
           role: {
-            id: roleId,
+            id: roleId.id,
           }
         });
         // save the user

@@ -40,5 +40,15 @@ export default new EntitySchema({
         inverseJoinColumns: [{ name: "id_klassen", referencedColumnName: "id_klassen" }],
       },
     },
+    staf: {
+      type: "many-to-many",
+      target: "staf",
+      joinTable: {
+        name: "staf_has_vakken",
+        joinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
+        inverseJoinColumns: [{ name: "id_staf", referencedColumnName: "id_staf" }],
+      },
+    },
+    
   },
 });
