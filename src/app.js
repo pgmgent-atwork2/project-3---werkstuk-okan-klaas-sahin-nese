@@ -12,38 +12,39 @@ import { jwtAuth } from './middleware/jwtAuth.js';
 import authentication from './middleware/validation/Authentication.js';
 import swaggerDefinition from './docs/swagger.js';
 import swaggerUi from 'swagger-ui-express';
+import multer from 'multer';
 
+import { saveAvatar } from './middleware/saveAvatar.js';
 import {home} from './controllers/home.js'
 import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
-
 
 import { 
   getAllCommands,
   getCommand,
   deleteCommand,
   postCommand
- } from "./controllers/api/commands.js";
- import { 
+} from "./controllers/api/commands.js";
+import { 
   getAllOef,
   getOef,
   deleteOef,
   postOef,
   updateOef
- } from "./controllers/api/oefeningen.js";
- import { 
+} from "./controllers/api/oefeningen.js";
+import { 
   getAllStaf,
   deleteStaf,
   postStaf,
   updateStaf,
   getStaf
- } from "./controllers/api/staf.js";
- import { 
+} from "./controllers/api/staf.js";
+import { 
   getAllStudents,
   deleteStudents,
   postStudents,
   updateStudents,
   getStudents
- } from "./controllers/api/student.js";
+} from "./controllers/api/student.js";
 
 
 // create express app
@@ -73,9 +74,14 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(SOURCE_PATH, 'views'));
 
+// upload post endpoint
+app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
+  res.redirect('/');
+});
+
 // ---------- ROUTES ---------- //
 
-app.get('/', jwtAuth, home);
+app.get('/',  home);
 
 app.get('/login', login);
 app.get('/register', register);
