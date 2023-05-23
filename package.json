@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/app.js --config nodemon.json",
     "test": "NODE_ENV=test node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
-    "seed": "node ./src/database/seeders/seeder.js"
+    "seed": "node ./src/database/seeders/runSeeder.js"
   },
   "repository": {
     "type": "git",

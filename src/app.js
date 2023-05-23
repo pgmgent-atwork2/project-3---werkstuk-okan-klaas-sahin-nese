@@ -130,5 +130,6 @@ if (process.env.NODE_ENV !== 'test')
     })
     .catch((error) => {
       console.log('Error: ', error);
-    });
+});
+
 export default app;
