@@ -1,13 +1,16 @@
 <div class="head-box">
-    <div>
+
+    <div class="logo__head">
         <img src="assets/img/logo-atwork2-removebg1.png" alt="logo">
     </div>
-     <form action="/gebruikers" method="post">
-        <button type="submit" class="users">Gebruikers</button>
-    </form>
-    <form action="/logout" method="post">
-        <button type="submit" class="logout">Logout</button>
-    </form>
-     {{> upload-file}}
-    {{>avatars}}
+    <div class="nav-button">
+        <form action="/gebruikers" method="post">
+            <button type="submit" class="users">Gebruikers</button>
+        </form>
+        <form action="/logout" method="post">
+            <button type="submit" class="logout">Logout</button>
+        </form>
+        {{>avatars}}
+    </div>
+    
 </div>
