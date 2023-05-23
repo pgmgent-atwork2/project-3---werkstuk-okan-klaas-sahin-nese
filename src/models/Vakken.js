@@ -5,14 +5,17 @@ export default new EntitySchema({
   name: 'vakken',
   tableName: 'vakken',
   columns: {
-    id_vakken: {
+    id: {
       type: 'int',
       primary: true,
-      name: 'idvakken',
+      generated: true
     },
     naam: {
       type: 'varchar',
     },
+    vakcomentaar: {
+      type: 'text',
+    }
   },
   relations: {
     commands: {
@@ -36,8 +39,8 @@ export default new EntitySchema({
       target: "klassen",
       joinTable: {
         name: "klassen_has_vakken",
-        joinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
-        inverseJoinColumns: [{ name: "id_klassen", referencedColumnName: "id_klassen" }],
+        joinColumns: [{ name: "id_vakken", referencedColumnName: "id" }],
+        inverseJoinColumns: [{ name: "id_klassen", referencedColumnName: "id" }],
       },
     },
     staf: {
@@ -45,8 +48,8 @@ export default new EntitySchema({
       target: "staf",
       joinTable: {
         name: "staf_has_vakken",
-        joinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
-        inverseJoinColumns: [{ name: "id_staf", referencedColumnName: "id_staf" }],
+        joinColumns: [{ name: "id_vakken", referencedColumnName: "id" }],
+        inverseJoinColumns: [{ name: "id_staf", referencedColumnName: "id" }],
       },
     },
     

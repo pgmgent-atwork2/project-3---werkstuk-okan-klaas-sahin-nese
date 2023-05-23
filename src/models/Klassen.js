@@ -5,10 +5,10 @@ export default new EntitySchema({
   name: 'klassen',
   tableName: 'klassen',
   columns: {
-    id_klassen: {
+    id: {
       type: 'int',
       primary: true,
-      name: 'idklassen',
+      generated: true
     },
     naam: {
       type: 'varchar',
@@ -28,8 +28,8 @@ export default new EntitySchema({
       target: "vakken",
       joinTable: {
         name: "klassen_has_vakken",
-        joinColumns: [{ name: "id_klassen", referencedColumnName: "id_klassen" }],
-        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
+        joinColumns: [{ name: "id_klassen", referencedColumnName: "id" }],
+        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id" }],
       },
     },
     staf: {

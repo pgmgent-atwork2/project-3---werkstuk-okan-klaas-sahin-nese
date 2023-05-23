@@ -5,9 +5,10 @@ export default new EntitySchema({
   name: 'usermeta',
   tableName: 'usermeta',
   columns: {
-    id_meta: {
+    id: {
       type: Number,
       primary: true,
+      generated: true
     },
     adres: {
       type: 'varchar',
@@ -15,7 +16,6 @@ export default new EntitySchema({
     },
     geboortedatum: {
       type: 'varchar',
-      nullable: true,
     },
     voornaam: {
       type: 'varchar',
@@ -27,7 +27,8 @@ export default new EntitySchema({
     },
     geboorteplaats: {
       type: 'varchar',
-      name: 'naam',
+      name: 'geboorteplaats',
+      nullable: true,
     },
   },
   relations: {
