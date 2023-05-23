@@ -21,7 +21,11 @@ export default new EntitySchema({
       type: 'varchar',
       name: 'voornaam',
     },
-    naam: {
+    achternaam: {
+      type: 'varchar',
+      name: 'naam',
+    },
+    geboorteplaats: {
       type: 'varchar',
       name: 'naam',
     },
