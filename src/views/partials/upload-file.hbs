@@ -1,11 +1,13 @@
 <div id="uploadHeader">
   <form action="/uploadAvatar" method="post" enctype="multipart/form-data">
     <div class="form-group">
-      <label class="text_small" for="uploadAvatar"></label>
-     
-      <div id="avatarImg" class="avatarImg">
-         <input id="avatar" type="file" name="avatar" accept="image/jpeg, image/png, image/gif, image/jpg, image/svg">
-      </div>
+      <label class="text_small" for="avatar">
+        <div id="avatarImg" class="avatarImg">
+          <img id="preview" src="#" alt="Preview" style="display: none;">
+          <span>Klik hier om een foto te kiezen</span>
+        </div>
+      </label>
+    
     </div>
     <input type="submit" value="Upload">
   </form>

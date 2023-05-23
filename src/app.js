@@ -81,7 +81,7 @@ app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
 
 // ---------- ROUTES ---------- //
 
-app.get('/',  home);
+app.get('/', jwtAuth, home);
 
 app.get('/login', login);
 app.get('/register', register);

@@ -21,14 +21,6 @@ ul{
     padding: 0;
 }
 
-.avatarImg{
-    background-image: url("../imgAvatar/");
-    width: 200px;
-    height: 200px;
-    cursor: pointer;
-    background-color: crimson;
-}
-
 .category{
     display: flex;
     gap: 4rem;
@@ -67,3 +59,21 @@ button{
     max-width: 50rem;
     margin: 0 auto;
 }
+
+
+.avatarImg {
+    border: 2px dashed #ccc;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .avatarImg span {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  #preview {
+    max-width: 200px;
+    max-height: 200px;
+  }
