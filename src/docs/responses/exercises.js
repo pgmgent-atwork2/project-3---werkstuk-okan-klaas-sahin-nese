@@ -4,7 +4,7 @@ export default {
       content: {
         'application/json': {
           schemas: {
-            $ref: '#/components/schemas/Staf',
+            $ref: '#/components/schemas/Exercises',
           },
         },
       },

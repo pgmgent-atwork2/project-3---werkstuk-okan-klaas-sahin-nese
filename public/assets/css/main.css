@@ -1,0 +1,69 @@
+
+@font-face {
+    font-family: 'poppins-light';
+    src: url('../Font/poppins-light-webfont.woff2') format('woff2'),
+         url('../Font/poppins-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'poppins-medium';
+    src: url('../Font/poppins-medium-webfont.woff2') format('woff2'),
+         url('../Font/poppins-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+ul{
+    padding: 0;
+}
+
+.avatarImg{
+    background-image: url("../imgAvatar/");
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    background-color: crimson;
+}
+
+.category{
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    padding-top: 2rem;
+
+}
+
+.category-item{
+    list-style: none;
+}
+.category-item img{
+    border-radius: 1.1875rem;
+}
+
+.head-box{
+    display: flex;
+}
+body{
+    background-color: bisque;
+}
+button{
+    background: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 14px;
+    font-family: 'poppins-light';
+    font-size: small;
+
+}
+
+.home__space-area{
+    max-width: 50rem;
+    margin: 0 auto;
+}
