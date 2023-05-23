@@ -39,6 +39,7 @@ font-size: .9375rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .login__text p{
