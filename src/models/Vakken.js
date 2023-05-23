@@ -13,6 +13,9 @@ export default new EntitySchema({
     naam: {
       type: 'varchar',
     },
+    vakcomentaar: {
+      type: 'text',
+    }
   },
   relations: {
     commands: {

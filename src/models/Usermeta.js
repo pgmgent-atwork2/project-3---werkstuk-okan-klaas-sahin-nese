@@ -16,7 +16,6 @@ export default new EntitySchema({
     },
     geboortedatum: {
       type: 'varchar',
-      nullable: true,
     },
     voornaam: {
       type: 'varchar',
@@ -28,7 +27,8 @@ export default new EntitySchema({
     },
     geboorteplaats: {
       type: 'varchar',
-      name: 'naam',
+      name: 'geboorteplaats',
+      nullable: true,
     },
   },
   relations: {
@@ -37,7 +37,6 @@ export default new EntitySchema({
       type: "one-to-one",
       joinColumn: {
         name: "student_id",
-        referencedColumnName: "id"
       },
       onDelete: "CASCADE",
     },
