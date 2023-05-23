@@ -1,4 +1,4 @@
-import faker from "faker";
+import {faker} from "@faker-js/faker";
 import bcrypt from "bcrypt";
 import DataSource from "../../lib/DataSource.js";
 
