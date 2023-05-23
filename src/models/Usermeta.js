@@ -5,9 +5,10 @@ export default new EntitySchema({
   name: 'usermeta',
   tableName: 'usermeta',
   columns: {
-    id_meta: {
+    id: {
       type: Number,
       primary: true,
+      generated: true
     },
     adres: {
       type: 'varchar',
@@ -36,6 +37,7 @@ export default new EntitySchema({
       type: "one-to-one",
       joinColumn: {
         name: "student_id",
+        referencedColumnName: "id"
       },
       onDelete: "CASCADE",
     },

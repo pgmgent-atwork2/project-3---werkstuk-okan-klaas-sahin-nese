@@ -5,10 +5,10 @@ export default new EntitySchema({
     name: 'student',
       tableName: 'student',
       columns: {
-        id_student: {
+        id: {
           type: 'int',
           primary: true,
-          name: 'iduser',
+          generated: true
         },
         email: {
           type: 'varchar',
@@ -39,8 +39,8 @@ export default new EntitySchema({
           target: "oefeningen",
           joinTable: {
             name: "student_has_oefeningen",
-            joinColumns: [{ name: "id_student", referencedColumnName: "id_student" }],
-            inverseJoinColumns: [{ name: "id_oefeningen", referencedColumnName: "id_oefeningen" }],
+            joinColumns: [{ name: "id_student", referencedColumnName: "id" }],
+            inverseJoinColumns: [{ name: "id_oefeningen", referencedColumnName: "id" }],
           },
         },
         commands: {
@@ -48,8 +48,8 @@ export default new EntitySchema({
           target: "commands",
           joinTable: {
             name: "student_has_commands",
-            joinColumns: [{ name: "id_student", referencedColumnName: "id_student" }],
-            inverseJoinColumns: [{ name: "id_commands", referencedColumnName: "id_commands" }],
+            joinColumns: [{ name: "id_student", referencedColumnName: "id" }],
+            inverseJoinColumns: [{ name: "id_commands", referencedColumnName: "id" }],
           },
         },
     },

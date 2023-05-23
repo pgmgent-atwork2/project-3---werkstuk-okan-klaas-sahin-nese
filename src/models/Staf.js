@@ -4,7 +4,7 @@ export default new EntitySchema({
   name: 'staf',
   tableName: 'staf',
   columns: {
-    id_staf: {
+    id: {
       type: 'int',
       primary: true,
       generated: true
@@ -45,8 +45,8 @@ export default new EntitySchema({
       target: "vakken",
       joinTable: {
         name: "staf_has_vakken",
-        joinColumns: [{ name: "id_staf", referencedColumnName: "id_staf" }],
-        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id_vakken" }],
+        joinColumns: [{ name: "id_staf", referencedColumnName: "id" }],
+        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id" }],
       },
     },
   },

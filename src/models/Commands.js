@@ -5,9 +5,10 @@ export default new EntitySchema({
   name: 'commands',
   tableName: 'commands',
   columns: {
-    id_commands: {
+    id: {
       type: 'int',
       primary: true,
+      generated: true
     },
     inhoud: {
       type: 'varchar',
@@ -25,8 +26,8 @@ export default new EntitySchema({
       target: "student",
       joinTable: {
         name: "student_has_commands",
-        joinColumns: [{ name: "id_commands", referencedColumnName: "id_commands" }],
-        inverseJoinColumns: [{ name: "id_student", referencedColumnName: "id_student" }],
+        joinColumns: [{ name: "id_commands", referencedColumnName: "id" }],
+        inverseJoinColumns: [{ name: "id_student", referencedColumnName: "id" }],
       },
     },
   },
