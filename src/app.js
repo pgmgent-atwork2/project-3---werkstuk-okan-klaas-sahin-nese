@@ -15,7 +15,7 @@ import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
 
 import { saveAvatar } from './middleware/saveAvatar.js';
-import {home} from './controllers/home.js'
+import {home, gebruikers} from './controllers/home.js'
 import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
 
 import {
@@ -90,6 +90,10 @@ app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
 // ---------- ROUTES ---------- //
 
 app.get('/', jwtAuth, home);
+
+// gebruikers
+app.get('/gebruikers', gebruikers)
+
 
 app.get('/login', login);
 app.get('/register', register);
