@@ -1,0 +1,20 @@
+{{#each allUserMetas}}
+{{#unless adres}}
+<ul>
+    
+    <li>{{id}}</li>
+   
+    <li>{{voornaam}} {{naam}}</li>
+    <li> <img src="" alt="avatar"></li>
+    <li> email</li>
+    <li>{{geboortedatum}} </li>
+    <li> {{geboorteplaats}} </li>
+    <li> {{adres}} </li>
+    <li>
+        <img src="assets/img/edit.svg" alt="change">
+        <img src="assets/img/delete.svg" alt="delete">
+    </li>
+    
+</ul>
+{{/unless}}
+{{/each}}

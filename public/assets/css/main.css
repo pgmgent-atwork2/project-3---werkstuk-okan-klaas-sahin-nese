@@ -213,3 +213,13 @@ button{
   }
 
 
+.title__arrow{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.title__arrow h1 {
+    margin: 0 auto;
+}

@@ -1,5 +1,7 @@
+{{#each allUserMetas}}
+{{#if adres}}
 <ul>
-    {{#each allUserMetas}}
+    
     <li>{{id}}</li>
    
     <li>{{voornaam}} {{naam}}</li>
@@ -7,10 +9,12 @@
     <li> email</li>
     <li>{{geboortedatum}} </li>
     <li> {{geboorteplaats}} </li>
-    <li>  {{adres}} </li>
+    <li> {{adres}} </li>
     <li>
         <img src="assets/img/edit.svg" alt="change">
         <img src="assets/img/delete.svg" alt="delete">
     </li>
-    {{/each}}
+    
 </ul>
+{{/if}}
+{{/each}}

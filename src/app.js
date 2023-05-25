@@ -56,7 +56,8 @@ import {
 } from "./controllers/api/student.js";
 
 import {
-  getAllStudentsMeta
+  getAllStudentsMeta,
+  getAllStafMeta,
 } from './controllers/meta.js';
 
 // create express app
@@ -98,6 +99,7 @@ app.get('/', home);
 // gebruikers
 app.get('/gebruikers', gebruikers)
 app.get('/student', getAllStudentsMeta)
+app.get('/teacher', getAllStafMeta)
 
 app.get('/login', login);
 app.get('/register', register);
