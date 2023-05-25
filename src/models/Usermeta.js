@@ -1,8 +1,8 @@
-import typeorm from "typeorm";
+import typeorm from 'typeorm';
 
 const { EntitySchema } = typeorm;
 export default new EntitySchema({
-  name: 'usermeta',
+  name: 'Usermeta',
   tableName: 'usermeta',
   columns: {
     id: {

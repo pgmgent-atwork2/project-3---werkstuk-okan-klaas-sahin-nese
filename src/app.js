@@ -46,6 +46,7 @@ import {
   updateStaf,
   getStaf
 } from "./controllers/api/staf.js";
+
 import { 
   getAllStudents,
   deleteStudents,
@@ -54,6 +55,9 @@ import {
   getStudents
 } from "./controllers/api/student.js";
 
+import {
+  getAllStudentsMeta
+} from './controllers/meta.js';
 
 // create express app
 const app = express();
@@ -89,11 +93,11 @@ app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
 
 // ---------- ROUTES ---------- //
 
-app.get('/', jwtAuth, home);
+app.get('/', home);
 
 // gebruikers
 app.get('/gebruikers', gebruikers)
-
+app.get('/student', getAllStudentsMeta)
 
 app.get('/login', login);
 app.get('/register', register);

@@ -1,7 +1,7 @@
 import { EntitySchema } from "typeorm";
 
 export default new EntitySchema({
-  name: 'staf',
+  name: 'Staf',
   tableName: 'staf',
   columns: {
     id: {

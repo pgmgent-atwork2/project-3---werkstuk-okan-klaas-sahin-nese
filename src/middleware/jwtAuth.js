@@ -16,8 +16,8 @@ export const jwtAuth = async (req, res, next) => {
     // get the user out of the database
     let userRepository;
     if(role == 'staf'){
-     userRepository = DataSource.getRepository('staf')
-     studentBoolean = false;
+    userRepository = DataSource.getRepository('staf')
+    studentBoolean = false;
     }else{
       userRepository = DataSource.getRepository('student')
     }

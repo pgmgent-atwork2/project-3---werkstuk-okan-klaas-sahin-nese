@@ -2,7 +2,7 @@ import typeorm from "typeorm";
 const { EntitySchema } = typeorm;
 
 export default new EntitySchema({
-    name: 'student',
+    name: 'Student',
       tableName: 'student',
       columns: {
         id: {
