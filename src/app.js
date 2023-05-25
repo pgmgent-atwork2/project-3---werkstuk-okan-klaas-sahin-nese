@@ -15,7 +15,7 @@ import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
 
 import { saveAvatar } from './middleware/saveAvatar.js';
-import {home, gebruikers} from './controllers/pages.js'
+import {home, gebruikers, classes, subjects, exercises} from './controllers/pages.js'
 import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
 
 import {
@@ -96,10 +96,12 @@ app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
 
 app.get('/', home);
 
-// gebruikers
 app.get('/gebruikers', gebruikers)
 app.get('/student', getAllStudentsMeta)
 app.get('/teacher', getAllStafMeta)
+app.get('/klassen', classes)
+app.get('/vakken', subjects)
+app.get('/oefeningen', exercises)
 
 app.get('/login', login);
 app.get('/register', register);
@@ -138,8 +140,8 @@ app.put("/api/oefeningen", updateOef);
 
 //klassen
 
-app.get("/api/klassen", getKlas);
-app.get("/api/klassen/:id", getAllKlassen)
+app.get("/api/klassen/:id", getKlas);
+app.get("/api/klassen", getAllKlassen)
 app.delete("/api/klassen", deleteKlas);
 app.post("/api/klassen", postKlas);
 app.put("/api/klassen", updateKlas);

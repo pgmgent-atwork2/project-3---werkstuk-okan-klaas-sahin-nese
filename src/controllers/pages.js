@@ -25,3 +25,37 @@ export const gebruikers = async(req, res) => {
   });
 
 }
+
+export const classes = async(req, res) => {
+
+  const avatars = getAvatars();
+
+  res.render("klassen", {
+    user: req.user,
+    avatars
+  });
+
+}
+
+
+export const subjects = async(req, res) => {
+
+  const avatars = getAvatars();
+
+  res.render("vakken", {
+    user: req.user,
+    avatars
+  });
+
+}
+
+export const exercises = async(req, res) => {
+
+  const avatars = getAvatars();
+
+  res.render("vakken", {
+    user: req.user,
+    avatars
+  });
+
+}
