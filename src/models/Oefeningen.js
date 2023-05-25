@@ -17,7 +17,7 @@ export default new EntitySchema({
       type: 'varchar',
     },
     niveau: {
-      type: 'varchar',
+      type: 'int',
     },
   },
   relations: {

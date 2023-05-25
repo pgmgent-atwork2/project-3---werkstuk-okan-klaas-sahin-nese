@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.81% </span>
+                <span class="strong">62.96% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/27</span>
+                <span class='fraction'>17/27</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.81% </span>
+                <span class="strong">62.96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/27</span>
+                <span class='fraction'>17/27</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -122,10 +122,23 @@
 <a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,19 +152,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,10 +163,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,11 +177,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import DataSource  from '../../lib/DataSource.js';
 &nbsp;
-export const getAllCommands = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const commandsRepo = <span class="cstat-no" title="statement not covered" >DataSource.getRepository("commands");</span>
-        const allCommands = <span class="cstat-no" title="statement not covered" >await commandsRepo.find();</span>
-<span class="cstat-no" title="statement not covered" >        res.status(201).json(allCommands);</span>
+export const getAllCommands = async (req, res, next) =&gt; {
+    try {
+        const commandsRepo = DataSource.getRepository("commands");
+        const allCommands = await commandsRepo.find();
+        res.status(201).json(allCommands);
     } catch(e) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             status: e.message
@@ -189,12 +189,12 @@ export const getAllCommands = <span class="fstat-no" title="function not covered
     }  
 };
 &nbsp;
-export const getCommand = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
-        const commandsRepo = <span class="cstat-no" title="statement not covered" >DataSource.getRepository("commands");</span>
-        const command = <span class="cstat-no" title="statement not covered" >await commandsRepo.findBy({id: id});</span>
-<span class="cstat-no" title="statement not covered" >        res.status(201).json(command);</span>
+export const getCommand = async (req, res, next) =&gt; {
+    try {
+        const { id } = req.params;
+        const commandsRepo = DataSource.getRepository("commands");
+        const command = await commandsRepo.findBy({id: id});
+        res.status(201).json(command);
     } catch(e) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             status: e.message
@@ -218,11 +218,11 @@ export const deleteCommand = <span class="fstat-no" title="function not covered"
     } 
 };
 &nbsp;
-export const postCommand = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const commandsRepo = <span class="cstat-no" title="statement not covered" >DataSource.getRepository("commands");</span>
-<span class="cstat-no" title="statement not covered" >        await commandsRepo.save(req.body);</span>
-<span class="cstat-no" title="statement not covered" >        res.status(201).json({</span>
+export const postCommand = async (req, res, next) =&gt; {
+    try {
+        const commandsRepo = DataSource.getRepository("commands");
+        await commandsRepo.save(req.body);
+        res.status(201).json({
             status: 'Inserted with succses.'
         })
     } catch(e) {
@@ -238,7 +238,7 @@ export const postCommand = <span class="fstat-no" title="function not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-23T13:51:34.004Z
+                at 2023-05-25T11:38:12.387Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
