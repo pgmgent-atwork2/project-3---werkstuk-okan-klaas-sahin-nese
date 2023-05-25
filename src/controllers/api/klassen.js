@@ -3,7 +3,7 @@ import DataSource  from '../../lib/DataSource.js';
 export const getAllKlassen = async (req, res, next) => {
     try {
         const klasRepo = DataSource.getRepository("klassen");
-        const allklassen = await oefRepo.find();
+        const allklassen = await klasRepo.find();
         res.status(201).json(allklassen);
     } catch(e) {
         res.status(500).json({
@@ -44,9 +44,10 @@ export const deleteKlas = async (req, res, next) => {
 export const postKlas = async (req, res, next) => {
     try {
         const klasRepo = DataSource.getRepository("klassen");
-        await klasRepo.save(req.body);
+        const klas = await klasRepo.save(req.body);
         res.status(201).json({
-            status: 'Inserted with succses.'
+            status: 'Inserted with succses.',
+            id: klas.id
         })
     } catch(e) {
         res.status(500).json({
@@ -62,7 +63,7 @@ export const updateKlas = async (req, res, next) => {
         const klas = await klasRepo.findOneBy({ id: id });
         let update;
         update = {
-            link: req.body.link
+            naam: req.body.naam
         }
         const updateKlas= {
             ...klas,

@@ -37,7 +37,8 @@ describe('API test', () => {
     });
 
     test("POST - /api/student", async () => {
-      const stream = {
+      const student = {
+        id : 1000,
           email: "klaas.cornette@gmail.com",
           password: "test",
           avatar: "test",
@@ -54,21 +55,22 @@ describe('API test', () => {
       }
       const response = await request(app)
         .post("/api/student")
-        .send({
-          ...stream,    
-        });
+        .send(student);
         // controleren op statuscode
         expect(response.statusCode).toBe(201);
         expect(response.body).toHaveProperty("id");
     });
 
-    test('DELETE - /api/student/:id', async () => {
-        const response = await request(app).delete('/api/student/1').send();
-        expect(response.status).toBe(201);
+    test('DELETE - /api/student', async () => {
+      const del = {
+        id : 1000,
+      }
+        const response = await request(app).delete('/api/student').send(del);
+        expect(response.status).toBe(204);
     });
 
     test('PUT - /api/student', async () => {
-      const stream = {
+      const student = {
           email: "klaas.cornette@gmail.com",
           password: "test",
           avatar: "test",
@@ -84,7 +86,7 @@ describe('API test', () => {
           },
       }
       const response = await request(app).put('/api/student')
-      .send(...stream);
+      .send(student);
       expect(response.status).toBe(201);
   });
 
@@ -103,6 +105,7 @@ describe('API test', () => {
 
   test("POST - /api/staf", async () => {
     const staf = {
+      id : 1000,
         email: "klaas.cornette@gmail.com",
         password: "test",
         avatar: "test",
@@ -131,9 +134,12 @@ describe('API test', () => {
       expect(response.body).toHaveProperty("id");
   });
 
-  test('DELETE - /api/staf/:id', async () => {
-      const response = await request(app).delete('/api/staf/1').send();
-      expect(response.status).toBe(201);
+  test('DELETE - /api/staf', async () => {
+    const del = {
+      id : 1000,
+    }
+      const response = await request(app).delete('/api/staf').send(del);
+      expect(response.status).toBe(204);
   });
 
   test('PUT - /api/staf', async () => {
@@ -163,10 +169,6 @@ describe('API test', () => {
     expect(response.status).toBe(201);
 });
 
-
-
-
-
 test("GET - /api/oefeningen", async () => {
   const response = await request(app).get("/api/oefeningen");
   expect(response.statusCode).toBe(201);
@@ -180,6 +182,7 @@ test("GET - /api/oefeningen/:id", async () => {
 
 test("POST - /api/oefeningen", async () => {
   const oef = {
+    id : 1000,
     naam: "oef1",
     link: "link oef 1",
     niveau: 3,
@@ -187,7 +190,7 @@ test("POST - /api/oefeningen", async () => {
       id : 1,
     },
     student: {
-      id: 1,
+      id: 60,
   }
 }
   const response = await request(app)
@@ -198,9 +201,12 @@ test("POST - /api/oefeningen", async () => {
     expect(response.body).toHaveProperty("id");
 });
 
-test('DELETE - /api/oefeningen/:id', async () => {
-    const response = await request(app).delete('/api/oefeningen/1').send();
-    expect(response.status).toBe(201);
+test('DELETE - /api/oefeningen', async () => {
+  const del = {
+    id : 1000,
+  }
+    const response = await request(app).delete('/api/oefeningen').send(del);
+    expect(response.status).toBe(204);
 });
 
 test('PUT - /api/oefeningen', async () => {
@@ -212,17 +218,13 @@ test('PUT - /api/oefeningen', async () => {
         id : 1,
       },
       student: {
-        id: 1,
+        id: 60,
     }
   }
   const response = await request(app).put('/api/oefeningen')
   .send(oef);
   expect(response.status).toBe(201);
 });
-
-
-
-
 
 test("GET - /api/commands", async () => {
   const response = await request(app).get("/api/commands");
@@ -237,12 +239,13 @@ test("GET - /api/commands/:id", async () => {
 
 test("POST - /api/commands", async () => {
   const command = {
+    id : 1000,
       inhoud: "je hebt het goed gedaan",
       vakken: {
         id : 1,
       },
       student: {
-        id: 1,
+        id: 60,
     }
   }
   const response = await request(app)
@@ -253,29 +256,13 @@ test("POST - /api/commands", async () => {
     expect(response.body).toHaveProperty("id");
 });
 
-test('DELETE - /api/commands/:id', async () => {
-    const response = await request(app).delete('/api/commands/1').send();
-    expect(response.status).toBe(201);
-});
-
-test('PUT - /api/commands', async () => {
-  const command = {
-    inhoud: "je hebt het goed gedaan",
-    vakken: {
-      id : 1,
-    },
-    student: {
-      id: 1,
+test('DELETE - /api/commands', async () => {
+  const del = {
+    id : 1000,
   }
-}
-  const response = await request(app).put('/api/commands')
-  .send(command);
-  expect(response.status).toBe(201);
+    const response = await request(app).delete('/api/commands').send(del);
+    expect(response.status).toBe(204);
 });
-
-
-
-
 
 test("GET - /api/klassen", async () => {
   const response = await request(app).get("/api/klassen");
@@ -290,15 +277,13 @@ test("GET - /api/klassen/:id", async () => {
 
 test("POST - /api/klassen", async () => {
   const klas = {
+    id : 1000,
       naam: "1C",
       vakken: {
         id : 1,
       },
-      student: {
-        id: 1,
-    },
     staf: {
-      id: 1,
+      id: 50,
     }
   }
   const response = await request(app)
@@ -309,9 +294,12 @@ test("POST - /api/klassen", async () => {
     expect(response.body).toHaveProperty("id");
 });
 
-test('DELETE - /api/klassen/:id', async () => {
-    const response = await request(app).delete('/api/klassen/1').send();
-    expect(response.status).toBe(201);
+test('DELETE - /api/klassen/', async () => {
+  const del = {
+    id : 1000,
+  }
+    const response = await request(app).delete('/api/klassen').send(del);
+    expect(response.status).toBe(204);
 });
 
 test('PUT - /api/klassen', async () => {
@@ -321,10 +309,10 @@ test('PUT - /api/klassen', async () => {
       id : 1,
     },
     student: {
-      id: 1,
+      id: 60,
   },
   staf: {
-    id: 1,
+    id: 42,
   }
 }
   const response = await request(app).put('/api/klassen')

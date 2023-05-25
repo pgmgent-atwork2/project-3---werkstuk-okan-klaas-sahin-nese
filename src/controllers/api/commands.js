@@ -44,9 +44,10 @@ export const deleteCommand = async (req, res, next) => {
 export const postCommand = async (req, res, next) => {
     try {
         const commandsRepo = DataSource.getRepository("commands");
-        await commandsRepo.save(req.body);
+        const command = await commandsRepo.save(req.body);
         res.status(201).json({
-            status: 'Inserted with succses.'
+            status: 'Inserted with succses.',
+            id: command.id
         })
     } catch(e) {
         res.status(500).json({

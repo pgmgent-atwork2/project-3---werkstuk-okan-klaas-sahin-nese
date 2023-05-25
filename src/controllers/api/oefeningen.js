@@ -44,9 +44,10 @@ export const deleteOef = async (req, res, next) => {
 export const postOef = async (req, res, next) => {
     try {
         const oefRepo = DataSource.getRepository("oefeningen");
-        await oefRepo.save(req.body);
+        const oef = await oefRepo.save(req.body);
         res.status(201).json({
-            status: 'Inserted with succses.'
+            status: 'Inserted with succses.',
+            id: oef.id
         })
     } catch(e) {
         res.status(500).json({

@@ -18,6 +18,14 @@ import { saveAvatar } from './middleware/saveAvatar.js';
 import {home} from './controllers/home.js'
 import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
 
+import {
+  getAllKlassen,
+  getKlas,
+  deleteKlas,
+  postKlas,
+  updateKlas
+} from "./controllers/api/klassen.js";
+
 import { 
   getAllCommands,
   getCommand,
@@ -118,6 +126,13 @@ app.delete("/api/oefeningen", deleteOef);
 app.post("/api/oefeningen", postOef);
 app.put("/api/oefeningen", updateOef);
 
+//klassen
+
+app.get("/api/klassen", getKlas);
+app.get("/api/klassen/:id", getAllKlassen)
+app.delete("/api/klassen", deleteKlas);
+app.post("/api/klassen", postKlas);
+app.put("/api/klassen", updateKlas);
 
 if (process.env.NODE_ENV !== 'test')
      DataSource.initialize()

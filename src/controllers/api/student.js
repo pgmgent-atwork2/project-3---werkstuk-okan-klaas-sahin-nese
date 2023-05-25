@@ -44,9 +44,10 @@ export const deleteStudents = async (req, res, next) => {
 export const postStudents= async (req, res, next) => {
     try {
         const userRepo = DataSource.getRepository("student");
-        await userRepo.save(req.body);
+        const user = await userRepo.save(req.body);
         res.status(201).json({
-            status: 'Inserted with succses.'
+            status: 'Inserted with succses.',
+            id : user.id
         })
     } catch(e) {
         res.status(500).json({
