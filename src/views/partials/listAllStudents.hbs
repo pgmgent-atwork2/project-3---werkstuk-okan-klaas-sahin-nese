@@ -4,9 +4,11 @@
     
     <li>{{id}}</li>
    
-    <li>{{voornaam}} {{naam}}</li>
-    <li> <img src="" alt="avatar"></li>
-    <li> email</li>
+    <li>{{voornaam}} {{achternaam}}</li>
+    {{#if student}}
+    <li> <img src="{{student.avatar}}" alt="avatar"></li>
+    <li>  {{student.email}}</li>
+    {{/if}}
     <li>{{geboortedatum}} </li>
     <li> {{geboorteplaats}} </li>
     <li> {{adres}} </li>

@@ -4,7 +4,7 @@
 @font-face {
     font-family: 'poppins-light';
     src: url('../Font/poppins-light-webfont.woff2') format('woff2'),
-         url('../Font/poppins-light-webfont.woff') format('woff');
+        url('../Font/poppins-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -13,7 +13,7 @@
 @font-face {
     font-family: 'poppins-medium';
     src: url('../Font/poppins-medium-webfont.woff2') format('woff2'),
-         url('../Font/poppins-medium-webfont.woff') format('woff');
+        url('../Font/poppins-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -74,9 +74,8 @@ font-size: small;
     border: .0625rem solid var(--black-color);
     font-family: 'poppins-medium';
     font-weight: 600;
-font-size: 1.25rem;
-color: var(--white-color);
-
+    font-size: 1.25rem;
+    color: var(--white-color);
 }
 
 .footer-container p {

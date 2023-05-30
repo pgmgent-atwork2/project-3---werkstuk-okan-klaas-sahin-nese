@@ -8,12 +8,17 @@ export const getAllStudentsMeta = async (req, res, next) => {
         const userMetaRepo = DataSource.getRepository("Usermeta");
 
         //get the userMeta and return them with status code 200
-        const allUserMetas = await userMetaRepo.find();
+        const allUserMetas = await userMetaRepo.find({
+            relations: ['student']
+        });
+
+       
+        
         res.render("studentPage", {
-            
             avatars,
             allUserMetas,
-          });
+            
+        });
     } catch(e) {
         next(e.message);
     }  

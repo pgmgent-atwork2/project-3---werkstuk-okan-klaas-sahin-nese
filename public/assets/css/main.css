@@ -2,7 +2,7 @@
 @font-face {
     font-family: 'poppins-light';
     src: url('../Font/poppins-light-webfont.woff2') format('woff2'),
-         url('../Font/poppins-light-webfont.woff') format('woff');
+        url('../Font/poppins-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -11,10 +11,47 @@
 @font-face {
     font-family: 'poppins-medium';
     src: url('../Font/poppins-medium-webfont.woff2') format('woff2'),
-         url('../Font/poppins-medium-webfont.woff') format('woff');
+        url('../Font/poppins-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
+}
+
+:root{
+    --background-blue: hsl(209, 65%, 28%);
+    --background-circle: hsl(209, 53%, 23%);
+    --white-color: hsl(0, 0%, 100%);
+    --black-color: hsl(0, 0%, 0%);
+    --background-header: hsl(208, 100%, 97%);
+}
+
+
+body{
+    background-color: var(--background-blue);
+    overflow-x: hidden;
+}
+
+ul{
+    padding: 0;
+}
+
+.background__right{
+    left: 37.375rem;
+    top: -36.8125rem;
+}
+
+.background__left{
+    left: -55.1875rem;
+    top: 12.125rem;
+    }
+
+.background__left, .background__right{
+position: absolute;
+width: 80.8125rem;
+height: 80.8125rem;
+border-radius: 50%;
+z-index: -1;
+background: var(--background-circle)
 }
 
 .log__avatar{
@@ -24,59 +61,94 @@
     gap: 1rem;
 }
 
-.white__background{
-    background-color: #FFFFFF;
+.head-box{
+    background-color:  var(--background-header);
+    box-shadow: 0rem .25rem .625rem var(--background-header);
 }
 
-.white__background .background__left{
-    display: none;
-}
-
-
-
-
-.user__choice li {
-    width: 100%;
-    display: flex;
+.head-space{
+    padding: 1rem;
     justify-content: center;
     align-items: center;
-    list-style: none;
-    height: 50vh;
+    flex-wrap: wrap;
+    display: flex;
+    max-width: 65rem;
+    margin: 0 auto;
 }
 
+@media (min-width: 50rem) {
+    .head-space{
+        justify-content: space-between;
+    }
+}
 
+.logo__head{
+    min-width: 12.5rem;
+}
+
+.nav-button{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav__btn{
+    background: var(--white-color);
+    border: .125rem solid var(--white-color);
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: .125rem .875rem;
+    font-family: 'poppins-light';
+    font-size: small;
+}
 
 @media (min-width: 39.9375rem) {
     .log__avatar{
         flex-direction: row;
     }
-    
 }
 
-@media (min-width: 800px ) {
-    .user__choice li{
-        height: 100vh;
-    }
-    .user__choice{
-        display: flex;
-        max-width: 65rem;
-        margin: 0 auto;
-    }
+.avatarImg {
+    border: .125rem dashed hsl(0, 0%, 80%);
+    padding: .625rem;
+    text-align: center;
+    cursor: pointer;
 }
 
-
-
-
-ul{
-    padding: 0;
+.avatarImg span {
+    display: block;
+    margin-top: .625rem;
 }
+
+.preview {
+    max-width: 12.5rem;
+    max-height: 12.5rem;
+}
+
+.avatarsContainer img{
+    border-radius: 50%;
+    border: .0625rem solid var(--white-color);
+}
+
+.avatarsContainer{
+    width: 3rem;
+}
+
+.home__space-area{
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
 
 .category{
     display: flex;
     justify-content: center;
     padding-top: 2rem;
     flex-wrap: wrap;
-gap: 1rem;
+    gap: 1rem;
 }
 
 .category a{
@@ -101,117 +173,36 @@ gap: 1rem;
 }
 .category-item img{
     border-radius: 1.1875rem;
-    border: 2px solid black;
+    border: .125rem solid var(--black-color);
 }
 
-.head-space{
-    padding: 1rem;
+.white__background{
+    background-color: var(--white-color);
+}
+
+.white__background .background__left{
+    display: none;
+}
+
+.user__choice li {
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    display: flex;
-    max-width: 65rem;
-    margin: 0 auto;
-   
+    list-style: none;
+    height: 50vh;
 }
 
-.head-box{
-    background-color:  aliceblue;
-
-    box-shadow: 0px 4px 10px aliceblue;
-
-}
-
-@media (min-width: 50rem) {
-    .head-space{
-        justify-content: space-between;
+@media (min-width: 50rem ) {
+    .user__choice li{
+        height: 100vh;
+    }
+    .user__choice{
+        display: flex;
+        max-width: 65rem;
+        margin: 0 auto;
     }
 }
-
-.logo__head{
-    min-width: 200px
-}
-
-body{
-    background-color: #194874;
-    overflow-x: hidden;
-}
-
-.background__right{
-    position: absolute;
-    width: 1293px;
-    height: 1293px;
-    left: 598px;
-    top: -589px;
-    background: #1C3D5B;
-    border-radius: 50%;
-    z-index: -1
-    ;
-}
-
-.background__left{
-    position: absolute;
-width: 1293px;
-height: 1293px;
-left: -883px;
-top: 194px;
-border-radius: 50%;
-z-index: -1;
-background: #1C3D5B;
-}
-
-button{
-    background: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    border-radius: 24px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 2px 14px;
-    font-family: 'poppins-light';
-    font-size: small;
-
-}
-
-.home__space-area{
-    max-width: 65rem;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
-
-.avatarImg {
-    border: 2px dashed #ccc;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .avatarImg span {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  #preview {
-    max-width: 200px;
-    max-height: 200px;
-  }
-
-  .avatarsContainer img{
-    border-radius: 50%;
-    border: 1px solid white;
-  }
-
-  .avatarsContainer{
-    width: 3rem;
-  }
-
-  .nav-button{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
 
 .title__arrow{
     display: flex;
@@ -222,4 +213,41 @@ button{
 
 .title__arrow h1 {
     margin: 0 auto;
+}
+
+.allStudents{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.allStudents ul {
+    display: flex;
+    list-style: none;
+    flex: none;
+    width: 100%;
+}
+
+.allStudents ul:nth-child(odd) {
+    background-color: #F7F6FE;
+}
+
+.allStudents ul:nth-child(even){
+    background-color: white;
+}
+
+.allStudents ul li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 16px;
+    width: 100%;
+    height: 101px;
+    overflow: hidden;
+}
+
+.allStudents ul li:first-child{
+    width: 25%;
+    
 }
