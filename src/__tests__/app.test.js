@@ -319,6 +319,56 @@ test('PUT - /api/klassen', async () => {
   .send(klas);
   expect(response.status).toBe(201);
 });
+
+
+
+
+
+
+
+  test("GET - /api/vakken", async () => {
+    const response = await request(app).get("/api/vakken");
+    expect(response.statusCode).toBe(201);
+    expect(Array.isArray(response.body)).toBeTruthy();
   });
+  
+  test("GET - /api/vakken/:id", async () => {
+    const response = await request(app).get("/api/vakken/1");
+    expect(response.statusCode).toBe(201);
+  });
+  
+  test("POST - /api/vakken", async () => {
+    const vak = {
+      id : 1000,
+      naam: "vakTest",
+      vakcomentaar: "test"
+    }
+    const response = await request(app)
+      .post("/api/vakken")
+      .send(vak);
+      // controleren op statuscode
+      expect(response.statusCode).toBe(201);
+      expect(response.body).toHaveProperty("id");
+  });
+  
+  test('DELETE - /api/vakken/', async () => {
+    const del = {
+      id : 1000,
+    }
+      const response = await request(app).delete('/api/vakken').send(del);
+      expect(response.status).toBe(204);
+  });
+  
+  test('PUT - /api/vakken', async () => {
+    const vak = {
+      naam: "vakTest",
+      vakcomentaar: "test"
+  }
+    const response = await request(app).put('/api/vakken')
+    .send(vak);
+    expect(response.status).toBe(201);
+  });
+    });
 });
+
   

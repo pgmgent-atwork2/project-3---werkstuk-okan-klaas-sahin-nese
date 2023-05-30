@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/controllers/api/student.js</title>
+    <title>Code coverage report for src/controllers/api/vakken.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/controllers/api</a> student.js</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/controllers/api</a> vakken.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -227,11 +227,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import DataSource  from '../../lib/DataSource.js';
 &nbsp;
-export const getAllStudents = async (req, res, next) =&gt; {
+export const getAllVakken = async (req, res, next) =&gt; {
     try {
-        const userRepo = DataSource.getRepository("student");
-        const allUsers = await userRepo.find();
-        res.status(201).json(allUsers);
+        const vakkenRepo = DataSource.getRepository("vakken");
+        const allvakken = await vakkenRepo.find();
+        res.status(201).json(allvakken);
     } catch(e) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             status: e.message
@@ -239,12 +239,12 @@ export const getAllStudents = async (req, res, next) =&gt; {
     }  
 };
 &nbsp;
-export const getStudents = async (req, res, next) =&gt; {
+export const getVak = async (req, res, next) =&gt; {
     try {
         const { id } = req.params;
-        const userRepo = DataSource.getRepository("student");
-        const user = await userRepo.findBy({id: id});
-        res.status(201).json(user);
+        const vakkenRepo = DataSource.getRepository("vakken");
+        const vak = await vakkenRepo.findBy({id: id});
+        res.status(201).json(vak);
     } catch(e) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             status: e.message
@@ -252,12 +252,12 @@ export const getStudents = async (req, res, next) =&gt; {
     }  
 };
 &nbsp;
-export const deleteStudents = async (req, res, next) =&gt; {
+export const deleteVak = async (req, res, next) =&gt; {
     try {
         const  id  = req.body.id;
-        const userRepo = DataSource.getRepository("student");
-        const userToDelete = await userRepo.findOneBy({ id :id });
-        await userRepo.delete(userToDelete);
+        const vakkenRepo = DataSource.getRepository("vakken");
+        const vakToDelete = await vakkenRepo.findOneBy({ id :id });
+        await vakkenRepo.delete(vakToDelete);
         res.status(204).json({
             status: 'Entity is verwijderd'
         });
@@ -268,13 +268,13 @@ export const deleteStudents = async (req, res, next) =&gt; {
     } 
 };
 &nbsp;
-export const postStudents= async (req, res, next) =&gt; {
+export const postVak = async (req, res, next) =&gt; {
     try {
-        const userRepo = DataSource.getRepository("student");
-        const user = await userRepo.save(req.body);
+        const vakkenRepo = DataSource.getRepository("vakken");
+        const vak = await vakkenRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.',
-            id : user.id
+            id: vak.id
         })
     } catch(e) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
@@ -283,21 +283,21 @@ export const postStudents= async (req, res, next) =&gt; {
     }  
 };
 &nbsp;
-export const updateStudents = async (req, res, next) =&gt; {
+export const updateVak = async (req, res, next) =&gt; {
     try {
-        const userRepo = DataSource.getRepository("student"); 
+        const vakkenRepo = DataSource.getRepository("vakken");  
         const  id  = req.body.id;
-        const user = await userRepo.findOneBy({ id: id });
+        const vak = await vakkenRepo.findOneBy({ id: id });
         let update;
         update = {
-            //moet ik nog verder bekijken 
+            naam: req.body.naam
         }
-        const updateOef= {
-            ...user,
+        const updateVak= {
+            ...vak,
             ...update
             
         }
-        await userRepo.save(updateOef); 
+        await vakkenRepo.save(updateVak); 
         res.status(201).json({
             status: 'Inserted with succses.'
         })

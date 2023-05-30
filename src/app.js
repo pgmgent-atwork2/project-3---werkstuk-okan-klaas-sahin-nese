@@ -26,6 +26,14 @@ import {
   updateKlas
 } from "./controllers/api/klassen.js";
 
+import {
+  getAllVakken,
+  getVak,
+  deleteVak,
+  postVak,
+  updateVak
+} from "./controllers/api/vakken.js";
+
 import { 
   getAllCommands,
   getCommand,
@@ -145,6 +153,14 @@ app.get("/api/klassen", getAllKlassen)
 app.delete("/api/klassen", deleteKlas);
 app.post("/api/klassen", postKlas);
 app.put("/api/klassen", updateKlas);
+
+//vakken
+
+app.get("/api/vakken/:id", getVak);
+app.get("/api/vakken", getAllVakken)
+app.delete("/api/vakken", deleteVak);
+app.post("/api/vakken", postVak);
+app.put("/api/vakken", updateVak);
 
 if (process.env.NODE_ENV !== 'test')
      DataSource.initialize()
