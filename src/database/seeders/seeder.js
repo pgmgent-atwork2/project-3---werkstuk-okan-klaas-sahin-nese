@@ -50,7 +50,6 @@ export const makestudents = async (req, res, next) => {
             },
         })
         await studentRepo.save(student)
-        
 }
 return;
 }  

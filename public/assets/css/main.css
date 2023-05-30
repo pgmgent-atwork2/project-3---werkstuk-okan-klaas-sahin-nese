@@ -249,5 +249,14 @@ background: var(--background-circle)
 
 .allStudents ul li:first-child{
     width: 25%;
-    
+}
+
+.allStudents ul li button{
+    border: none;
+    font: inherit;
+    background-color: transparent;
+}
+
+.avatar__list img{
+    width: 3rem;
 }
