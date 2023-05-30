@@ -7,8 +7,14 @@ import jwt from "jsonwebtoken";
 import DataSource from "../lib/DataSource.js";
 import bcrypt from "bcrypt";
 
+
+
 export const registerTeacher = async (req, res) => {
   // errors
+  const val = validationResult(req);
+  const helperError = (errors) => {
+    return val.errors.find(error => error.path === errors)?.msg ?? null;
+  };
   const formErrors = req.formErrors;
   const vakkenRepo = DataSource.getRepository("vakken");
   const allvakken = await vakkenRepo.find();
@@ -20,14 +26,16 @@ export const registerTeacher = async (req, res) => {
       label: allvakken[i].naam,
     };
   }
-  console.log(options);
+
+ 
+
   const inputs = [
     {
       name: "email",
       label: "E-mail",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorFields?.email ? req.formErrorFields.email : null,
+      error: helperError('email', req),
       sort: "input",
     },
     {
@@ -35,9 +43,7 @@ export const registerTeacher = async (req, res) => {
       label: "Password",
       type: "password",
       password: req.body?.password ? req.body.password : "",
-      error: req.formErrorFields?.password
-        ? req.formErrorFields.password
-        : null,
+      error: helperError('password'),
       sort: "input",
     },
     {
@@ -45,9 +51,7 @@ export const registerTeacher = async (req, res) => {
       label: "geboortedatum",
       type: "text",
       value: req.body?.geboortedatum ? req.body.geboortedatum : "",
-      error: req.formErrorFields?.geboortedatum
-        ? req.formErrorFields.geboortedatum
-        : null,
+      error: 
       sort: "input",
     },
     {
@@ -55,9 +59,7 @@ export const registerTeacher = async (req, res) => {
       label: "voornaam",
       type: "text",
       value: req.body?.voornaam ? req.body.voornaam : "",
-      error: req.formErrorFields?.voornaam
-        ? req.formErrorFields.voornaam
-        : null,
+      error: 
       sort: "input",
     },
     {
@@ -65,9 +67,7 @@ export const registerTeacher = async (req, res) => {
       label: "achternaam",
       type: "text",
       value: req.body?.achternaam ? req.body.achternaam : "",
-      error: req.formErrorFields?.achternaam
-        ? req.formErrorFields.achternaam
-        : null,
+      error: 
       sort: "input",
     },
     {
@@ -122,7 +122,9 @@ export const registerStudent = async (req, res) => {
       label: "E-mail",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorFields?.email ? req.formErrorFields.email : null,
+      error: req.formErrorFields?.email
+        ? req.formErrorFields.email
+        : "geen fout",
       sort: "input",
     },
     {

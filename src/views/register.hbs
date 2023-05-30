@@ -2,7 +2,7 @@
   <h4>Registeer</h4>
   <p><a href="/login">Login</a></p>
   {{>form-errors this}}
-  <form method="post" name:"role" action="/registerstudent">
+  <form method="post" name:"role" >
     {{#each inputs}}
       {{>form-input this}}
     {{/each}}
