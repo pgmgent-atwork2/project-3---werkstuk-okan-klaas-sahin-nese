@@ -10,13 +10,21 @@ import DataSource from "./lib/DataSource.js";
 import cookieParser from 'cookie-parser';
 import { jwtAuth } from './middleware/jwtAuth.js';
 import authentication from './middleware/validation/Authentication.js';
+import authenticationRegister from './middleware/validation/AuthenticationRegister.js';
 import swaggerDefinition from './docs/swagger.js';
 import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
 
 import { saveAvatar } from './middleware/saveAvatar.js';
 import {home, gebruikers, classes, subjects, exercises} from './controllers/pages.js'
-import { postRegister, postLogin, logout, login, register, } from './controllers/authentication.js';
+import { 
+  postRegister, 
+  postLogin, 
+  logout, 
+  login, 
+  registerStudent,
+  registerTeacher,
+ } from './controllers/authentication.js';
 
 import {
   getAllKlassen,
@@ -112,8 +120,10 @@ app.get('/vakken', subjects)
 app.get('/oefeningen', exercises)
 
 app.get('/login', login);
-app.get('/register', register);
-app.post('/register', postRegister, register);
+app.get('/registerstudent', registerStudent);
+app.post('/registerstudent', authenticationRegister, postRegister, registerStudent);
+app.get('/registerteacher', registerTeacher);
+app.post('/registerteacher', authenticationRegister, postRegister, registerTeacher);
 app.post('/login', authentication, postLogin, jwtAuth, login);
 app.post('/logout', authentication, logout);
 
