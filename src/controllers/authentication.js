@@ -51,7 +51,7 @@ export const registerTeacher = async (req, res) => {
       label: "geboortedatum",
       type: "text",
       value: req.body?.geboortedatum ? req.body.geboortedatum : "",
-      error: 
+      error: helperError('geboortedatum'),
       sort: "input",
     },
     {
@@ -59,7 +59,7 @@ export const registerTeacher = async (req, res) => {
       label: "voornaam",
       type: "text",
       value: req.body?.voornaam ? req.body.voornaam : "",
-      error: 
+      error: helperError('voornaam'),
       sort: "input",
     },
     {
@@ -67,7 +67,7 @@ export const registerTeacher = async (req, res) => {
       label: "achternaam",
       type: "text",
       value: req.body?.achternaam ? req.body.achternaam : "",
-      error: 
+      error: helperError('voornaam'),
       sort: "input",
     },
     {
@@ -76,7 +76,7 @@ export const registerTeacher = async (req, res) => {
       type: "select",
       options: options,
       value: req.body?.vak || "",
-      error: req.formErrorFields?.vak ? req.formErrorFields.vak : null,
+      error: helperError('voornaam'),
       sort: "select",
     },
     {
@@ -88,7 +88,7 @@ export const registerTeacher = async (req, res) => {
         { value: "teacher", label: "teacher" },
       ],
       value: req.body?.role || "",
-      error: req.formErrorFields?.role ? req.formErrorFields.role : null,
+      error: helperError('voornaam'),
       sort: "select",
     },
   ];
