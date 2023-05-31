@@ -40,7 +40,6 @@ export const getAllStudentsMeta = async (req, res, next) => {
         }
       })
     );
-
     res.render("studentPage", {
       avatars,
       allUserMetas: updatedMeta,
@@ -57,13 +56,30 @@ export const getAllStafMeta = async (req, res, next) => {
     try {
         // get the repo
         const userMetaRepo = DataSource.getRepository("Usermeta");
+        const stafRepo= DataSource.getRepository('Staf')
 
         //get the userMeta and return them with status code 200
-        const allUserMetas = await userMetaRepo.find();
-        res.render("teacherPage", {
+        const allUserMetas = await userMetaRepo.find(
+          {relations:['staf']}
+        );
+        
+        const updatedMeta = await Promise.all(
+          allUserMetas.map(async (userMeta) => {
+            const date = new Date(userMeta.geboortedatum);
+           
+           
+              return {
+                ...userMeta,
+                geboortedatum: `${date.getDate()} / ${date.getMonth()} / ${date.getFullYear()}`,
+               
+              };
             
+          })
+        );
+        
+        res.render("teacherPage", {
             avatars,
-            allUserMetas,
+            allUserMetas:updatedMeta
           });
     } 
  catch(e) {
