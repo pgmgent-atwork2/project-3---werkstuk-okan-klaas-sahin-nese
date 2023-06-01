@@ -331,3 +331,7 @@ border-radius: 15px;
     justify-content: center;
 }
 
+.space__subject-main{
+    max-width: 65rem;
+    margin: 0 auto;
+}
