@@ -1,17 +1,19 @@
 <body class="white__background" >
 {{> header}}
 <main>
-   <div class="title__arrow">
-<h1>Leerlingen</h1>
-<a href="/gebruikers">
-<img src="assets/img/goLeft.svg" alt="left arrow">
-</a>
-</div>
-   <div>
-      {{> listAllUsersHead}}
-   </div>
-   <div class="allStudents">
-      {{> listAllStudents}}
+   <div class="list__space">
+      <div class="title__arrow">
+         <h1>Leerlingen</h1>
+         <a href="/gebruikers">
+         <img src="assets/img/goLeft.svg" alt="left arrow">
+      </a>
+      </div>
+      <div>
+         {{> listAllUsersHead}}
+      </div>
+      <div class="allStudents">
+         {{> listAllStudents}}
+      </div>
    </div>
 </main>
 </body>

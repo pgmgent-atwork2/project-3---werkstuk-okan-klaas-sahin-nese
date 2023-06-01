@@ -56,7 +56,7 @@ export const getAllStafMeta = async (req, res, next) => {
     try {
         // get the repo
         const userMetaRepo = DataSource.getRepository("Usermeta");
-        const stafRepo= DataSource.getRepository('Staf')
+       
 
         //get the userMeta and return them with status code 200
         const allUserMetas = await userMetaRepo.find(

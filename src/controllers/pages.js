@@ -27,12 +27,16 @@ export const gebruikers = async(req, res) => {
 }
 
 export const classes = async(req, res) => {
-
   const avatars = getAvatars();
+
+  const classRepo = DataSource.getRepository('Klassen')
+
+  const allClass = await classRepo.find({})
 
   res.render("klassen", {
     user: req.user,
-    avatars
+    avatars,
+    allClass
   });
 
 }

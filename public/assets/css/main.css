@@ -184,6 +184,11 @@ background: var(--background-circle)
     display: none;
 }
 
+.list__space{
+    margin: 0 auto;
+    max-width: 65rem;
+}
+
 .user__choice li {
     width: 100%;
     display: flex;
@@ -259,4 +264,14 @@ background: var(--background-circle)
 
 .avatar__list img{
     width: 3rem;
+}
+
+.gray__background{
+    background: rgb(217 217 217 / 51%);
+    /* position: absolute; */
+    width: 1014px;
+    height: 547px;
+    /* left: 0px; */
+    margin: 0 auto;
+    margin-top: 2rem;
 }
