@@ -266,12 +266,68 @@ background: var(--background-circle)
     width: 3rem;
 }
 
-.gray__background{
+.gray__background {
     background: rgb(217 217 217 / 51%);
     /* position: absolute; */
-    width: 1014px;
-    height: 547px;
+    width: 70%;
+    height: 50%;
     /* left: 0px; */
     margin: 0 auto;
     margin-top: 2rem;
 }
+
+.grid__subjects{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.grid__subjects ul, .grid__subjects a{
+    box-sizing: border-box;
+width: 209px;
+height: 168px;
+left: 0px;
+top: 0px;
+
+border: 1px solid #6A6A6A;
+border-radius: 15px;
+}
+
+.grid__subjects ul{
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid__subjects a{
+    background: #ececec;
+    background: #ececec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 2rem;
+    text-decoration: none;
+
+}
+
+.grid__subjects ul li{
+    list-style: none;
+}
+
+.subjects__title li:first-child{
+    width: 75px;
+    height: 75px;
+    display: flex;
+    background: hsl(209.03, 40%, 60%);
+    border-radius: 5px;
+    align-items: center;
+    font-size: 2rem;
+    color: white;
+    justify-content: center;
+}
+

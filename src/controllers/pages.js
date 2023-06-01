@@ -43,12 +43,16 @@ export const classes = async(req, res) => {
 
 
 export const subjects = async(req, res) => {
-
   const avatars = getAvatars();
+
+  const subjectRepo = DataSource.getRepository('Vakken')
+
+  const allSubjects = await subjectRepo.find()
 
   res.render("vakken", {
     user: req.user,
-    avatars
+    avatars,
+    allSubjects
   });
 
 }
