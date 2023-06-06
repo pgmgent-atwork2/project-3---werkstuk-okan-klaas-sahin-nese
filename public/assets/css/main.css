@@ -20,9 +20,15 @@
 :root{
     --background-blue: hsl(209, 65%, 28%);
     --background-circle: hsl(209, 53%, 23%);
+    --background-gray: hsla(0, 0%, 85%, 0.51);
+    --light-gray: hsl(0, 0%, 42%);
     --white-color: hsl(0, 0%, 100%);
     --black-color: hsl(0, 0%, 0%);
     --background-header: hsl(208, 100%, 97%);
+    --avatar-img: hsl(0, 0%, 80%);
+    --white-blue: hsl(248, 80%, 98%);
+    --subject-blue: hsl(209.03, 40%, 60%);
+
 }
 
 
@@ -46,12 +52,12 @@ ul{
     }
 
 .background__left, .background__right{
-position: absolute;
-width: 80.8125rem;
-height: 80.8125rem;
-border-radius: 50%;
-z-index: -1;
-background: var(--background-circle)
+    position: absolute;
+    width: 80.8125rem;
+    height: 80.8125rem;
+    border-radius: 50%;
+    z-index: -1;
+    background: var(--background-circle)
 }
 
 .log__avatar{
@@ -111,7 +117,7 @@ background: var(--background-circle)
 }
 
 .avatarImg {
-    border: .125rem dashed hsl(0, 0%, 80%);
+    border: .125rem dashed var(--avatar-img);
     padding: .625rem;
     text-align: center;
     cursor: pointer;
@@ -142,7 +148,6 @@ background: var(--background-circle)
     padding: 1rem;
 }
 
-
 .category{
     display: flex;
     justify-content: center;
@@ -171,6 +176,7 @@ background: var(--background-circle)
 .category-item{
     list-style: none;
 }
+
 .category-item img{
     border-radius: 1.1875rem;
     border: .125rem solid var(--black-color);
@@ -225,6 +231,7 @@ background: var(--background-circle)
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 .allStudents ul {
     display: flex;
     list-style: none;
@@ -233,11 +240,11 @@ background: var(--background-circle)
 }
 
 .allStudents ul:nth-child(odd) {
-    background-color: #F7F6FE;
+    background-color: var(--white-blue);
 }
 
 .allStudents ul:nth-child(even){
-    background-color: white;
+    background-color: var(--white-color);
 }
 
 .allStudents ul li {
@@ -245,10 +252,10 @@ background: var(--background-circle)
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    gap: 16px;
+    padding: .625rem;
+    gap: 1rem;
     width: 100%;
-    height: 101px;
+    height: 6.3125rem;
     overflow: hidden;
 }
 
@@ -267,11 +274,9 @@ background: var(--background-circle)
 }
 
 .gray__background {
-    background: rgb(217 217 217 / 51%);
-    /* position: absolute; */
+    background: var(--background-gray);
     width: 70%;
     height: 50%;
-    /* left: 0px; */
     margin: 0 auto;
     margin-top: 2rem;
 }
@@ -286,17 +291,16 @@ background: var(--background-circle)
 
 .grid__subjects ul, .grid__subjects a{
     box-sizing: border-box;
-width: 209px;
-height: 168px;
-left: 0px;
-top: 0px;
-
-border: 1px solid #6A6A6A;
-border-radius: 15px;
+    width: 13.0625rem;
+    height: 10.5rem;
+    left: 0rem;
+    top: 0rem;
+    border: .0625rem solid var(--light-gray);
+    border-radius: .9375rem;
 }
 
 .grid__subjects ul{
-    background: #FFFFFF;
+    background: var(--white-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -304,15 +308,12 @@ border-radius: 15px;
 }
 
 .grid__subjects a{
-    background: #ececec;
-    background: #ececec;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: var(--black-color);
     font-size: 2rem;
     text-decoration: none;
-
 }
 
 .grid__subjects ul li{
@@ -320,18 +321,33 @@ border-radius: 15px;
 }
 
 .subjects__title li:first-child{
-    width: 75px;
-    height: 75px;
+    width: 4.6875rem;
+    height: 4.6875rem;
     display: flex;
-    background: hsl(209.03, 40%, 60%);
-    border-radius: 5px;
+    background: var(--subject-blue);
+    border-radius: .3125rem;
     align-items: center;
     font-size: 2rem;
-    color: white;
+    color: var(--white-color);
     justify-content: center;
 }
 
 .space__subject-main{
     max-width: 65rem;
     margin: 0 auto;
+}
+
+.from-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.add__subject-form{
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    height: 45vh;
 }

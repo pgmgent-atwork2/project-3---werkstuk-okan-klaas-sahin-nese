@@ -1,0 +1,26 @@
+<div class="add__subject-form">
+     <a href="/vakken">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+   </a>
+<form method="POST" action="/vakken/toevoegen">
+    <div class="add__form-input">
+        <label for="naam">Naam</label>
+        <input type="text" name="naam" required>
+
+        <label for="url">Oefeningen link</label>
+        <input type="url" name="url" required>
+    </div>
+
+    <div class="add__form-input">
+        <label for="description">beschrijving</label>
+        <textarea name="description" id="description" required></textarea>
+
+        <label for="abbreviation">Afkorting</label>
+        <input type="text" name="abbreviation" id="abbreviation" required>
+    </div>
+
+    <input type="submit" value="Toevoegen">
+</form>
+
+
+</div>
