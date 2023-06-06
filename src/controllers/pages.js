@@ -65,35 +65,48 @@ export const addSubj = async (req, res) => {
 }
 
 export const addSubjPost = async (req, res) => {
-  try{
-    const subjectRepo = DataSource.getRepository('Vakken')
-    const exercisesRepo = DataSource.getRepository('Oefeningen')
+  try {
+    const subjectRepo = DataSource.getRepository('Vakken');
 
     const subject = await subjectRepo.findOne({
-      where:{
-        naam: req.body.naam
+      where: {
+        naam: req.body.naam,
+        description: req.body.description,
+        abbreviation: req.body.abbreviation
       }
-    })
+    });
 
-  } catch (e){
-// formulier om vak toe toe voegen opvangen en in db posten
-console.log(req.body);
+    if (subject) {
+      res.status(200).send("Vak bestaat al");
+    } else {
+      await subjectRepo.save(req.body);
+      res.status(201).send("Vak succesvol toegevoegd");
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Er is een interne serverfout opgetreden");
   }
- 
-}
+};
+
 
 
 export const subjectDetail = async (req, res) => {
-  
   const avatars = getAvatars();
   const subjectRepo = DataSource.getRepository('Vakken')
-  const { id } = req.params;
-  const detailSubject = await subjectRepo.findOneBy({ id})
+  const { vakkenId } = req.params;
+  console.log(vakkenId)
+  const detailSubject = await subjectRepo.findOneBy({ id: vakkenId }, { relations: ["oefeningen"] });
 
-  res.render("addSubj", {
+
+  const exercisRepo = DataSource.getRepository('Oefeningen')
+
+const detailExercises = await exercisRepo.find({where: {id: vakkenId}})
+  console.log( detailExercises)
+  res.render("detailVak", {
     user: req.user,
     avatars,
-    detailSubject
+    detailSubject,
+    detailExercises
   });
 }
 

@@ -15,11 +15,9 @@ export default new EntitySchema({
     },
     description: {
       type: 'text',
-      nullable: true,
     },
     abbreviation: {
       type: 'varchar',
-      nullable: true,
     }
   },
   relations: {
