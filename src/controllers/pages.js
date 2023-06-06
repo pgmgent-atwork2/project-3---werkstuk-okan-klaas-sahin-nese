@@ -64,6 +64,29 @@ export const addSubj = async (req, res) => {
   });
 }
 
+export const deleteSubject = async (req, res) => {
+  try{
+
+    const { vakkenId } = req.params;
+
+    const subjectRepo = DataSource.getRepository('Vakken');
+
+    const subject = await subjectRepo.findOneBy({
+     id: vakkenId
+    });
+
+    if(subject) {
+      await subjectRepo.remove(subject)
+      
+    } 
+      res.render('vakken')
+    
+
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export const addSubjPost = async (req, res) => {
   try {
     const subjectRepo = DataSource.getRepository('Vakken');
@@ -80,11 +103,11 @@ export const addSubjPost = async (req, res) => {
       res.status(200).send("Vak bestaat al");
     } else {
       await subjectRepo.save(req.body);
-      res.status(201).send("Vak succesvol toegevoegd");
+      res.render('addSubj');
     }
   } catch (e) {
     console.log(e);
-    res.status(500).send("Er is een interne serverfout opgetreden");
+    res.status(500).send("Er is een fout");
   }
 };
 

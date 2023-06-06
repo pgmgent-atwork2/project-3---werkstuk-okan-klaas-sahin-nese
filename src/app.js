@@ -24,7 +24,8 @@ import {
   exercises, 
   addSubj, 
   addSubjPost, 
-  subjectDetail
+  subjectDetail,
+  deleteSubject
 } from './controllers/pages.js'
 import { 
   postRegister, 
@@ -130,6 +131,7 @@ app.get('/vakken', subjects)
 app.get('/vakken/toevoegen', addSubj)
 app.post('/vakken/toevoegen', addSubjPost)
 app.get('/vakken/:vakkenId', subjectDetail)
+app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)
 
