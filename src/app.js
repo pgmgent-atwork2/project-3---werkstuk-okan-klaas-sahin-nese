@@ -25,7 +25,8 @@ import {
   addSubj, 
   addSubjPost, 
   subjectDetail,
-  deleteSubject
+  deleteSubject,
+  getPersonalData
 } from './controllers/pages.js'
 import { 
   postRegister, 
@@ -126,6 +127,7 @@ app.get('/gebruikers', gebruikers)
 app.get('/student', getAllStudentsMeta)
 app.get('/teacher', getAllStafMeta)
 app.get('/klassen', classes)
+app.get('/persoonlijkegegevens', getPersonalData )
 
 app.get('/vakken', subjects)
 app.get('/vakken/toevoegen', addSubj)

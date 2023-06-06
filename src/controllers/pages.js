@@ -41,7 +41,6 @@ export const classes = async(req, res) => {
 
 }
 
-
 export const subjects = async(req, res) => {
   const avatars = getAvatars();
 
@@ -111,8 +110,6 @@ export const addSubjPost = async (req, res) => {
   }
 };
 
-
-
 export const subjectDetail = async (req, res) => {
   const avatars = getAvatars();
   const subjectRepo = DataSource.getRepository('Vakken')
@@ -142,4 +139,12 @@ export const exercises = async(req, res) => {
     avatars
   });
 
+}
+
+export const getPersonalData = async(req, res) => {
+  const avatars = getAvatars();
+  res.render("personalData", {
+    user: req.user,
+    avatars
+  })
 }
