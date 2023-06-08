@@ -158,13 +158,13 @@ app.post('/logout', authentication, logout);
 //users
 app.get("/api/student", getAllStudents);
 app.get("/api/student/:id", getStudents)
-app.delete("/api/student", deleteStudents);
+app.post("/api/student/:id", deleteStudents);
 app.post("/api/student", postStudents);
 app.put("/api/student", updateStudents);
 
 app.get("/api/staf", getAllStaf);
 app.get("/api/staf/:id", getStaf)
-app.delete("/api/staf", deleteStaf);
+app.post("/api/staf/:id", deleteStaf);
 app.post("/api/staf", postStaf);
 app.put("/api/staf", updateStaf);
 
