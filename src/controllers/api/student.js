@@ -62,15 +62,24 @@ export const updateStudents = async (req, res, next) => {
         const  id  = req.body.id;
         const user = await userRepo.findOneBy({ id: id });
         let update;
-        update = {
-            //moet ik nog verder bekijken 
+        if(req.body.id){
+           update = {
+            adres: req.body.adres,
+            klas: {
+                id : req.body.id 
+            }
+        } 
+        }else{
+            update = {
+                adres: req.body.adres,
+            }
         }
-        const updateOef= {
+        const updateStudent= {
             ...user,
             ...update
             
         }
-        await userRepo.save(updateOef); 
+        await userRepo.save(updateStudent); 
         res.status(201).json({
             status: 'Inserted with succses.'
         })
