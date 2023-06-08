@@ -26,9 +26,6 @@ export const registerTeacher = async (req, res) => {
       label: allvakken[i].naam,
     };
   }
-
- 
-
   const inputs = [
     {
       name: "email",
@@ -67,7 +64,7 @@ export const registerTeacher = async (req, res) => {
       label: "achternaam",
       type: "text",
       value: req.body?.achternaam ? req.body.achternaam : "",
-      error: helperError('voornaam'),
+      error: helperError('achternaam'),
       sort: "input",
     },
     {
@@ -76,7 +73,7 @@ export const registerTeacher = async (req, res) => {
       type: "select",
       options: options,
       value: req.body?.vak || "",
-      error: helperError('voornaam'),
+      error: helperError('vak'),
       sort: "select",
     },
     {
@@ -84,11 +81,11 @@ export const registerTeacher = async (req, res) => {
       label: "role",
       type: "select",
       options: [
-        { value: "admin", label: "admin" },
         { value: "teacher", label: "teacher" },
+        { value: "admin", label: "admin" },    
       ],
       value: req.body?.role || "",
-      error: helperError('voornaam'),
+      error: helperError('role'),
       sort: "select",
     },
   ];
@@ -103,6 +100,10 @@ export const registerTeacher = async (req, res) => {
 
 export const registerStudent = async (req, res) => {
   // errors
+  const val = validationResult(req);
+  const helperError = (errors) => {
+    return val.errors.find(error => error.path === errors)?.msg ?? null;
+  };
   const formErrors = req.formErrors;
   const klasRepo = DataSource.getRepository("klassen");
   const allklassen = await klasRepo.find();
@@ -122,9 +123,7 @@ export const registerStudent = async (req, res) => {
       label: "E-mail",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorFields?.email
-        ? req.formErrorFields.email
-        : "geen fout",
+      error: helperError('email'),
       sort: "input",
     },
     {
@@ -132,9 +131,7 @@ export const registerStudent = async (req, res) => {
       label: "Password",
       type: "password",
       password: req.body?.password ? req.body.password : "",
-      error: req.formErrorFields?.password
-        ? req.formErrorFields.password
-        : null,
+      error: helperError('password'),
       sort: "input",
     },
     {
@@ -142,7 +139,7 @@ export const registerStudent = async (req, res) => {
       label: "adres",
       type: "text",
       value: req.body?.adres ? req.body.adres : "",
-      error: req.formErrorFields?.adres ? req.formErrorFields.adres : null,
+      error: helperError('adres'),
       sort: "input",
     },
     {
@@ -150,9 +147,7 @@ export const registerStudent = async (req, res) => {
       label: "geboortedatum",
       type: "text",
       value: req.body?.geboortedatum ? req.body.geboortedatum : "",
-      error: req.formErrorFields?.geboortedatum
-        ? req.formErrorFields.geboortedatum
-        : null,
+      error: helperError('geboortedatum'),
       sort: "input",
     },
     {
@@ -160,9 +155,7 @@ export const registerStudent = async (req, res) => {
       label: "voornaam",
       type: "text",
       value: req.body?.voornaam ? req.body.voornaam : "",
-      error: req.formErrorFields?.voornaam
-        ? req.formErrorFields.voornaam
-        : null,
+      error: helperError('voornaam'),
       sort: "input",
     },
     {
@@ -170,9 +163,7 @@ export const registerStudent = async (req, res) => {
       label: "achternaam",
       type: "text",
       value: req.body?.achternaam ? req.body.achternaam : "",
-      error: req.formErrorFields?.achternaam
-        ? req.formErrorFields.achternaam
-        : null,
+      error: helperError('achternaam'),
       sort: "input",
     },
     {
@@ -180,9 +171,7 @@ export const registerStudent = async (req, res) => {
       label: "geboorteplaats",
       type: "text",
       value: req.body?.geboorteplaats ? req.body.geboorteplaats : "",
-      error: req.formErrorFields?.geboorteplaats
-        ? req.formErrorFields.geboorteplaats
-        : null,
+      error: helperError('geboorteplaats'),
       sort: "input",
     },
     {
@@ -191,7 +180,7 @@ export const registerStudent = async (req, res) => {
       type: "select",
       options: options,
       value: req.body?.klas || "",
-      error: req.formErrorFields?.klas ? req.formErrorFields.klas : null,
+      error: helperError('klas'),
       sort: "select",
     },
   ];
@@ -207,7 +196,10 @@ export const registerStudent = async (req, res) => {
 export const login = async (req, res) => {
   // errors
   const formErrors = req.formErrors;
-
+  const val = validationResult(req);
+  const helperError = (errors) => {
+    return val.errors.find(error => error.path === errors)?.msg ?? null;
+  };
   // input fields
   const inputs = [
     {
@@ -215,16 +207,14 @@ export const login = async (req, res) => {
       label: "E-mailadres",
       type: "text",
       value: req.body?.email ? req.body.email : "",
-      error: req.formErrorFields?.email ? req.formErrorFields.email : null,
+      error: helperError('email'),
     },
     {
       name: "password",
       label: "Password",
       type: "password",
       password: req.body?.password ? req.body.password : "",
-      error: req.formErrorFields?.password
-        ? req.formErrorFields.password
-        : null,
+      error: helperError('password'),
     },
   ];
 

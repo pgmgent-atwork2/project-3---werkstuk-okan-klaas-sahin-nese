@@ -6,12 +6,18 @@ export default [
     .isLength({ min: 6, max: 20 })
     .withMessage("Het wachtwoord moet tussen de 6 en 20 karakters lang zijn"),
     body("voornaam")
-    .isLength({ min: 3, max: 20 })
-    .withMessage("De naam moet ingevuld worden"),
+    .isLength({ min: 2, max: 20 })
+    .withMessage("De voornaam moet ingevuld worden"),
     body("achternaam")
-    .isLength({ min: 3, max: 20 })
-    .withMessage("De naam moet ingevuld worden"),
+    .isLength({ min: 2, max: 20 })
+    .withMessage("De achternaam moet ingevuld worden"),
     body("geboortedatum")
     .isLength({ min: 3, max: 20 })
     .withMessage("De geboortedatum moet ingevuld worden"),
+    body("geboorteplaats")
+    .isLength({ min: 3, max: 20 })
+    .withMessage("De geboorteplaats moet ingevuld worden"),
+    body("adres")
+    .isLength({ min: 3, max: 20 })
+    .withMessage("De adres moet ingevuld worden"),
 ];
