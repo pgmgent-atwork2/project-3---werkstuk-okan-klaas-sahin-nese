@@ -141,9 +141,9 @@ app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)
 app.get('/updateteacher/:id', updateTeacher)
-app.get('/updatestudent/:id', updateStudent)
+app.get('/editstudent/:id', updateStudent)
 app.put('/updateteacher/:id', postUpdateTeacher, updateTeacher)
-app.put('/updatestudent/:id', postUpdateStudent, updateStudent)
+app.post('/editstudent/:id', postUpdateStudent, updateStudent)
 
 app.get('/login', login);
 app.get('/registerstudent', registerStudent);
