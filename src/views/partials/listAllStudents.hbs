@@ -15,8 +15,10 @@
     <li>{{classroom}}</li>
     <li> {{adres}} </li>
     <li>
-        <img src="assets/img/edit.svg" alt="change">
-        <img src="assets/img/delete.svg" alt="delete">
+        <a href="/editstudent/{{student.id}}"><img src="assets/img/edit.svg" alt="change"></a>
+        <form action="/api/student/{{student.id}}" method="post">
+        <button type="submit"><img src="assets/img/delete.svg" alt="delete"></button>
+        </form>
     </li>
 </ul>
 {{/if}}

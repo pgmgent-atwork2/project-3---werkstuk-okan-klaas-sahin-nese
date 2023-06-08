@@ -141,9 +141,9 @@ app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)
 app.get('/updateteacher/:id', updateTeacher)
-app.get('/updatestudent/:id', updateStudent)
+app.get('/editstudent/:id', updateStudent)
 app.put('/updateteacher/:id', postUpdateTeacher, updateTeacher)
-app.put('/updatestudent/:id', postUpdateStudent, updateStudent)
+app.post('/editstudent/:id', postUpdateStudent, updateStudent)
 
 app.get('/login', login);
 app.get('/registerstudent', registerStudent);
@@ -158,13 +158,13 @@ app.post('/logout', authentication, logout);
 //users
 app.get("/api/student", getAllStudents);
 app.get("/api/student/:id", getStudents)
-app.delete("/api/student", deleteStudents);
+app.post("/api/student/:id", deleteStudents);
 app.post("/api/student", postStudents);
 app.put("/api/student", updateStudents);
 
 app.get("/api/staf", getAllStaf);
 app.get("/api/staf/:id", getStaf)
-app.delete("/api/staf", deleteStaf);
+app.post("/api/staf/:id", deleteStaf);
 app.post("/api/staf", postStaf);
 app.put("/api/staf", updateStaf);
 

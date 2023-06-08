@@ -10,8 +10,10 @@
     {{/if}}
     <li>{{geboortedatum}} </li>
     <li>
-        <img src="assets/img/edit.svg" alt="change">
-        <img src="assets/img/delete.svg" alt="delete">
+        <form action="/api/staf/{{staf.id}}" method="post">
+        <button type="submit"><img src="assets/img/delete.svg" alt="delete"></button>
+        </form>
+        
     </li>
 </ul>
 {{/unless}}

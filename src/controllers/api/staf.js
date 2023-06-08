@@ -27,13 +27,12 @@ export const getStaf = async (req, res, next) => {
 
 export const deleteStaf = async (req, res, next) => {
     try {
-        const  id  = req.body.id;
+        const  id  = req.params.id;
         const userRepo = DataSource.getRepository("staf");
         const userToDelete = await userRepo.findOneBy({ id :id });
         await userRepo.delete(userToDelete);
-        res.status(204).json({
-            status: 'Entity is verwijderd'
-        });
+        
+        res.redirect("/teacher");
     } catch(e) {
         res.status(500).json({
             status: e.message
