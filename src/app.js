@@ -26,7 +26,11 @@ import {
   addSubjPost, 
   subjectDetail,
   deleteSubject,
-  getPersonalData
+  getPersonalData,
+  updateStudent,
+  updateTeacher,
+  postUpdateStudent,
+  postUpdateTeacher
 } from './controllers/pages.js'
 import { 
   postRegister, 
