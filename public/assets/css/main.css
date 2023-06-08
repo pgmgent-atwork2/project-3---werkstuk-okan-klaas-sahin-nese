@@ -297,7 +297,7 @@ label, input{
 .grid__subjects ul, .grid__subjects a{
     box-sizing: border-box;
     width: 13.0625rem;
-    height: 10.5rem;
+    height: 13.5rem;
     left: 0rem;
     top: 0rem;
     
@@ -310,15 +310,17 @@ label, input{
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
+
 }
 
 .grid__subjects a{
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     color: var(--black-color);
     font-size: 2rem;
     text-decoration: none;
+    flex-direction: column;
 
 }
 
@@ -331,6 +333,7 @@ label, input{
 
 .grid__subjects ul li{
     list-style: none;
+    text-align: -webkit-center;
 }
 
 .link__grid__subject{

@@ -21,7 +21,7 @@ export default new EntitySchema({
     },
   },
   relations: {
-    vakken: {
+    vak: {
       target: "vakken",
       type: "many-to-one",
       cascade: true,
