@@ -1,0 +1,35 @@
+     <a href="/vakken">
+      <img src="/assets/img/whiteArrow.svg" alt="left arrow">
+   </a>
+   <div class="title__box">
+<h1>Voeg een vak toe</h1>
+
+<div class="add__subject-form">
+   
+<form method="POST" action="/vakken/toevoegen">
+<dir class="text__box">
+    <div class="add__form-input">
+        <label for="naam">Naam</label>
+        <input type="text" name="naam" required>
+    </div>
+<div class="box__bottom">
+    <div class="add__form-input">
+        <label for="description">Beschrijving</label>
+        <textarea name="description" id="description" required></textarea>
+    </div>
+
+    <div class="add__form-input">
+        <label for="abbreviation">Afkorting</label>
+        <input type="text" name="abbreviation" id="abbreviation" required>
+    </div>
+</div>
+
+</dir>
+
+    <input type="submit" value="Toevoegen">
+</form>
+
+
+</div>
+   </div>
+

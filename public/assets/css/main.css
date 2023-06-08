@@ -20,9 +20,14 @@
 :root{
     --background-blue: hsl(209, 65%, 28%);
     --background-circle: hsl(209, 53%, 23%);
+    --background-gray: hsla(0, 0%, 85%, 0.51);
+    --light-gray: hsl(0, 0%, 42%);
     --white-color: hsl(0, 0%, 100%);
     --black-color: hsl(0, 0%, 0%);
     --background-header: hsl(208, 100%, 97%);
+    --avatar-img: hsl(0, 0%, 80%);
+    --white-blue: hsl(248, 80%, 98%);
+    --subject-blue: hsl(209.03, 40%, 60%);
 }
 
 
@@ -33,6 +38,11 @@ body{
 
 ul{
     padding: 0;
+}
+
+
+label, input{
+    font-family: "poppins-light";
 }
 
 .background__right{
@@ -46,12 +56,12 @@ ul{
     }
 
 .background__left, .background__right{
-position: absolute;
-width: 80.8125rem;
-height: 80.8125rem;
-border-radius: 50%;
-z-index: -1;
-background: var(--background-circle)
+    position: absolute;
+    width: 80.8125rem;
+    height: 80.8125rem;
+    border-radius: 50%;
+    z-index: -1;
+    background: var(--background-circle)
 }
 
 .log__avatar{
@@ -111,7 +121,7 @@ background: var(--background-circle)
 }
 
 .avatarImg {
-    border: .125rem dashed hsl(0, 0%, 80%);
+    border: .125rem dashed var(--avatar-img);
     padding: .625rem;
     text-align: center;
     cursor: pointer;
@@ -142,7 +152,6 @@ background: var(--background-circle)
     padding: 1rem;
 }
 
-
 .category{
     display: flex;
     justify-content: center;
@@ -171,6 +180,7 @@ background: var(--background-circle)
 .category-item{
     list-style: none;
 }
+
 .category-item img{
     border-radius: 1.1875rem;
     border: .125rem solid var(--black-color);
@@ -182,6 +192,11 @@ background: var(--background-circle)
 
 .white__background .background__left{
     display: none;
+}
+
+.list__space{
+    margin: 0 auto;
+    max-width: 65rem;
 }
 
 .user__choice li {
@@ -220,6 +235,7 @@ background: var(--background-circle)
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 .allStudents ul {
     display: flex;
     list-style: none;
@@ -228,11 +244,11 @@ background: var(--background-circle)
 }
 
 .allStudents ul:nth-child(odd) {
-    background-color: #F7F6FE;
+    background-color: var(--white-blue);
 }
 
 .allStudents ul:nth-child(even){
-    background-color: white;
+    background-color: var(--white-color);
 }
 
 .allStudents ul li {
@@ -240,14 +256,158 @@ background: var(--background-circle)
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    gap: 16px;
+    padding: .625rem;
+    gap: 1rem;
     width: 100%;
-    height: 101px;
+    height: 6.3125rem;
     overflow: hidden;
 }
 
 .allStudents ul li:first-child{
     width: 25%;
+}
+
+.allStudents ul li button{
+    border: none;
+    font: inherit;
+    background-color: transparent;
+}
+
+.avatar__list img{
+    width: 3rem;
+}
+
+.gray__background {
+    background: var(--background-gray);
+    width: 70%;
+    height: 50%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.grid__subjects{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid__subjects ul, .grid__subjects a{
+    box-sizing: border-box;
+    width: 13.0625rem;
+    height: 10.5rem;
+    left: 0rem;
+    top: 0rem;
     
+    border-radius: .9375rem;
+}
+
+.grid__subjects ul{
+    background: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.grid__subjects a{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    color: var(--black-color);
+    font-size: 2rem;
+    text-decoration: none;
+
+}
+
+.delete__btn{
+    background-color: transparent;
+    border: none;
+    font-size: initial;
+    padding: 8px;
+}
+
+.grid__subjects ul li{
+    list-style: none;
+}
+
+.link__grid__subject{
+    border: .0625rem solid var(--light-gray);
+}
+
+.subjects__title li:first-child{
+    width: 4.6875rem;
+    height: 4.6875rem;
+    display: flex;
+    background: var(--subject-blue);
+    border-radius: .3125rem;
+    align-items: center;
+    font-size: 2rem;
+    
+    color: var(--white-color);
+    justify-content: center;
+}
+
+.space__subject-main{
+    max-width: 65rem;
+    margin: 0 auto;
+}
+
+.from-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.from-box a{
+    align-self: flex-start;
+    margin-top: 2rem;
+}
+
+.title__box h1{
+    text-align: center;
+    color: var(--white-color);
+    font-family: "poppins-medium";
+    padding-bottom: 1rem;
+}
+
+.add__subject-form{
+    background: #f2f2f2;
+    width: 28rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 50vh;
+}
+
+.add__form-input{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+}
+
+.add__form-input input, .add__form-input textarea{
+    margin-bottom: 1rem;
+}
+
+form input{
+    float: right;
+}
+
+.text__box{
+    display: flex;
+    flex-direction: column;
+}
+
+.box__bottom{
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    flex-direction: row;
 }

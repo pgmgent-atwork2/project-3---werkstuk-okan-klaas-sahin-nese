@@ -16,7 +16,18 @@ import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
 
 import { saveAvatar } from './middleware/saveAvatar.js';
-import {home, gebruikers, classes, subjects, exercises, updateStudent, updateTeacher, postUpdateStudent, postUpdateTeacher} from './controllers/pages.js'
+import {
+  home, 
+  gebruikers, 
+  classes, 
+  subjects, 
+  exercises, 
+  addSubj, 
+  addSubjPost, 
+  subjectDetail,
+  deleteSubject,
+  getPersonalData
+} from './controllers/pages.js'
 import { 
   postRegister, 
   postLogin, 
@@ -116,7 +127,14 @@ app.get('/gebruikers', gebruikers)
 app.get('/student', getAllStudentsMeta)
 app.get('/teacher', getAllStafMeta)
 app.get('/klassen', classes)
+app.get('/persoonlijkegegevens', getPersonalData )
+
 app.get('/vakken', subjects)
+app.get('/vakken/toevoegen', addSubj)
+app.post('/vakken/toevoegen', addSubjPost)
+app.get('/vakken/:vakkenId', subjectDetail)
+app.post('/vakken/:vakkenId', deleteSubject)
+
 app.get('/oefeningen', exercises)
 app.get('/updateteacher/:id', updateTeacher)
 app.get('/updatestudent/:id', updateStudent)

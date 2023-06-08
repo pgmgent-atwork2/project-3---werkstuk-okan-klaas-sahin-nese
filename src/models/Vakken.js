@@ -13,8 +13,11 @@ export default new EntitySchema({
     naam: {
       type: 'varchar',
     },
-    vakcomentaar: {
+    description: {
       type: 'text',
+    },
+    abbreviation: {
+      type: 'varchar',
     }
   },
   relations: {
