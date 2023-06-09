@@ -1,10 +1,13 @@
+
 {{#each allSubjects}}
 
-<ul class="subjects__title">
-   
-      <form action="/vakken/{{id}}" method="POST">
+<div>
+ <form action="/vakken/{{id}}" method="POST">
         <button type="submit" class="delete__btn">X</button>
       </form>
+<ul class="subjects__title">
+   
+     
     
     <a href="/vakken/{{id}}">
     <li >{{abbreviation}}</li>
@@ -12,6 +15,8 @@
     </a>
    
 </ul>
+</div>
+
 
 
 {{/each}}

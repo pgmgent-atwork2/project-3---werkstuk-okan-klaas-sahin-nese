@@ -2,6 +2,7 @@
 import sharp from 'sharp';
 import { v4 as uuid } from 'uuid';
 import { PUBLIC_PATH } from '../constants.js';
+import DataSource from '../lib/DataSource.js';
 /**
  * the upload middleware
  * a user can upload a file via the browser
@@ -39,6 +40,19 @@ export const saveAvatar = async (req, res, next) => {
         withoutEnlargement: true,
       })
       .toFile(`${PUBLIC_PATH}/assets/imgAvatar/${uniqueFileName}`);
+
+
+      // save new avatar url to databse
+      // /assets/imgAvatar/${uniqueFileName}
+      const studentRepo = await DataSource.getRepository("Student");
+      const student = await studentRepo.findOneBy({id: 1});
+
+      console.log("stude nt is:", student);
+
+      student.save({
+        avatar: `/assets/imgAvatar/${uniqueFileName}` 
+      });
+
   } else {
     console.log('file type not supported'); // console
     res.send('file type not supported'); // browser

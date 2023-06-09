@@ -106,21 +106,18 @@ export const subjectDetail = async (req, res) => {
   const avatars = getAvatars();
   const subjectRepo = DataSource.getRepository("Vakken");
   const { vakkenId } = req.params;
-  console.log(vakkenId);
-  const detailSubject = await subjectRepo.findOneBy(
-    { id: vakkenId },
-    { relations: ["oefeningen"] }
-  );
+  
+  const detailSubject = await subjectRepo.findOne({
+    where: {id: vakkenId }, 
+    relations: ["oefeningen"]
+  });
+  console.log(detailSubject);
 
-  const exercisRepo = DataSource.getRepository("Oefeningen");
-
-  const detailExercises = await exercisRepo.find({ where: { id: vakkenId } });
-  console.log(detailExercises);
   res.render("detailVak", {
     user: req.user,
     avatars,
     detailSubject,
-    detailExercises,
+    detailExercises: detailSubject.oefeningen
   });
 };
 

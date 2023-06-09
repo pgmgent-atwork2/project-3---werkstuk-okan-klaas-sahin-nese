@@ -36,6 +36,7 @@ export default new EntitySchema({
         name: "vakken_id",
       },
       onDelete: "CASCADE",
+      inverseSide: "vak",
     },
     klassen: {
       type: "many-to-many",
