@@ -230,7 +230,6 @@ export const login = async (req, res) => {
 export const postRegister = async (req, res, next) => {
   try {
     const errors = validationResult(req);
-
     // if we have validation errors
     if (!errors.isEmpty()) {
       // create an object with the error fields
@@ -268,7 +267,7 @@ export const postRegister = async (req, res, next) => {
         req.formErrors = [{ message: "Gebruiker bestaat al." }];
         return next();
       }
-
+      
       const hashedPassword = bcrypt.hashSync(req.body.password, 10);
       let user;
       const vakkenId = await vakkenRepo.findOne({
@@ -281,33 +280,12 @@ export const postRegister = async (req, res, next) => {
           naam: req.body.klas,
         },
       });
-      console.log(klasId);
       if (role == "teacher" || role == "admin") {
         const roleId = await roleReop.findOne({
           where: {
             label: role,
           },
         });
-        if (req.body.klas) {
-          user = await stafRepo.create({
-            email: req.body.email,
-            password: hashedPassword,
-            role: {
-              id: roleId.id,
-            },
-            meta: {
-              voornaam: req.body.voornaam,
-              achternaam: req.body.achternaam,
-              geboortedatum: req.body.geboortedatum,
-            },
-            klassen: {
-              id: klasId.id,
-            },
-            vakken: {
-              id: vakkenId.id,
-            },
-          });
-        } else {
           user = await stafRepo.create({
             email: req.body.email,
             password: hashedPassword,
@@ -323,28 +301,29 @@ export const postRegister = async (req, res, next) => {
               id: vakkenId.id,
             },
           });
-        }
-        // save the user
+          // save the user
         await stafRepo.save(user);
-      } else {
-        user = await studentRepo.create({
-          email: req.body.email,
-          password: hashedPassword,
-          meta: {
-            voornaam: req.body.voornaam,
-            achternaam: req.body.achternaam,
-            adres: req.body.adres,
-            geboortedatum: req.body.geboortedatum,
-            geboorteplaats: req.body.geboorteplaats,
-          },
-          klassen: {
-            id: klasId.id,
-          },
-        });
-        // save the user
-        await studentRepo.save(user);
-      }
-      res.redirect("/login");
+        res.redirect("/teacher");
+        }else{
+            user = await studentRepo.create({
+              email: req.body.email,
+              password: hashedPassword,
+              meta: {
+                voornaam: req.body.voornaam,
+                achternaam: req.body.achternaam,
+                adres: req.body.adres,
+                geboortedatum: req.body.geboortedatum,
+                geboorteplaats: req.body.geboorteplaats,
+              },
+              klassen: {
+                id: klasId.id,
+              },
+            });
+            // save the user
+            await studentRepo.save(user);
+            res.redirect("/student");
+          }
+      
     }
   } catch (e) {
     next(e.message);
