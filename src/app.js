@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser';
 import { jwtAuth } from './middleware/jwtAuth.js';
 import authentication from './middleware/validation/Authentication.js';
 import authenticationRegister from './middleware/validation/AuthenticationRegister.js';
+import AuthenticationRegisterTeacher from './middleware/validation/AuthenticationRegisterTeacher.js';
 import swaggerDefinition from './docs/swagger.js';
 import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
@@ -149,7 +150,7 @@ app.get('/login', login);
 app.get('/registerstudent', registerStudent);
 app.post('/registerstudent', authenticationRegister, postRegister, registerStudent);
 app.get('/registerteacher', registerTeacher);
-app.post('/registerteacher', authenticationRegister, postRegister, registerTeacher);
+app.post('/registerteacher', AuthenticationRegisterTeacher, postRegister, registerTeacher);
 
 
 app.post('/login', authentication, postLogin, jwtAuth, login);
