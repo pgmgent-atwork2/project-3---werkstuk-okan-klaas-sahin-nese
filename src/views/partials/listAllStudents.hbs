@@ -17,7 +17,7 @@
     <li>
         <a href="/editstudent/{{student.id}}"><img src="assets/img/edit.svg" alt="change"></a>
         <form action="/api/student/{{student.id}}" method="post">
-        <button type="submit"><img src="assets/img/delete.svg" alt="delete"></button>
+        <button type="submit"><img src="assets/img/delete.svg" alt="delete" onclick="return confirm('Weet je zeker dat je dit student wilt verwijderen?')"></button>
         </form>
     </li>
 </ul>
