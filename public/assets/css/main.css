@@ -170,7 +170,7 @@ label, input{
     }
     .category{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding-top: 2rem;
         flex-wrap: wrap;
         gap: 0;
@@ -414,3 +414,5 @@ form input{
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+

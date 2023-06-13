@@ -1,17 +1,15 @@
 {{#each allSubjects}}
-
 <div>
-      <form action="/vakken/{{id}}" method="POST" >
-        <button type="submit" class="delete__btn" onclick="return confirm('Weet je zeker dat je dit vak wilt verwijderen?')">X</button>
-      </form>
-<ul class="subjects__title">
-    
-    <a href="/vakken/{{id}}">
-    <li >{{description}}</li>
-    <li> {{naam}}</li>
-    </a>
-  
-</ul>
+  <div>
+    <form action="/vakken/{{id}}" method="POST">
+      <button type="submit" class="delete__btn" onclick="return confirm('Weet je zeker dat je dit vak wilt verwijderen?')">X</button>
+    </form>
+    <ul class="subjects__title">
+      <a href="/vakken/{{id}}">
+        <li>{{description}}</li>
+        <li>{{naam}}</li>
+      </a>
+    </ul>
+  </div>
 </div>
-
 {{/each}}

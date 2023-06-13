@@ -23,19 +23,19 @@ export const gebruikers = async (req, res) => {
   });
 };
 
-export const classes = async (req, res) => {
-  const avatars = getAvatars();
+// export const classes = async (req, res) => {
+//   const avatars = getAvatars();
 
-  const classRepo = DataSource.getRepository("Klassen");
+//   const classRepo = DataSource.getRepository("Klassen");
 
-  const allClass = await classRepo.find({});
+//   const allClass = await classRepo.find({});
 
-  res.render("klassen", {
-    user: req.user,
-    avatars,
-    allClass,
-  });
-};
+//   res.render("klassen", {
+//     user: req.user,
+//     avatars,
+//     allClass,
+//   });
+// };
 
 export const subjects = async (req, res) => {
   const avatars = getAvatars();
@@ -178,6 +178,7 @@ export const updateTeacher = async (req, res) => {
       label: allvakken[i].naam,
     };
   }
+
   const inputs = [
     {
       name: "email",

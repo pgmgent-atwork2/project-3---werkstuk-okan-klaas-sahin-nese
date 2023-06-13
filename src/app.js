@@ -20,7 +20,6 @@ import { saveAvatar } from './middleware/saveAvatar.js';
 import {
   home, 
   gebruikers, 
-  classes, 
   subjects, 
   exercises, 
   addSubj, 
@@ -131,7 +130,7 @@ app.get('/', jwtAuth, home);
 app.get('/gebruikers', gebruikers)
 app.get('/student', getAllStudentsMeta)
 app.get('/teacher', getAllStafMeta)
-app.get('/klassen', classes)
+// app.get('/klassen', classes)
 app.get('/persoonlijkegegevens', getPersonalData )
 
 app.get('/vakken', subjects)
