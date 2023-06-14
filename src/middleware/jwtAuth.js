@@ -22,7 +22,7 @@ export const jwtAuth = async (req, res, next) => {
       userRepository = DataSource.getRepository('student')
     }
     user = await userRepository.findOne({
-      where: { id }
+      where: { id },
     });
 
     // remove the password from the user object

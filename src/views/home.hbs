@@ -9,5 +9,21 @@
     {{> headCategory}}
     </div>
 </main>
+<pre>{{users}}</pre>
+
+<h1>Welkom, {{user.email}}!</h1>
+
+{{#if (eq userRole "admin")}}
+  <!-- Inhoud specifiek voor beheerders -->
+  <p>Je bent een beheerder.</p>
+{{else if (eq userRole "teacher")}}
+  <!-- Inhoud specifiek voor leraren -->
+  <p>Je bent een leraar.</p>
+{{else}}
+  <!-- Standaardinhoud voor andere rollen -->
+  <p>Je hebt een andere rol.</p>
+{{/if}}
+
+
 </body>
 

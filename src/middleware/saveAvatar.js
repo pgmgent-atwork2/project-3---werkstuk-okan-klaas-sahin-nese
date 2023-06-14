@@ -47,7 +47,7 @@ export const saveAvatar = async (req, res, next) => {
       const studentRepo = await DataSource.getRepository("Student");
       const student = await studentRepo.findOneBy({id: 1});
 
-      console.log("stude nt is:", student);
+      console.log("student is:", student);
 
       student.save({
         avatar: `/assets/imgAvatar/${uniqueFileName}` 

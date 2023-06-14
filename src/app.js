@@ -2,7 +2,7 @@ import express from 'express';
 import { create } from 'express-handlebars';
 import path from 'path';
 import { SOURCE_PATH } from './constants.js';
-import HandelbarsHelpers from './lib/HandelbarsHelpers.js';
+import HandlebarsHelpers from './lib/HandlebarsHelpers.js';
 import bodyParser from "body-parser";
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -110,7 +110,7 @@ app.use(cookieParser());
 // create an instance of express-handlebars
 const hbs = create({
     extname: 'hbs',
-    helpers: HandelbarsHelpers,
+    helpers: HandlebarsHelpers,
     allowProtoProperties: true,
   });
 
