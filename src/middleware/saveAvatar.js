@@ -1,4 +1,3 @@
-
 import sharp from 'sharp';
 import { v4 as uuid } from 'uuid';
 import { PUBLIC_PATH } from '../constants.js';
@@ -11,7 +10,7 @@ import DataSource from '../lib/DataSource.js';
 
 // eslint-disable-next-line consistent-return
 export const saveAvatar = async (req, res, next) => {
-  const { file } = req;
+  const { file, user } = req;
   console.log(file);
 
   // if there is not a file sent, skip this middleware
@@ -28,19 +27,18 @@ export const saveAvatar = async (req, res, next) => {
     // de file test.png -> haalt ".png" eruit
     const extension = file.originalname.split('.').pop();
 
+    
+
     // maak een unieke bestandsnaam met behulp van de uuid-bibliotheek
     const uniqueFileName = `${uuid()}.${extension}`;
 
     // bestand is een afbeelding dan gaat sharp de afbeelding verkleinen en opslaan
     await sharp(file.buffer)
-      .resize(128, 128, {
-        // fit bepaald hoe de afbeelding gesneden moet worden
-        fit: sharp.fit.cover,
-        // withoutEnlargement bepaald of de afbeelding vergoot mag worden. Bij true mag de afbeelding niet vergrootworden om in de afmetingen te passen.
-        withoutEnlargement: true,
-      })
-      .toFile(`${PUBLIC_PATH}/assets/imgAvatar/${uniqueFileName}`);
-
+    .resize(128, 128, {
+      fit: sharp.fit.cover,
+      withoutEnlargement: true,
+    })
+    .toFile(`${PUBLIC_PATH}/assets/imgAvatar/${uniqueFileName}`);
 
       // save new avatar url to databse
       // /assets/imgAvatar/${uniqueFileName}
@@ -49,7 +47,7 @@ export const saveAvatar = async (req, res, next) => {
 
       console.log("student is:", student);
 
-      student.save({
+      user.save({
         avatar: `/assets/imgAvatar/${uniqueFileName}` 
       });
 

@@ -25,7 +25,8 @@ export default {
             adres: {type: 'string'},
             geboortedatum: {type: 'string'},
             voornaam: {type: 'string'},
-            naam: {type: 'string'},
+            achternaam: {type: 'string'},
+            geboorteplaats: {type: 'string'},
             student: {
                 $ref: '#/components/schemas/Student',
             },
@@ -109,6 +110,8 @@ export default {
         properties: {
             id_vakken: {type: 'number'},
             naam: {type: 'string'},
+            description: {type: 'string'},
+            abbreviation: {type: 'string'},
             commands: {
                 $ref: '#/components/schemas/Commands',
             },

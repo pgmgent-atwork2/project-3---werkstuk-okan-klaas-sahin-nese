@@ -20,18 +20,25 @@ import { saveAvatar } from './middleware/saveAvatar.js';
 import {
   home, 
   gebruikers, 
-  subjects, 
+ 
   exercises, 
-  addSubj, 
-  addSubjPost, 
-  subjectDetail,
-  deleteSubject,
+
+
   getPersonalData,
   updateStudent,
   updateTeacher,
   postUpdateStudent,
   postUpdateTeacher
 } from './controllers/pages.js'
+
+import {
+ subjects,
+  addSubj, 
+  addSubjPost, 
+  subjectDetail,
+  deleteSubject,
+} from './controllers/subjects.js'
+
 import { 
   postRegister, 
   postLogin, 
