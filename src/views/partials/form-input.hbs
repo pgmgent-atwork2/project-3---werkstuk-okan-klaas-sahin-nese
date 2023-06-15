@@ -4,13 +4,12 @@
   <input class="input-login" type="{{type}}" name="{{name}}" value="{{value}}" />
   {{/if}}
   {{#if (eq sort "select")}}
-     <select id="{{name}}" name="{{name}}">
+    <select id="{{name}}" name="{{name}}">
       {{#each options}}
         <option value="{{value}}">{{label}}</option>
       {{/each}}
       </select>
   {{/if}}
-  
   {{#if error}}
       <div class="error">{{error}}</div>
   {{/if}}
