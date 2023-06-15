@@ -24,7 +24,10 @@ export default new EntitySchema({
     vak: {
       target: "vakken",
       type: "many-to-one",
-      cascade: true,
+      onDelete: "CASCADE",
+      joinColumn: {
+        name: "vakken_id",
+      },
       inverseSide: "oefeningen",
     },
     student: {

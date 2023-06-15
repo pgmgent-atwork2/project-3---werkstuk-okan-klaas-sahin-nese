@@ -13,7 +13,6 @@ export const subjects = async (req, res) => {
   const allSubjects = await subjectRepo.find();
 
   res.render("vakken", {
-    user: req.user,
     avatars,
     allSubjects,
   });
@@ -39,12 +38,16 @@ export const deleteSubject = async (req, res) => {
 
     if (subject) {
       await subjectRepo.remove(subject);
+      res.status(200).send("Vak succesvol verwijderd"); // Stuur een succesbericht
+    } else {
+      res.status(404).send("Vak niet gevonden"); // Stuur een bericht als het vak niet wordt gevonden
     }
-    res.render("vakken");
   } catch (e) {
     console.log(e);
+    res.status(500).send("Er is een fout opgetreden"); // Stuur een foutbericht in het geval van een fout
   }
 };
+
 
 export const addSubjPost = async (req, res) => {
   try {
@@ -71,20 +74,33 @@ export const addSubjPost = async (req, res) => {
 };
 
 export const subjectDetail = async (req, res) => {
-  const avatars = getAvatars();
-  const subjectRepo = DataSource.getRepository("Vakken");
-  const { vakkenId } = req.params;
-  
-  const detailSubject = await subjectRepo.findOne({
-    where: {id: vakkenId }, 
-    relations: ["oefeningen"]
-  });
-  console.log(detailSubject);
+  try {
+    const avatars = getAvatars();
+    const subjectRepo = DataSource.getRepository("Vakken");
+    const exerciseRepo = DataSource.getRepository("Oefeningen");
+    const { vakkenId } = req.params;
 
-  res.render("detailVak", {
-    user: req.user,
-    avatars,
-    detailSubject,
-    detailExercises: detailSubject.oefeningen
-  });
+    const detailSubject = await subjectRepo.findOne({
+      where: { id: vakkenId },
+      relations: ["oefeningen"],
+    });
+
+    if (detailSubject) {
+      const exercises = await exerciseRepo.find({
+        where: { vak: { id: vakkenId } },
+      });
+
+      res.render("detailVak", {
+        user: req.user,
+        avatars,
+        detailSubject,
+        detailExercises: exercises,
+      });
+    } else {
+      res.status(404).send("Vak niet gevonden");
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("Er is een fout opgetreden");
+  }
 };

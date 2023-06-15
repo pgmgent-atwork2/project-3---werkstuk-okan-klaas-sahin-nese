@@ -1,0 +1,21 @@
+  {{> header}}
+<h2>Oefening Toevoegen</h2>
+<form class="add__exercise-box" action="/oefeningen" method="POST">
+
+  <label for="naam">Titel:</label>
+  <input type="text" id="exerciseName" name="naam" required>
+
+  <label for="link">Link:</label>
+  <input type="text" id="exerciseLink" name="link" required>
+
+  <label for="niveau">Niveau</label>
+  <input type="text" id="exerciseLevel" name="niveau" required>
+
+  <label for="vaknaam">Vaknaam:</label>
+<select id="subjectName" name="vakkenId" required>
+  {{#each allSubjects}}
+    <option value="{{id}}">{{naam}}</option>
+  {{/each}}
+</select>
+  <button type="submit">Oefening Toevoegen</button>
+</form>

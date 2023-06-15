@@ -19,11 +19,7 @@ import multer from 'multer';
 import { saveAvatar } from './middleware/saveAvatar.js';
 import {
   home, 
-  gebruikers, 
- 
-  exercises, 
-
-
+  gebruikers,
   getPersonalData,
   updateStudent,
   updateTeacher,
@@ -38,6 +34,11 @@ import {
   subjectDetail,
   deleteSubject,
 } from './controllers/subjects.js'
+
+import {
+  addExercises,
+  exercises,
+} from './controllers/exercises.js'
 
 import { 
   postRegister, 
@@ -147,6 +148,7 @@ app.get('/vakken/:vakkenId', subjectDetail)
 app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)
+app.post('/oefeningen', addExercises)
 app.get('/updateteacher/:id', updateTeacher)
 app.get('/editstudent/:id', updateStudent)
 app.put('/updateteacher/:id', postUpdateTeacher, updateTeacher)

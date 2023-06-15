@@ -32,10 +32,7 @@ export default new EntitySchema({
     oefeningen: {
       target: "oefeningen",
       type: "one-to-many",
-      joinColumn: {
-        name: "vakken_id",
-      },
-      onDelete: "CASCADE",
+      cascade: true,
       inverseSide: "vak",
     },
     klassen: {

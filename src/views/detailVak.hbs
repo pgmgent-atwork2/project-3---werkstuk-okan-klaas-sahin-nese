@@ -1,5 +1,8 @@
 <body class="white__background">
     <main>
+          <a href="/vakken">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+   </a>
 {{# detailSubject}}
     
     <h1>{{naam}}</h1>
@@ -7,11 +10,25 @@
 
 {{/detailSubject}}
 
-{{#each detailExercises}}
-
-<a href="{{link}}">{{link}}</a>
-
+<div class="detailVak__content">
+  <h2>Oefeningen</h2>
+  <ul class="oefeningen__lijst">
+ {{#each detailExercises}}
+ <p>{{naam}}</p>
+    <a href="{{link}}">{{link}}</a>
+<p> Niveau:{{niveau}} </p>
 {{/each}}
+
+  </ul>
+  <a href="/oefeningen">
+  voeg een oefening toe
+  
+  </a>
+
+
+</div>
+</div>
+
 </main>
 
 </body>

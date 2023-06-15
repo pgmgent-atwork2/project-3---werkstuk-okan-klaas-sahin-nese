@@ -50,16 +50,6 @@ export const gebruikers = async (req, res) => {
 // };
 
 
-
-export const exercises = async (req, res) => {
-  const avatars = getAvatars();
-
-  res.render("vakken", {
-    user: req.user,
-    avatars,
-  });
-};
-
 export const updateStudent = async (req, res) => {
   const klasRepo = DataSource.getRepository("klassen");
   const allklassen = await klasRepo.find();

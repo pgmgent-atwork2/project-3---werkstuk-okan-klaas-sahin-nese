@@ -5,7 +5,6 @@
         url('../Font/poppins-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -14,7 +13,6 @@
         url('../Font/poppins-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 :root{
@@ -391,7 +389,6 @@ label, input{
     display: flex;
     flex-direction: column;
     width: fit-content;
-
 }
 
 .add__form-input input, .add__form-input textarea{
@@ -415,4 +412,8 @@ form input{
     flex-direction: row;
 }
 
-
+.add__exercise-box{
+    display: flex;
+    flex-direction: column;
+    inline-size: max-content;
+}
