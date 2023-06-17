@@ -417,3 +417,8 @@ form input{
     flex-direction: column;
     inline-size: max-content;
 }
+
+.list__exercises li{
+   display: flex;
+   list-style: none;
+}

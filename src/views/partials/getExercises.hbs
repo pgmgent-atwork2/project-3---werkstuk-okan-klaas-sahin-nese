@@ -2,16 +2,18 @@
       <ul class="list__exercises">
         {{#each detailExercises}}
         <li>
-          <p>{{naam}}</p>
-          <a href="{{link}}">{{link}}</a>
-          <p>Niveau: {{niveau}}</p>
-          <form action="/oefeningen/{{id}}" method="POST">
-          <button type="submit" class="delete__btn" onclick="return confirm('Weet je zeker dat je deze oefening wilt verwijderen?')">X</button>
-          </form>
+            <form action="/oefeningen/{{id}}" method="POST">
+            <button type="submit" class="delete__btn" onclick="return confirm('Weet je zeker dat je deze oefening wilt verwijderen?')">X</button>
+            </form>
+            <div>
+                <p>{{naam}}</p>
+                <a href="{{link}}">{{link}}</a>
+                <p>Niveau: {{niveau}}</p>
+            </div>
         </li>
         {{/each}}
 
       </ul>
       <a href="/oefeningen">
         Voeg een oefening toe
-      </a>
+</a>

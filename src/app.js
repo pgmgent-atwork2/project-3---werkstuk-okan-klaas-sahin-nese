@@ -17,15 +17,22 @@ import swaggerUi from 'swagger-ui-express';
 import multer from 'multer';
 
 import { saveAvatar } from './middleware/saveAvatar.js';
+
 import {
   home, 
+} from './controllers/home.js'
+
+import {
   gebruikers,
-  getPersonalData,
   updateStudent,
   updateTeacher,
   postUpdateStudent,
   postUpdateTeacher
-} from './controllers/pages.js'
+} from './controllers/users.js'
+
+import {
+  getPersonalData,
+} from './controllers/profile.js'
 
 import {
  subjects,
