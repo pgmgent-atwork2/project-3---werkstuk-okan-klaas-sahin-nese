@@ -18,7 +18,10 @@ export default new EntitySchema({
     vakken: {
       target: "vakken",
       type: "many-to-one",
-      cascade: true,
+      onDelete: "CASCADE",
+      joinColumn: {
+        name: "vakken_id",
+      },
       inverseSide: "commands",
     },
     student: {

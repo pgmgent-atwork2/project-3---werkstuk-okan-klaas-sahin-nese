@@ -78,23 +78,32 @@ export const subjectDetail = async (req, res) => {
     const avatars = getAvatars();
     const subjectRepo = DataSource.getRepository("Vakken");
     const exerciseRepo = DataSource.getRepository("Oefeningen");
+    const commantsRepo = DataSource.getRepository("Commands");
     const { vakkenId } = req.params;
 
     const detailSubject = await subjectRepo.findOne({
       where: { id: vakkenId },
-      relations: ["oefeningen"],
+      relations: ["oefeningen", 'commands']
     });
 
     if (detailSubject) {
       const exercises = await exerciseRepo.find({
-        where: { vak: { id: vakkenId } },
+        where: { 
+          vak: { id: vakkenId } 
+        },
+       
       });
-
+      const comments = await commantsRepo.find({
+        where: { 
+          vakken: { id: vakkenId } 
+        },
+      })
       res.render("detailVak", {
         user: req.user,
         avatars,
         detailSubject,
         detailExercises: exercises,
+        detailCommants: comments,
       });
     } else {
       res.status(404).send("Vak niet gevonden");

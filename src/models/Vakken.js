@@ -24,10 +24,9 @@ export default new EntitySchema({
     commands: {
       target: "commands",
       type: "one-to-many",
-      joinColumn: {
-        name: "vakken_id",
-      },
+      cascade: true,
       onDelete: "CASCADE",
+      inverseSide: "vakken",
     },
     oefeningen: {
       target: "oefeningen",

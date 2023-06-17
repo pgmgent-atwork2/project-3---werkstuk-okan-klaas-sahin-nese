@@ -11,7 +11,7 @@ import { validationResult } from "express-validator";
 
   const allSubjects = await subjectRepo.find();
   res.render("addMoreExercises", {
-     user: req.user,
+    user: req.user,
     avatars,
     allSubjects
   });
