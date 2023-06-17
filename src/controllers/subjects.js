@@ -38,13 +38,13 @@ export const deleteSubject = async (req, res) => {
 
     if (subject) {
       await subjectRepo.remove(subject);
-      res.status(200).send("Vak succesvol verwijderd"); // Stuur een succesbericht
+      res.status(200).send("Vak succesvol verwijderd"); 
     } else {
-      res.status(404).send("Vak niet gevonden"); // Stuur een bericht als het vak niet wordt gevonden
+      res.status(404).send("Vak niet gevonden"); 
     }
   } catch (e) {
     console.log(e);
-    res.status(500).send("Er is een fout opgetreden"); // Stuur een foutbericht in het geval van een fout
+    res.status(500).send("Er is een fout opgetreden"); 
   }
 };
 

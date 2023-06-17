@@ -9,19 +9,8 @@
       <p>{{abbreviation}}</p>
     {{/with}}
     <div class="detailVak__content">
-      <h2>Oefeningen</h2>
-      <ul class="list__exercises">
-        {{#each detailExercises}}
-        <li>
-          <p>{{naam}}</p>
-          <a href="{{link}}">{{link}}</a>
-          <p>Niveau: {{niveau}}</p>
-        </li>
-        {{/each}}
-      </ul>
-      <a href="/oefeningen">
-        Voeg een oefening toe
-      </a>
+     {{> getExercises}}
     </div>
+   
   </main>
 </body>

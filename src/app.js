@@ -38,6 +38,7 @@ import {
 import {
   addExercises,
   exercises,
+  deleteExercise,
 } from './controllers/exercises.js'
 
 import { 
@@ -149,6 +150,8 @@ app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)
 app.post('/oefeningen', addExercises)
+app.post('/oefeningen/:oefeningId', deleteExercise)
+
 app.get('/updateteacher/:id', updateTeacher)
 app.get('/editstudent/:id', updateStudent)
 app.put('/updateteacher/:id', postUpdateTeacher, updateTeacher)
