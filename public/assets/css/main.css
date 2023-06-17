@@ -28,7 +28,6 @@
     --subject-blue: hsl(209.03, 40%, 60%);
 }
 
-
 body{
     background-color: var(--background-blue);
     overflow-x: hidden;

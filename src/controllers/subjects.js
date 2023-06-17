@@ -79,7 +79,9 @@ export const subjectDetail = async (req, res) => {
     const subjectRepo = DataSource.getRepository("Vakken");
     const exerciseRepo = DataSource.getRepository("Oefeningen");
     const commantsRepo = DataSource.getRepository("Commands");
+
     const { vakkenId } = req.params;
+
 
     const detailSubject = await subjectRepo.findOne({
       where: { id: vakkenId },
@@ -91,13 +93,14 @@ export const subjectDetail = async (req, res) => {
         where: { 
           vak: { id: vakkenId } 
         },
-       
+  
       });
       const comments = await commantsRepo.find({
         where: { 
           vakken: { id: vakkenId } 
         },
       })
+
       res.render("detailVak", {
         user: req.user,
         avatars,

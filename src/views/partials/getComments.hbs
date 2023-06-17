@@ -1,11 +1,23 @@
-<h2>Commentaar</h2>
-    <ul class="list__exercises">
-        {{#each detailCommants}}
-        <li>
-            <p>{{inhoud}}</p>
-        </li>
-        {{/each}}
-    </ul>
-        <a href="">
-            Voeg een commentaar toe
-        </a>
+<div class="detailOef_box">
+    <a href="/vakken">
+    <img src="/assets/img/goLeft.svg" alt="left arrow">
+</a>
+<h2>Commentaar Toevoegen</h2>
+<form class="add__exercise-box" action="/comments" method="POST">
+ <label for="comment">Commentaar:</label>
+<textarea id="comment" name="inhoud" rows="4" cols="50" required></textarea>
+<label for="student">Student:</label>
+  <select id="studentSelect" name="studentId" required>
+    {{#each studentList}}
+      <option value="{{id}}">{{email}}</option>
+    {{/each}}
+  </select>
+   <label for="vaknaam">Vak:</label>
+  <select id="subjectName" name="vakkenId" required>
+    {{#each allSubjects}}
+    <option value="{{id}}">{{naam}}</option>
+  {{/each}}
+  </select>
+  <button type="submit">Commentaar Toevoegen</button>
+</form>
+</div>

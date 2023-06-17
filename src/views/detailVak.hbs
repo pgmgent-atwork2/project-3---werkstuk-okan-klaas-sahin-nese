@@ -1,18 +1,26 @@
 <body class="white__background">
   {{> header}}
   <main>
-    <a href="/vakken">
+    
+      {{#with detailSubject}}
+      <div class="detailVak_box">
+        <a href="/vakken">
       <img src="/assets/img/goLeft.svg" alt="left arrow">
     </a>
-    {{#with detailSubject}}
-      <h1>{{naam}}</h1>
-      <p>{{abbreviation}}</p>
+<div class="title_detailVak"><h1>Vak: {{naam}}</h1></div>
+<div class="title_box"><h2>{{naam}}</h2></div>
+<div class="description_detailVak"><p>{{description}}</p>
+
+</div>
     {{/with}}
+    <div class="title_box">
+    
     <div class="detailVak__content">
      {{> getExercises}}
     </div>
     <div class="detailComment__content">
-     {{> getComments}}
+     {{> listComments}}
     </div>
+     </div>
   </main>
 </body>

@@ -49,12 +49,13 @@ import {
 } from './controllers/exercises.js'
 
 import {
-  allCommands
+  allComments,
+  postComment,
 } from './controllers/comments.js'
 
 import { 
   postRegister, 
-  postLogin, 
+  postLogin,
   logout, 
   login, 
   registerStudent,
@@ -193,8 +194,8 @@ app.put("/api/staf", updateStaf);
 
 //commands
 
-app.get("/commants", allCommands)
-
+app.get("/comments", allComments)
+app.post("/comments", postComment)
 app.get("/api/commands", getAllCommands);
 app.get("/api/commands/:id", getCommand)
 app.delete("/api/commands", deleteCommand);
