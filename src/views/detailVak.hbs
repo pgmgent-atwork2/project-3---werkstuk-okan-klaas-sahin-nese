@@ -1,6 +1,12 @@
 <body class="white__background">
   {{> header}}
-  <main>
+ 
+</body>
+
+
+{{#if (eq userRole "admin")}}
+  
+ <main>
     
       {{#with detailSubject}}
       <div class="detailVak_box">
@@ -21,4 +27,58 @@
     </div>
      </div>
   </main>
-</body>
+
+  <p>Je bent een beheerder.</p>
+
+
+{{else if (eq userRole "teacher")}}
+  
+ <main>
+    
+      {{#with detailSubject}}
+      <div class="detailVak_box">
+        <a href="/vakken">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+    </a>
+<div class="title_detailVak"><h1>Vak: {{naam}}</h1></div>
+<div class="title_box"><h2>{{naam}}</h2></div>
+<div class="description_detailVak"><p>{{description}}</p>
+
+</div>
+    {{/with}}
+    <div class="title_box">
+    
+     {{> getExercises}}
+   
+     {{> listComments}}
+    </div>
+     </div>
+  </main>
+
+  <p>Je bent een leraar.</p>
+
+
+{{else}}
+  
+ <main>
+    
+      {{#with detailSubject}}
+      <div class="detailVak_box">
+        <a href="/vakken">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+    </a>
+<div class="title_detailVak"><h1>Vak: {{naam}}</h1></div>
+<div class="title_box"><h2>{{naam}}</h2></div>
+<div class="description_detailVak"><p>{{description}}</p>
+
+</div>
+    {{/with}}
+    <div class="title_box">
+    {{> getExercisesStudent}}
+    {{> listCommentsStudent}}
+    </div>
+     </div>
+  </main>
+
+  <p>Je hebt een student.</p>
+{{/if}}

@@ -154,10 +154,10 @@ app.get('/teacher', getAllStafMeta)
 // app.get('/klassen', classes)
 app.get('/persoonlijkegegevens', getPersonalData )
 
-app.get('/vakken', subjects)
+app.get('/vakken', jwtAuth, subjects)
 app.get('/vakken/toevoegen', addSubj)
 app.post('/vakken/toevoegen', addSubjPost)
-app.get('/vakken/:vakkenId', subjectDetail)
+app.get('/vakken/:vakkenId',jwtAuth, subjectDetail)
 app.post('/vakken/:vakkenId', deleteSubject)
 
 app.get('/oefeningen', exercises)

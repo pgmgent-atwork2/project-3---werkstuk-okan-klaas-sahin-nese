@@ -7,14 +7,23 @@ import { validationResult } from "express-validator";
 
 export const subjects = async (req, res) => {
   const avatars = getAvatars();
-
   const subjectRepo = DataSource.getRepository("Vakken");
-
   const allSubjects = await subjectRepo.find();
-
+  const stafRepo = await DataSource.getRepository('Staf')
+  const user = await stafRepo.findOne({
+    where: { id: req.user.id },
+    relations: ["role"],
+  });
+  console.log("User:", user);
+  const roleRepo = await DataSource.getRepository("Role");
+  const roles = await roleRepo.find();
+  console.log(roles);
+  const userRole = user?.role?.label || 'Geen rol'; 
+  
   res.render("vakken", {
     avatars,
     allSubjects,
+    userRole,
   });
 };
 
@@ -48,7 +57,6 @@ export const deleteSubject = async (req, res) => {
   }
 };
 
-
 export const addSubjPost = async (req, res) => {
   try {
     const subjectRepo = DataSource.getRepository("Vakken");
@@ -81,13 +89,23 @@ export const subjectDetail = async (req, res) => {
     const commantsRepo = DataSource.getRepository("Commands");
 
     const { vakkenId } = req.params;
-
+    const stafRepo = await DataSource.getRepository('Staf')
+    const user = await stafRepo.findOne({
+      where: { id: req.user.id },
+      relations: ["role"],
+    });
 
     const detailSubject = await subjectRepo.findOne({
       where: { id: vakkenId },
       relations: ["oefeningen", 'commands']
     });
 
+    console.log("User:", user);
+  const roleRepo = await DataSource.getRepository("Role");
+  const roles = await roleRepo.find();
+  console.log(roles);
+  const userRole = user?.role?.label || 'Geen rol'; 
+    
     if (detailSubject) {
       const exercises = await exerciseRepo.find({
         where: { 
@@ -107,6 +125,7 @@ export const subjectDetail = async (req, res) => {
         detailSubject,
         detailExercises: exercises,
         detailCommants: comments,
+        userRole,
       });
     } else {
       res.status(404).send("Vak niet gevonden");
