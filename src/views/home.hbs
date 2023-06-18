@@ -4,23 +4,40 @@
 
     </div>
 {{> header}}
-<main>
-    <div class="home__space-area">
-    {{> headCategory}}
-    </div>
-</main>
-<pre>{{users}}</pre>
 
 <h1>Welkom, {{user.email}}!</h1>
 
 {{#if (eq userRole "admin")}}
-  <!-- Inhoud specifiek voor beheerders -->
+  
+  <main>
+    <div class="home__space-area">
+    {{> headCategory}}
+    </div>
+</main>
+
+
   <p>Je bent een beheerder.</p>
+
+
 {{else if (eq userRole "teacher")}}
-  <!-- Inhoud specifiek voor leraren -->
+  
+  <main>
+    <div class="home__space-area">
+    {{> headCategory}}
+    </div>
+</main>
+
   <p>Je bent een leraar.</p>
+
+
 {{else}}
-  <!-- Standaardinhoud voor andere rollen -->
+  
+  <main>
+    <div class="home__space-area">
+    {{> headCategoryStudent}}
+    </div>
+</main>
+
   <p>Je hebt een student.</p>
 {{/if}}
 
