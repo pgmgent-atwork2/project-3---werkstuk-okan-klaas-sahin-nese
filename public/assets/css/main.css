@@ -22,10 +22,13 @@
     --light-gray: hsl(0, 0%, 42%);
     --white-color: hsl(0, 0%, 100%);
     --black-color: hsl(0, 0%, 0%);
+    --text-color: hsl(0, 0%, 16%);
     --background-header: hsl(208, 100%, 97%);
     --avatar-img: hsl(0, 0%, 80%);
+    --background-box: hsl(0, 0%, 83%);
     --white-blue: hsl(248, 80%, 98%);
     --subject-blue: hsl(209.03, 40%, 60%);
+    --button-box: hsla(209, 65%, 28%, 0.702);
 }
 
 body{
@@ -372,7 +375,7 @@ label, input{
 }
 
 .add__subject-form{
-    background: hsl(0, 0%, 95%);
+    background: var(--white-blue);
     width: 28rem;
     border-radius: .3125rem;
     display: flex;
@@ -422,7 +425,7 @@ form input{
 .detailVak_box,
 .detailOef_box {
     max-width: 60rem;
-    background-color: hsl(0, 0%, 83%);
+    background-color: var(--background-box);
     padding: 2rem;
     border-radius: 1rem;
     margin: 4rem auto;
@@ -437,41 +440,41 @@ form input{
     font-size: 3.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
 }
 .title_box h2,
 .detailOef_box h2 {
     font-size: 2rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
     margin: 1rem 0 1rem 0;
 }
 .title_box p {
     font-size: 1rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-light";
 }
 .title_box h4 {
     font-size: 1.5rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
     margin: 1rem 0 1rem 0;
 }
 .title_box a {
     font-size: 1rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
 }
 .description_detailVak h3 {
     font-size: 1.5rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
     margin: 1rem 0 1rem 0;
 }
 .description_detailVak p {
     font-size: 1.5rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-light";
 }
 .gray__background {
@@ -498,7 +501,6 @@ form input{
     height: 10.5rem;
     left: 0rem;
     top: 0rem;
-
     border-radius: 0.9375rem;
 }
 
@@ -609,12 +611,12 @@ form input{
 select,
 button {
     font-size: 1.5rem;
-    color: hsl(0, 0%, 16%);
+    color: var(--text-color);
     font-family: "poppins-medium";
     margin: 0.5rem 0 0.5rem 0;
 }
 .add__exercise-box button {
-   background-color: hsla(209, 65%, 28%, 0.702);
+   background-color: var(--button-box);
     border-radius: 1rem;
 }
 
