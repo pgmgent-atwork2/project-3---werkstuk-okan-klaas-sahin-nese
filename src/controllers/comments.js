@@ -21,7 +21,7 @@ export const allComments = async (req, res) => {
       studentComments = await commantsRepo.find({
         where: {
           vakken: { id: vakkenId },
-          student: { id: req.user.id },
+          student: { id: studentId },
         },
       });
     }
@@ -36,44 +36,6 @@ export const allComments = async (req, res) => {
         studentList: studentList,
     });
 }
-
-// export const postComment = async (req, res) => {
-//     try {
-//         const avatars = getAvatars();
-//       const exerciseRepo = DataSource.getRepository("Oefeningen");
-//       const vakkenId = req.body.vakkenId;
-  
-//       const exercise = await exerciseRepo.findOne({
-//         where:{
-//           naam: req.body.naam,
-//           link: req.body.link,
-//           niveau: req.body.niveau,
-//           vak:{id: vakkenId}
-//         }
-//       });
-//       if (exercise) {
-//         res.status(200).send("Oefening bestaat al");
-//       } else {
-//         await exerciseRepo.save({
-//             inhoud: req.body.inhoud,
-//             vakken: {
-//               id: vakkenId,
-//             },
-//             student_has_commands: id
-//         })
-//         const subjectRepo = DataSource.getRepository("Vakken");
-//         const allSubjects = await subjectRepo.find();
-//         res.render('addMoreExercises', {
-//             user: req.user,
-//             avatars,
-//             allSubjects
-//         });
-//         };
-//     } catch (e) {
-//       console.log(e);
-//       res.status(500).send("Er is een fout opgetreden");
-//     }
-// }
 
 export const postComment = async (req, res) => {
     try {

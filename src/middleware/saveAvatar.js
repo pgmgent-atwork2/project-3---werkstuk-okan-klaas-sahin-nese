@@ -47,9 +47,6 @@ export const saveAvatar = async (req, res, next) => {
 
       console.log("student is:", student);
 
-      user.save({
-        avatar: `/assets/imgAvatar/${uniqueFileName}` 
-      });
 
   } else {
     console.log('file type not supported'); // console

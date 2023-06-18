@@ -139,6 +139,7 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(SOURCE_PATH, 'views'));
 
+
 // upload post endpoint
 app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
   res.redirect('/');
