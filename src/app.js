@@ -149,8 +149,8 @@ app.post('/uploadAvatar', multer().single('avatar'), saveAvatar, (req, res) => {
 app.get('/', jwtAuth, home);
 
 app.get('/gebruikers', gebruikers)
-app.get('/student', getAllStudentsMeta)
-app.get('/teacher', getAllStafMeta)
+app.get('/student', jwtAuth, getAllStudentsMeta)
+app.get('/teacher', jwtAuth, getAllStafMeta)
 // app.get('/klassen', classes)
 app.get('/persoonlijkegegevens', getPersonalData )
 

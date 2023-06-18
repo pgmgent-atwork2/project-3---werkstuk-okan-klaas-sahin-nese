@@ -1,5 +1,7 @@
 <body class="white__background" >
 {{> header}}
+
+{{#if (eq userRole "admin")}}
 <main>
    <div class="list__space">
 <div class="title__arrow">
@@ -16,4 +18,45 @@
    </div>
    </div>
 </main>
+<p>Je bent een beheerder.</p>
+
+{{else if (eq userRole "teacher")}}
+<main>
+   <div class="list__space">
+<div class="title__arrow">
+   <h1>Leerkrachten</h1>
+   <a href="/gebruikers">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+   </a>
+</div>
+<div>
+    {{> listAllTeacherHeadRoleStTe}}
+</div>
+   <div  class="allStudents">
+{{> listAllTeachersRoleStTe}}
+   </div>
+   </div>
+</main>
+<p>Je bent een leraar.</p>
+
+{{else}}
+<main>
+   <div class="list__space">
+<div class="title__arrow">
+   <h1>Leerkrachten</h1>
+   <a href="/gebruikers">
+      <img src="/assets/img/goLeft.svg" alt="left arrow">
+   </a>
+</div>
+<div>
+   {{> listAllTeacherHeadRoleStTe}}
+</div>
+   <div  class="allStudents">
+{{> listAllTeachersRoleStTe}}
+   </div>
+   </div>
+</main>
+
+  <p>Je hebt een student.</p>
+{{/if}}
 </body>

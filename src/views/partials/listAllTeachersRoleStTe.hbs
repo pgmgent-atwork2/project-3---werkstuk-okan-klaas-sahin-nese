@@ -1,0 +1,12 @@
+{{#each allUserMetas}}
+{{#unless adres}}
+<ul>
+    <li>{{voornaam}} {{achternaam}}</li>
+        {{#if staf}}
+    <li  class="avatar__list"> <img src="{{staf.avatar}}" alt="avatar"></li>
+    <li>{{staf.email}}</li>
+    {{/if}}
+    <li>{{geboortedatum}} </li>
+</ul>
+{{/unless}}
+{{/each}}
