@@ -40,9 +40,9 @@ export const allComments = async (req, res) => {
 export const postComment = async (req, res) => {
     try {
       const avatars = getAvatars();
-      const exerciseRepo = DataSource.getRepository("Oefeningen");
-      const studentRepo = DataSource.getRepository("Student");
-      const commentsRepo = DataSource.getRepository("Commands");
+      const exerciseRepo = DataSource.getRepository("oefeningen");
+      const studentRepo = DataSource.getRepository("student");
+      const commentsRepo = DataSource.getRepository("commands");
       const vakkenId = req.body.vakkenId;
       const studentId = req.body.studentId;
   

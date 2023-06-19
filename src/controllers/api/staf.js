@@ -2,7 +2,7 @@ import DataSource  from '../../lib/DataSource.js';
 
 export const getAllStaf = async (req, res, next) => {
     try {
-        const userRepo = DataSource.getRepository("staf");
+        const userRepo = DataSource.getRepository("Staf");
         const allUsers = await userRepo.find();
         res.status(201).json(allUsers);
     } catch(e) {
@@ -15,7 +15,7 @@ export const getAllStaf = async (req, res, next) => {
 export const getStaf = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const userRepo = DataSource.getRepository("staf");
+        const userRepo = DataSource.getRepository("Staf");
         const user = await userRepo.findBy({id: id});
         res.status(201).json(user);
     } catch(e) {
@@ -28,7 +28,7 @@ export const getStaf = async (req, res, next) => {
 export const deleteStaf = async (req, res, next) => {
     try {
         const  id  = req.params.id;
-        const userRepo = DataSource.getRepository("staf");
+        const userRepo = DataSource.getRepository("Staf");
         const userToDelete = await userRepo.findOneBy({ id :id });
         console.log(userToDelete)
         res.redirect("/teacher");
@@ -41,7 +41,7 @@ export const deleteStaf = async (req, res, next) => {
 
 export const postStaf = async (req, res, next) => {
     try {
-        const userRepo = DataSource.getRepository("staf");
+        const userRepo = DataSource.getRepository("Staf");
         const staf = await userRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.',
@@ -56,7 +56,7 @@ export const postStaf = async (req, res, next) => {
 
 export const updateStaf = async (req, res, next) => {
     try {
-        const userRepo = DataSource.getRepository("staf"); 
+        const userRepo = DataSource.getRepository("Staf"); 
         const  id  = req.body.id;
         const user = await userRepo.findOneBy({ id: id });
         let update;

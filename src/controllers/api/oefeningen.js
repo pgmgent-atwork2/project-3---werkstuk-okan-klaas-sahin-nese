@@ -2,7 +2,7 @@ import DataSource  from '../../lib/DataSource.js';
 
 export const getAllOef = async (req, res, next) => {
     try {
-        const oefRepo = DataSource.getRepository("oefeningen");
+        const oefRepo = DataSource.getRepository("Oefeningen");
         const allOef = await oefRepo.find();
         res.status(201).json(allOef);
     } catch(e) {
@@ -15,7 +15,7 @@ export const getAllOef = async (req, res, next) => {
 export const getOef = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const oefRepo = DataSource.getRepository("oefeningen");
+        const oefRepo = DataSource.getRepository("Oefeningen");
         const oef = await oefRepo.findBy({id: id});
         res.status(201).json(oef);
     } catch(e) {
@@ -28,7 +28,7 @@ export const getOef = async (req, res, next) => {
 export const deleteOef = async (req, res, next) => {
     try {
         const  id  = req.body.id;
-        const oefRepo = DataSource.getRepository("oefeningen");
+        const oefRepo = DataSource.getRepository("Oefeningen");
         const oefToDelete = await oefRepo.findOneBy({ id :id });
         await oefRepo.delete(oefToDelete);
         res.status(204).json({
@@ -43,7 +43,7 @@ export const deleteOef = async (req, res, next) => {
 
 export const postOef = async (req, res, next) => {
     try {
-        const oefRepo = DataSource.getRepository("oefeningen");
+        const oefRepo = DataSource.getRepository("Oefeningen");
         const oef = await oefRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.',
@@ -58,7 +58,7 @@ export const postOef = async (req, res, next) => {
 
 export const updateOef = async (req, res, next) => {
     try {
-        const oefRepo = DataSource.getRepository("oefeningen");  
+        const oefRepo = DataSource.getRepository("Oefeningen");  
         const  id  = req.body.id;
         const oef = await oefRepo.findOneBy({ id: id });
         let update;

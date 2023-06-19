@@ -2,7 +2,7 @@ import DataSource  from '../../lib/DataSource.js';
 
 export const getAllKlassen = async (req, res, next) => {
     try {
-        const klasRepo = DataSource.getRepository("klassen");
+        const klasRepo = DataSource.getRepository("Klassen");
         const allklassen = await klasRepo.find();
         res.status(201).json(allklassen);
     } catch(e) {
@@ -15,7 +15,7 @@ export const getAllKlassen = async (req, res, next) => {
 export const getKlas = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const klasRepo = DataSource.getRepository("klassen");
+        const klasRepo = DataSource.getRepository("Klassen");
         const klas = await klasRepo.findBy({id: id});
         res.status(201).json(klas);
     } catch(e) {
@@ -28,7 +28,7 @@ export const getKlas = async (req, res, next) => {
 export const deleteKlas = async (req, res, next) => {
     try {
         const  id  = req.body.id;
-        const klasRepo = DataSource.getRepository("klassen");
+        const klasRepo = DataSource.getRepository("Klassen");
         const klasToDelete = await klasRepo.findOneBy({ id :id });
         await klasRepo.delete(klasToDelete);
         res.status(204).json({
@@ -43,7 +43,7 @@ export const deleteKlas = async (req, res, next) => {
 
 export const postKlas = async (req, res, next) => {
     try {
-        const klasRepo = DataSource.getRepository("klassen");
+        const klasRepo = DataSource.getRepository("Klassen");
         const klas = await klasRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.',
@@ -58,7 +58,7 @@ export const postKlas = async (req, res, next) => {
 
 export const updateKlas = async (req, res, next) => {
     try {
-        const klasRepo = DataSource.getRepository("klassen");  
+        const klasRepo = DataSource.getRepository("Klassen");  
         const  id  = req.body.id;
         const klas = await klasRepo.findOneBy({ id: id });
         let update;

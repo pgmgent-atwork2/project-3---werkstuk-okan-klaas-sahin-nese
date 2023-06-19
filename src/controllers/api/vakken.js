@@ -28,7 +28,7 @@ export const getVak = async (req, res, next) => {
 export const deleteVak = async (req, res, next) => {
     try {
         const  id  = req.body.id;
-        const vakkenRepo = DataSource.getRepository("vakken");
+        const vakkenRepo = DataSource.getRepository("Vakken");
         const vakToDelete = await vakkenRepo.findOneBy({ id :id });
         await vakkenRepo.delete(vakToDelete);
         res.status(204).json({

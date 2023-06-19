@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js --config nodemon.json",
-    "test": "cross-env NODE_ENV=test node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
     "seed": "node ./src/database/seeders/runSeeder.js"
   },
   "repository": {
