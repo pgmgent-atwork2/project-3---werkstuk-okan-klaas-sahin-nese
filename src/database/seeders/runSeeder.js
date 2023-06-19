@@ -1,12 +1,14 @@
-import { makestudents, maketeacher } from "./seeder.js";
-import express from "express";
-import * as dotenv from "dotenv";
+import express from 'express';
+import * as dotenv from 'dotenv';
+import { makestudents, maketeacher } from './seeder.js';
+import DataSource from '../../lib/DataSource.js';
+
 dotenv.config();
-import DataSource from "../../lib/DataSource.js";
+
 const app = express();
 async function closeConnection() {
   await DataSource.close();
-  console.log("Database connection closed.");
+  console.log('Database connection closed.');
   process.exit(0);
 }
 
@@ -19,11 +21,11 @@ DataSource.initialize()
     });
   })
   .then(() => {
-    maketeacher()
+    maketeacher();
     makestudents().then(() => {
-    closeConnection()
-  })
+      closeConnection();
+    });
   })
   .catch((error) => {
-    console.log("Error: ", error);
-  })
+    console.log('Error: ', error);
+  });

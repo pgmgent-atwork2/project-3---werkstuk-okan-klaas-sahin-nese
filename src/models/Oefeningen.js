@@ -1,4 +1,4 @@
-import typeorm from "typeorm";
+import typeorm from 'typeorm';
 
 const { EntitySchema } = typeorm;
 export default new EntitySchema({
@@ -8,7 +8,7 @@ export default new EntitySchema({
     id: {
       type: 'int',
       primary: true,
-      generated: true
+      generated: true,
     },
     naam: {
       type: 'varchar',
@@ -22,21 +22,23 @@ export default new EntitySchema({
   },
   relations: {
     vak: {
-      target: "vakken",
-      type: "many-to-one",
-      onDelete: "CASCADE",
+      target: 'vakken',
+      type: 'many-to-one',
+      onDelete: 'CASCADE',
       joinColumn: {
-        name: "vakken_id",
+        name: 'vakken_id',
       },
-      inverseSide: "oefeningen",
+      inverseSide: 'oefeningen',
     },
     student: {
-      type: "many-to-many",
-      target: "student",
+      type: 'many-to-many',
+      target: 'student',
       joinTable: {
-        name: "student_has_oefeningen",
-        joinColumns: [{ name: "id_oefeningen", referencedColumnName: "id" }],
-        inverseJoinColumns: [{ name: "id_student", referencedColumnName: "id" }],
+        name: 'student_has_oefeningen',
+        joinColumns: [{ name: 'id_oefeningen', referencedColumnName: 'id' }],
+        inverseJoinColumns: [
+          { name: 'id_student', referencedColumnName: 'id' },
+        ],
       },
     },
   },

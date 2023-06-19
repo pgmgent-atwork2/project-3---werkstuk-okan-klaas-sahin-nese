@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import sharp from 'sharp';
 import { v4 as uuid } from 'uuid';
 import { PUBLIC_PATH } from '../constants.js';
@@ -9,7 +10,7 @@ import DataSource from '../lib/DataSource.js';
  */
 
 export const saveAvatar = async (req, res, next) => {
-  const { file, user } = req;
+  const { file } = req;
   console.log(file);
 
   // if there is not a file sent, skip this middleware
@@ -31,19 +32,18 @@ export const saveAvatar = async (req, res, next) => {
 
     // bestand is een afbeelding dan gaat sharp de afbeelding verkleinen en opslaan
     await sharp(file.buffer)
-    .resize(128, 128, {
-      fit: sharp.fit.cover,
-      withoutEnlargement: true,
-    })
-    .toFile(`${PUBLIC_PATH}/assets/imgAvatar/${uniqueFileName}`);
+      .resize(128, 128, {
+        fit: sharp.fit.cover,
+        withoutEnlargement: true,
+      })
+      .toFile(`${PUBLIC_PATH}/assets/imgAvatar/${uniqueFileName}`);
 
-      // save new avatar url to databse
-      // /assets/imgAvatar/${uniqueFileName}
-      const studentRepo = await DataSource.getRepository("Student");
-      const student = await studentRepo.findOneBy({id: 1});
+    // save new avatar url to databse
+    // /assets/imgAvatar/${uniqueFileName}
+    const studentRepo = await DataSource.getRepository('Student');
+    const student = await studentRepo.findOneBy({ id: 1 });
 
-      console.log("student is:", student);
-
+    console.log('student is:', student);
   } else {
     console.log('file type not supported'); // console
     res.send('file type not supported'); // browser

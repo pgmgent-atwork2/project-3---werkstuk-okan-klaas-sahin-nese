@@ -1,11 +1,14 @@
+/* eslint-disable prefer-const */
+/* eslint-disable no-unused-vars */
 import jwt from 'jsonwebtoken';
-import DataSource from '../lib/DataSource.js';
 import * as dotenv from 'dotenv';
-dotenv.config()
+import DataSource from '../lib/DataSource.js';
+
+dotenv.config();
 // eslint-disable-next-line consistent-return
 export const jwtAuth = async (req, res, next) => {
   const { token } = req.cookies;
-  
+
   try {
     // get the payload data out of the token
     const { id } = jwt.verify(token, process.env.TOKEN_SALT);
@@ -15,11 +18,11 @@ export const jwtAuth = async (req, res, next) => {
     let user;
     // get the user out of the database
     let userRepository;
-    if(role == 'staf'){
-    userRepository = DataSource.getRepository('staf')
-    studentBoolean = false;
-    }else{
-      userRepository = DataSource.getRepository('student')
+    if (role === 'staf') {
+      userRepository = DataSource.getRepository('staf');
+      studentBoolean = false;
+    } else {
+      userRepository = DataSource.getRepository('student');
     }
     user = await userRepository.findOne({
       where: { id },

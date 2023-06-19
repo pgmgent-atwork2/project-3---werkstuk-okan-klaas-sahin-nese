@@ -8,7 +8,7 @@ export default new EntitySchema({
     id: {
       type: Number,
       primary: true,
-      generated: true
+      generated: true,
     },
     adres: {
       type: 'varchar',
@@ -33,21 +33,20 @@ export default new EntitySchema({
   },
   relations: {
     student: {
-      target: "student",
-      type: "one-to-one",
+      target: 'student',
+      type: 'one-to-one',
       joinColumn: {
-        name: "student_id",
+        name: 'student_id',
       },
-      onDelete: "CASCADE",
+      onDelete: 'CASCADE',
     },
     staf: {
-      target: "staf",
-      type: "one-to-one",
+      target: 'staf',
+      type: 'one-to-one',
       joinColumn: {
-        name: "staf_id",
+        name: 'staf_id',
       },
-      onDelete: "CASCADE",
+      onDelete: 'CASCADE',
     },
   },
 });
-

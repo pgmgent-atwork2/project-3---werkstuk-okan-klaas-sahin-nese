@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import { EntitySchema } from 'typeorm';
 
 export default new EntitySchema({
   name: 'Staf',
@@ -7,7 +7,7 @@ export default new EntitySchema({
     id: {
       type: 'int',
       primary: true,
-      generated: true
+      generated: true,
     },
     email: {
       type: 'varchar',
@@ -22,31 +22,31 @@ export default new EntitySchema({
   },
   relations: {
     role: {
-      target: "role",
-      type: "many-to-one",
+      target: 'role',
+      type: 'many-to-one',
       joinColumn: {
-        name: "role_id",
-      }
+        name: 'role_id',
+      },
     },
     meta: {
-      target: "usermeta",
-      type: "one-to-one",
+      target: 'usermeta',
+      type: 'one-to-one',
       cascade: true,
-      inverseSide: "staf",
+      inverseSide: 'staf',
     },
     klassen: {
-      target: "klassen",
-      type: "one-to-one",
+      target: 'klassen',
+      type: 'one-to-one',
       cascade: true,
-      inverseSide: "staf",
+      inverseSide: 'staf',
     },
     vakken: {
-      type: "many-to-many",
-      target: "vakken",
+      type: 'many-to-many',
+      target: 'vakken',
       joinTable: {
-        name: "staf_has_vakken",
-        joinColumns: [{ name: "id_staf", referencedColumnName: "id" }],
-        inverseJoinColumns: [{ name: "id_vakken", referencedColumnName: "id" }],
+        name: 'staf_has_vakken',
+        joinColumns: [{ name: 'id_staf', referencedColumnName: 'id' }],
+        inverseJoinColumns: [{ name: 'id_vakken', referencedColumnName: 'id' }],
       },
     },
   },

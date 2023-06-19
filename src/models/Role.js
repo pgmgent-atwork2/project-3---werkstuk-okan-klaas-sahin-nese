@@ -1,4 +1,4 @@
-import { EntitySchema } from "typeorm";
+import { EntitySchema } from 'typeorm';
 
 export default new EntitySchema({
   name: 'Role',
@@ -7,18 +7,18 @@ export default new EntitySchema({
     id: {
       type: 'int',
       primary: true,
-      generated: true
+      generated: true,
     },
     label: {
-      type: "varchar",
+      type: 'varchar',
     },
   },
   relations: {
     staf: {
-      target: "staf",
-      type: "one-to-many",
+      target: 'staf',
+      type: 'one-to-many',
       cascade: true,
-      inverseSide: "role"
+      inverseSide: 'role',
     },
   },
 });
