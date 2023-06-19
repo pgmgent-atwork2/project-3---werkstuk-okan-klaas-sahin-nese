@@ -115,7 +115,8 @@ export const subjectDetail = async (req, res) => {
       });
       const comments = await commantsRepo.find({
         where: { 
-          vakken: { id: vakkenId } 
+          vakken: { id: vakkenId },
+          student: {id: req.user.id}
         },
       })
 

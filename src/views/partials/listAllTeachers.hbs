@@ -1,5 +1,5 @@
 {{#each allUserMetas}}
-{{#unless adres}}
+{{#if staf}}
 <ul>
     <li>{{voornaam}} {{achternaam}}</li>
         {{#if staf}}
@@ -13,5 +13,5 @@
         </form>
     </li>
 </ul>
-{{/unless}}
+{{/if}}
 {{/each}}

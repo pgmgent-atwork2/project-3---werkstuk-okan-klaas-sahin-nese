@@ -61,11 +61,13 @@ export const postComment = async (req, res) => {
       if (comments) {
         res.status(200).send("commentaar bestaat al");
       } else {
-        await exerciseRepo.save({
+        const command = {
           inhoud: req.body.inhoud,
           vakken: { id: vakkenId },
-          student: [student],
-        });
+          student: [{ id: studentId}],
+      }
+      console.log(command)
+        await commentsRepo.save(command);
       }
   
       const subjectRepo = DataSource.getRepository("Vakken");
