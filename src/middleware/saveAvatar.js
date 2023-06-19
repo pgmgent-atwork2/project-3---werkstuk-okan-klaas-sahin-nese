@@ -8,7 +8,6 @@ import DataSource from '../lib/DataSource.js';
  * this middleware will save the file to the server
  */
 
-// eslint-disable-next-line consistent-return
 export const saveAvatar = async (req, res, next) => {
   const { file, user } = req;
   console.log(file);
@@ -27,8 +26,6 @@ export const saveAvatar = async (req, res, next) => {
     // de file test.png -> haalt ".png" eruit
     const extension = file.originalname.split('.').pop();
 
-    
-
     // maak een unieke bestandsnaam met behulp van de uuid-bibliotheek
     const uniqueFileName = `${uuid()}.${extension}`;
 
@@ -46,7 +43,6 @@ export const saveAvatar = async (req, res, next) => {
       const student = await studentRepo.findOneBy({id: 1});
 
       console.log("student is:", student);
-
 
   } else {
     console.log('file type not supported'); // console

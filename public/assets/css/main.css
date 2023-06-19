@@ -152,6 +152,11 @@ label, input{
     padding: 1rem;
 }
 
+.home__space-area h1{
+    text-align: center;
+    color: var(--white-color);
+}
+
 .category{
     display: flex;
     justify-content: center;
@@ -634,3 +639,4 @@ button {
         max-width: 100%;
     }
 }
+

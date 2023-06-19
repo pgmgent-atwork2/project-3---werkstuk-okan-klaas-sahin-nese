@@ -5,12 +5,14 @@
     </div>
 {{> header}}
 
-<h1>Welkom, {{user.email}}!</h1>
+
 
 {{#if (eq userRole "admin")}}
   
   <main>
+   
     <div class="home__space-area">
+       <h1>Welkom, {{user.email}}!</h1>
     {{> headCategory}}
     </div>
 </main>
@@ -22,7 +24,9 @@
 {{else if (eq userRole "teacher")}}
   
   <main>
+   
     <div class="home__space-area">
+       <h1>Welkom, {{user.email}}!</h1>
     {{> headCategory}}
     </div>
 </main>
@@ -33,7 +37,9 @@
 {{else}}
   
   <main>
+    
     <div class="home__space-area">
+      <h1>Welkom, {{user.email}}!</h1>
     {{> headCategoryStudent}}
     </div>
 </main>

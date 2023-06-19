@@ -18,8 +18,8 @@ export const subjects = async (req, res) => {
   const roleRepo = await DataSource.getRepository("Role");
   const roles = await roleRepo.find();
   console.log(roles);
-  const userRole = user?.role?.label || 'Geen rol'; 
-  
+  const userRole = user?.role?.label || 'Geen rol';
+
   res.render("vakken", {
     avatars,
     allSubjects,
