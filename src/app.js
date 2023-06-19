@@ -152,7 +152,7 @@ app.get('/', jwtAuth, home);
 app.get('/gebruikers', gebruikers)
 app.get('/student', jwtAuth, getAllStudentsMeta)
 app.get('/teacher', jwtAuth, getAllStafMeta)
-// app.get('/klassen', classes)
+
 app.get('/persoonlijkegegevens', getPersonalData )
 
 app.get('/vakken', jwtAuth, subjects)
