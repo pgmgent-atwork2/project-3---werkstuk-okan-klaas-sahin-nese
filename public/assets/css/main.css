@@ -1,21 +1,20 @@
-
 @font-face {
-    font-family: 'poppins-light';
-    src: url('../Font/poppins-light-webfont.woff2') format('woff2'),
-        url('../Font/poppins-light-webfont.woff') format('woff');
+    font-family: "poppins-light";
+    src: url("../Font/poppins-light-webfont.woff2") format("woff2"),
+        url("../Font/poppins-light-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'poppins-medium';
-    src: url('../Font/poppins-medium-webfont.woff2') format('woff2'),
-        url('../Font/poppins-medium-webfont.woff') format('woff');
+    font-family: "poppins-medium";
+    src: url("../Font/poppins-medium-webfont.woff2") format("woff2"),
+        url("../Font/poppins-medium-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }
 
-:root{
+:root {
     --background-blue: hsl(209, 65%, 28%);
     --background-circle: hsl(209, 53%, 23%);
     --background-gray: hsla(0, 0%, 85%, 0.51);
@@ -31,52 +30,55 @@
     --button-box: hsla(209, 65%, 28%, 0.702);
 }
 
-body{
+body {
     background-color: var(--background-blue);
     overflow-x: hidden;
 }
-
-ul{
+.home {
+    overflow: hidden;
+}
+ul {
     padding: 0;
 }
 
-
-label, input{
+label,
+input {
     font-family: "poppins-light";
 }
 
-.background__right{
+.background__right {
     left: 37.375rem;
     top: -36.8125rem;
 }
 
-.background__left{
+.background__left {
     left: -55.1875rem;
     top: 12.125rem;
-    }
+}
 
-.background__left, .background__right{
+.background__left,
+.background__right {
     position: absolute;
     width: 80.8125rem;
     height: 80.8125rem;
     border-radius: 50%;
     z-index: -1;
-    background: var(--background-circle)
+    background: var(--background-circle);
 }
 
-.log__avatar{
+.log__avatar {
     flex-direction: row-reverse;
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.head-box{
-    background-color:  var(--background-header);
-    box-shadow: 0rem .25rem .625rem var(--background-header);
+.head-box {
+    background-color: var(--background-header);
+    box-shadow: 0rem 0.25rem 0.625rem var(--background-header);
 }
 
-.head-space{
+.head-space {
     padding: 1rem;
     justify-content: center;
     align-items: center;
@@ -87,77 +89,93 @@ label, input{
 }
 
 @media (min-width: 50rem) {
-    .head-space{
+    .head-space {
         justify-content: space-between;
     }
 }
 
-.logo__head{
+.logo__head {
     min-width: 12.5rem;
 }
 
-.nav-button{
+.nav-button {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.nav__btn{
+.nav__btn {
     background: var(--white-color);
-    border: .125rem solid var(--white-color);
+    border: 0.125rem solid var(--white-color);
     border-radius: 1.5rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: .125rem .875rem;
-    font-family: 'poppins-light';
+    padding: 0.125rem 0.875rem;
+    font-family: "poppins-light";
     font-size: small;
 }
 
 @media (min-width: 39.9375rem) {
-    .log__avatar{
+    .log__avatar {
         flex-direction: row;
     }
 }
 
 .avatarImg {
-    border: .125rem dashed var(--avatar-img);
-    padding: .625rem;
+    border: 0.125rem dashed var(--avatar-img);
+    padding: 0.625rem;
     text-align: center;
     cursor: pointer;
+    border-radius: 2rem;
+    margin: 0 auto;
 }
-
+.form__upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
 .avatarImg span {
     display: block;
-    margin-top: .625rem;
+    margin-top: 0.625rem;
 }
 
+.uploadHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .preview {
     max-width: 12.5rem;
     max-height: 12.5rem;
 }
 
-.avatarsContainer img{
+.avatarsContainer img {
     border-radius: 50%;
-    border: .0625rem solid var(--white-color);
+    border: 0.0625rem solid var(--white-color);
 }
 
-.avatarsContainer{
+.avatarsContainer {
     width: 3rem;
 }
 
-.home__space-area{
+.home__space-area {
+    font-family: "poppins-medium";
     max-width: 65rem;
     margin: 0 auto;
     padding: 1rem;
+    max-height: 50vh;
 }
 
-.home__space-area h1{
+.home__space-area h1 {
     text-align: center;
     color: var(--white-color);
 }
 
-.category{
+.category {
     display: flex;
     justify-content: center;
     padding-top: 2rem;
@@ -165,15 +183,15 @@ label, input{
     gap: 1rem;
 }
 
-.category a{
+.category a {
     width: 20rem;
 }
 
 @media (min-width: 50rem) {
-    .category a{
+    .category a {
         width: 16rem;
     }
-    .category{
+    .category {
         display: flex;
         justify-content: space-evenly;
         padding-top: 2rem;
@@ -182,28 +200,33 @@ label, input{
     }
 }
 
-.category-item{
+.category-item {
     list-style: none;
 }
 
-.category-item img{
+.category-item img {
     border-radius: 1.1875rem;
-    border: .125rem solid var(--black-color);
+    border: 0.125rem solid var(--black-color);
 }
 
-.white__background{
+.white__background {
     background-color: var(--white-color);
 }
 
-.white__background .background__left{
+.white__background .background__left {
     display: none;
 }
 
-.list__space{
+.list__space {
     margin: 0 auto;
     max-width: 65rem;
+    font-family: "poppins-light";
 }
-
+.list__space h1 {
+    text-align: center;
+    color: var(--text-color);
+    font-family: "poppins-medium";
+}
 .user__choice li {
     width: 100%;
     display: flex;
@@ -213,18 +236,18 @@ label, input{
     height: 50vh;
 }
 
-@media (min-width: 50rem ) {
-    .user__choice li{
+@media (min-width: 50rem) {
+    .user__choice li {
         height: 100vh;
     }
-    .user__choice{
+    .user__choice {
         display: flex;
         max-width: 65rem;
         margin: 0 auto;
     }
 }
 
-.title__arrow{
+.title__arrow {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -235,7 +258,7 @@ label, input{
     margin: 0 auto;
 }
 
-.allStudents{
+.allStudents {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -252,7 +275,7 @@ label, input{
     background-color: var(--white-blue);
 }
 
-.allStudents ul:nth-child(even){
+.allStudents ul:nth-child(even) {
     background-color: var(--white-color);
 }
 
@@ -261,24 +284,24 @@ label, input{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: .625rem;
+    padding: 0.625rem;
     gap: 1rem;
     width: 100%;
     height: 6.3125rem;
     overflow: hidden;
 }
 
-.allStudents ul li:first-child{
+.allStudents ul li:first-child {
     width: 25%;
 }
 
-.allStudents ul li button{
+.allStudents ul li button {
     border: none;
     font: inherit;
     background-color: transparent;
 }
 
-.avatar__list img{
+.avatar__list img {
     width: 3rem;
 }
 
@@ -290,7 +313,7 @@ label, input{
     margin-top: 2rem;
 }
 
-.grid__subjects{
+.grid__subjects {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -299,16 +322,17 @@ label, input{
     align-items: center;
 }
 
-.grid__subjects ul, .grid__subjects a{
+.grid__subjects ul,
+.grid__subjects a {
     box-sizing: border-box;
     width: 13.0625rem;
     height: 13.5rem;
     left: 0rem;
     top: 0rem;
-    border-radius: .9375rem;
+    border-radius: 0.9375rem;
 }
 
-.grid__subjects ul{
+.grid__subjects ul {
     background: var(--white-color);
     display: flex;
     flex-direction: column;
@@ -316,7 +340,7 @@ label, input{
     justify-content: center;
 }
 
-.grid__subjects a{
+.grid__subjects a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -326,40 +350,40 @@ label, input{
     flex-direction: column;
 }
 
-.delete__btn{
+.delete__btn {
     background-color: transparent;
     border: none;
     font-size: initial;
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
-.grid__subjects ul li{
+.grid__subjects ul li {
     list-style: none;
     text-align: -webkit-center;
 }
 
-.link__grid__subject{
-    border: .0625rem solid var(--light-gray);
+.link__grid__subject {
+    border: 0.0625rem solid var(--light-gray);
 }
 
-.subjects__title li:first-child{
+.subjects__title li:first-child {
     width: 4.6875rem;
     height: 4.6875rem;
     display: flex;
     background: var(--subject-blue);
-    border-radius: .3125rem;
+    border-radius: 0.3125rem;
     align-items: center;
     font-size: 2rem;
     color: var(--white-color);
     justify-content: center;
 }
 
-.space__subject-main{
+.space__subject-main {
     max-width: 65rem;
     margin: 0 auto;
 }
 
-.from-box{
+.from-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -367,47 +391,53 @@ label, input{
     margin: 0;
 }
 
-.from-box a{
+.from-box a {
     align-self: flex-start;
     margin-top: 2rem;
 }
 
-.title__box h1{
+.title__box h1 {
     text-align: center;
     color: var(--white-color);
     font-family: "poppins-medium";
     padding-bottom: 1rem;
 }
 
-.add__subject-form{
+.add__subject-form {
     background: var(--white-blue);
     width: 28rem;
-    border-radius: .3125rem;
+    border-radius: 0.3125rem;
     display: flex;
     align-items: center;
     height: 50vh;
 }
 
-.add__form-input{
+.add__form-input {
     display: flex;
     flex-direction: column;
     width: fit-content;
 }
 
-.add__form-input input, .add__form-input textarea{
+.add__form-input input,
+.add__form-input textarea {
     margin-bottom: 1rem;
 }
 
-form input{
-    float: right;
+form input {
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    background-color: var(--background-gray);
+    border: .0625rem solid var(--black-color);
 }
 
-.text__box{
+.text__box {
     display: flex;
     flex-direction: column;
 }
 
-.box__bottom{
+.box__bottom {
     display: flex;
     gap: 1rem;
     padding-top: 1rem;
@@ -415,20 +445,20 @@ form input{
     flex-direction: row;
 }
 
-.add__exercise-box{
+.add__exercise-box {
     display: flex;
     flex-direction: column;
     inline-size: max-content;
 }
 
-.list__exercises li{
-   display: flex;
-   list-style: none;
+.list__exercises li {
+    display: flex;
+    list-style: none;
 }
 
-
 .detailVak_box,
-.detailOef_box {
+.detailOef_box,
+.update_box {
     max-width: 60rem;
     background-color: var(--background-box);
     padding: 2rem;
@@ -449,7 +479,8 @@ form input{
     font-family: "poppins-medium";
 }
 .title_box h2,
-.detailOef_box h2 {
+.detailOef_box h2,
+.update_box h2 {
     font-size: 2rem;
     color: var(--text-color);
     font-family: "poppins-medium";
@@ -470,6 +501,7 @@ form input{
     font-size: 1rem;
     color: var(--text-color);
     font-family: "poppins-medium";
+    word-break: break-all;
 }
 .description_detailVak h3 {
     font-size: 1.5rem;
@@ -530,7 +562,7 @@ form input{
     background-color: transparent;
     border: none;
     font-size: initial;
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
 .grid__subjects ul li {
@@ -592,16 +624,16 @@ form input{
 .list__exercises li {
     display: flex;
     align-items: center;
-    border: .125rem solid var(--light-gray);
+    border: 0.125rem solid var(--light-gray);
     margin-bottom: 1rem;
 }
 .list__exercises form {
     margin-right: 1rem;
-    border-right: .125rem solid var(--light-gray);
+    border-right: 0.125rem solid var(--light-gray);
 }
 .list__exercises button {
     width: 3rem;
-    height: 4.5rem;
+    height: 7.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,7 +653,7 @@ button {
     margin: 0.5rem 0 0.5rem 0;
 }
 .add__exercise-box button {
-   background-color: var(--button-box);
+    background-color: var(--button-box);
     border-radius: 1rem;
 }
 
@@ -639,4 +671,3 @@ button {
         max-width: 100%;
     }
 }
-

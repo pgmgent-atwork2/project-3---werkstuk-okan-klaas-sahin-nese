@@ -1,12 +1,27 @@
-<body >
-
+<body>
     <div class="background__right background__left ">
-
     </div>
-{{> header}}
-<main>
-    <div>
-    {{> upload-file}}
-    </div>
-</main>
+        {{> header}}
+    {{#if (eq userRole "admin")}}
+        <main>
+            <div class="home__space-area">
+                <h1>Welkom, {{user.email}}</h1>
+            </div>
+            {{> upload-file}}
+        </main>
+    {{else if (eq userRole "teacher")}}
+        <main>
+            <div class="home__space-area">
+                <h1>Welkom, {{user.email}}</h1>
+            </div>
+            {{> upload-file}}
+        </main>
+    {{else}}
+        <main>
+            <div class="home__space-area">
+                <h1>Welkom, {{user.email}}</h1>
+            </div>
+            {{> upload-file}}
+        </main>
+    {{/if}}
 </body>

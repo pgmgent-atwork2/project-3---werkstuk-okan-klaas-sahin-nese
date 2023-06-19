@@ -143,7 +143,7 @@ app.get('/gebruikers', gebruikers);
 app.get('/student', jwtAuth, getAllStudentsMeta);
 app.get('/teacher', jwtAuth, getAllStafMeta);
 
-app.get('/persoonlijkegegevens', getPersonalData);
+app.get('/persoonlijkegegevens', jwtAuth, getPersonalData);
 
 app.get('/vakken', jwtAuth, subjects);
 app.get('/vakken/toevoegen', addSubj);

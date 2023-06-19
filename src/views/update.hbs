@@ -1,5 +1,7 @@
-<section class="auth-container update">
-  <h4>Update</h4>
+<body>
+  {{> header}}
+<div class="update_box">
+  <h2>Update</h2>
   {{>form-errors this}}
   <form method="post" name:"role" >
     {{#each inputs}}
@@ -10,4 +12,5 @@
       <input type="submit" class="btn btn-primary" value="Register">
     </div>
   </form>
-</section>
+</div>  
+</body>
