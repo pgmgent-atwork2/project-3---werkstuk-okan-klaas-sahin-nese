@@ -43,7 +43,7 @@ export const deleteVak = async (req, res, next) => {
 
 export const postVak = async (req, res, next) => {
     try {
-        const vakkenRepo = DataSource.getRepository("vakken");
+        const vakkenRepo = DataSource.getRepository("Vakken");
         const vak = await vakkenRepo.save(req.body);
         res.status(201).json({
             status: 'Inserted with succses.',
@@ -58,7 +58,7 @@ export const postVak = async (req, res, next) => {
 
 export const updateVak = async (req, res, next) => {
     try {
-        const vakkenRepo = DataSource.getRepository("vakken");  
+        const vakkenRepo = DataSource.getRepository("Vakken");  
         const  id  = req.body.id;
         const vak = await vakkenRepo.findOneBy({ id: id });
         let update;
