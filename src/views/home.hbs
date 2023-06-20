@@ -18,9 +18,6 @@
 </main>
 
 
-  <p>Je bent een beheerder.</p>
-
-
 {{else if (eq userRole "teacher")}}
   
   <main>
@@ -30,9 +27,6 @@
     {{> headCategory}}
     </div>
 </main>
-
-  <p>Je bent een leraar.</p>
-
 
 {{else}}
   
@@ -44,7 +38,6 @@
     </div>
 </main>
 
-  <p>Je hebt een student.</p>
 {{/if}}
 
 

@@ -285,19 +285,20 @@ input {
     justify-content: center;
     align-items: center;
     padding: 0.625rem;
-    gap: 1rem;
     width: 100%;
+    text-align: -webkit-center;
     height: 6.3125rem;
     overflow: hidden;
 }
 
-.allStudents ul li:first-child {
-    width: 25%;
-}
+// .allStudents ul li:first-child {
+//     width: 25%;
+// }
 
-.allStudents ul li button {
+.allStudents ul li button, .allStudents ul li a{
     border: none;
     font: inherit;
+    width: 2rem;
     background-color: transparent;
 }
 
@@ -429,7 +430,7 @@ form input {
     font-size: 1rem;
     border-radius: 1rem;
     background-color: var(--background-gray);
-    border: .0625rem solid var(--black-color);
+    border: 1px solid var(--black-color);
 }
 
 .text__box {
@@ -656,7 +657,9 @@ button {
     background-color: var(--button-box);
     border-radius: 1rem;
 }
-
+.space__subject-main {
+    margin-top: 3rem;
+}
 @media (min-width: 10rem) {
     .user__choice li a img {
         max-width: 80%;
@@ -669,5 +672,17 @@ button {
 @media (min-width: 50rem) {
     .user__choice li a img {
         max-width: 100%;
+    }
+}
+
+@media (max-width: 22.1875rem) {
+    .allStudents ul li.remove {
+        display: none;
+    }
+}
+
+@media (max-width: 45.5625rem) {
+    .allStudents ul li.remover {
+        display: none;
     }
 }

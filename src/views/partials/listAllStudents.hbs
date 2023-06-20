@@ -1,16 +1,16 @@
 {{#each allUserMetas}}
 {{#if student}}
 <ul>
-    <li>{{id}}</li>
+    <li class="remove">{{id}}</li>
     <li>{{voornaam}} {{achternaam}}</li>
     {{#if student}}
-    <li class="avatar__list"> <img src="{{student.avatar}}" alt="avatar"></li>
-    <li>  {{student.email}}</li>
+    <li class="avatar__list remove remover"> <img src="{{student.avatar}}" alt="avatar"></li>
+    <li class="remove">  {{student.email}}</li>
     {{/if}}
-    <li>{{geboortedatum}} </li>
-    <li> {{geboorteplaats}} </li>
+    <li class="remove remover">{{geboortedatum}} </li>
+    <li class="remove remover"> {{geboorteplaats}} </li>
     <li>{{classroom}}</li>
-    <li> {{adres}} </li>
+    <li class="remove"> {{adres}} </li>
     <li>
         <a href="/editstudent/{{student.id}}"><img src="assets/img/edit.svg" alt="change"></a>
         <form action="/api/student/{{student.id}}" method="post">
