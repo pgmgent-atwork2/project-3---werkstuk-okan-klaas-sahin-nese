@@ -31,7 +31,7 @@ export const deleteStudents = async (req, res) => {
     const userRepo = DataSource.getRepository('Student');
     const userToDelete = await userRepo.findOneBy({ id });
     await userRepo.delete(userToDelete);
-    res.redirect('/teacher');
+    res.redirect('/student');
   } catch (e) {
     res.status(500).json({
       status: e.message,
